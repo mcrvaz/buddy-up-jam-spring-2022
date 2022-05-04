@@ -16,5 +16,5 @@ MonoBehaviour:
   <BackwardSpeed>k__BackingField: 8
   <JumpSpeed>k__BackingField: 2.5
   <JumpDuration>k__BackingField: 0.25
-  <MaxJumpCount>k__BackingField: 2
+  <MaxJumpCount>k__BackingField: 1
   <GravityModifier>k__BackingField: 2

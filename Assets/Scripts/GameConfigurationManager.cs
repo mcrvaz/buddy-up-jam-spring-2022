@@ -11,6 +11,7 @@ public class GameConfigurationManager : MonoBehaviour
         Screen.fullScreenMode = Settings.Fullscreen;
 
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update ()
