@@ -11,4 +11,8 @@ public class WeaponBehaviour : MonoBehaviour
     {
         Weapon = new Weapon(transform, ProjectileSpawnPoints, WeaponSettings);
     }
+
+    void Start ()
+    {
+    }
 }

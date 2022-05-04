@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: WeaponSettings
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 1
-  <MaxAmmo>k__BackingField: 99
-  <MaxRounds>k__BackingField: 99
+  <StartingAmmo>k__BackingField: 200
+  <MaxAmmo>k__BackingField: 200
+  <RoundsPerClip>k__BackingField: 2
   <ProjectileCount>k__BackingField: 2
-  <ReloadTime>k__BackingField: 0
-  <IntervalBetweenShots>k__BackingField: 0
+  <ReloadTime>k__BackingField: 1
+  <IntervalBetweenShots>k__BackingField: 0.5
   <ProjectilePrefab>k__BackingField: {fileID: 4984771367537914353, guid: 132d7257991ed5f4d8565c2348a5397e,
     type: 3}

@@ -15,7 +15,10 @@ public class PlayerBehaviour : MonoBehaviour
     void Awake ()
     {
         WeaponBehaviour = GetComponentInChildren<WeaponBehaviour>();
+    }
 
+    void Start ()
+    {
         Health = new Health();
         PlayerMovement = new PlayerMovement(transform, MovementSettings, InputManager.Instance);
         PlayerRotation = new PlayerRotation(transform, GameSettings, InputManager.Instance);

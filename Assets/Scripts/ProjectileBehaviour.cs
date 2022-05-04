@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
@@ -17,6 +16,10 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         Projectile = new Projectile(transform, ProjectileSettings);
         Projectile.OnDestroyed += HandleDestroy;
+    }
+
+    void Start ()
+    {
     }
 
     void OnEnable ()
