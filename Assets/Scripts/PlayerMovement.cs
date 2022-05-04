@@ -32,7 +32,7 @@ public class PlayerMovement
         if (inputManager.GetJumpDown())
             Jump(time);
 
-        Move(ref position, GetMovementDirection(), deltaTime);
+        Move(ref position, GetNormalizedInput(), deltaTime);
         ApplyJump(ref position, deltaTime, time);
         ApplyGravity(ref position, deltaTime);
         TryLand(ref position);
@@ -41,12 +41,7 @@ public class PlayerMovement
 
     bool IsAerial (in Vector3 position) => GetDistanceToGround(position) > playerHeight;
 
-    Vector3 GetMovementDirection ()
-    {
-        var input = new Vector2(inputManager.GetHorizontal(), inputManager.GetVertical());
-        var clamped = Vector2.ClampMagnitude(input, 1f);
-        return new Vector3(clamped.x, 0, clamped.y);
-    }
+    Vector3 GetNormalizedInput () => new Vector3(inputManager.GetHorizontal(), 0, inputManager.GetVertical()).normalized;
 
     float GetDistanceToGround (in Vector3 position)
     {
@@ -56,9 +51,15 @@ public class PlayerMovement
 
     void Move (ref Vector3 position, in Vector3 direction, in float deltaTime)
     {
-        var dot = Vector3.Dot(transform.forward, direction);
-        var speed = dot >= 0 ? settings.ForwardSpeed : settings.BackwardSpeed;
-        position += direction * speed * deltaTime;
+        float dot = Vector3.Dot(transform.forward, direction);
+        float speed = dot >= 0 ? settings.ForwardSpeed : settings.BackwardSpeed;
+
+        Vector3 xMov = transform.forward * direction.z;
+        Vector3 zMov = transform.right * direction.x;
+        xMov.y = 0;
+        zMov.y = 0;
+
+        position += (xMov + zMov) * speed * deltaTime;
     }
 
     void Jump (in float time)

@@ -8,6 +8,4 @@ public class MovementSettings : ScriptableObject
     [field:SerializeField] public float JumpDuration { get; set; }
     [field:SerializeField] public int MaxJumpCount { get; set; }
     [field:SerializeField] public float GravityModifier { get; set; } = 1f;
-
-    [field:SerializeField] public float RotationSpeed { get; set; } = 1f;
 }

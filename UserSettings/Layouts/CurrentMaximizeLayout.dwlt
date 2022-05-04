@@ -87,7 +87,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -230,7 +230,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 4c660000
       m_LastClickedID: 26188
-      m_ExpandedIDs: 3afbffff
+      m_ExpandedIDs: 9c56ffff3afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -562,9 +562,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.09725129, y: 4.3445444, z: -4.974295}
+    m_Target: {x: -49.157314, y: 50.22305, z: 43.82969}
     speed: 2
-    m_Value: {x: 0.09725129, y: 4.3445444, z: -4.974295}
+    m_Value: {x: -49.157314, y: 50.22305, z: 43.82969}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -611,13 +611,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.036616478, y: -0.0038984953, z: 0.00015810582, w: 0.9993683}
+    m_Target: {x: 0.16348265, y: 0.8228836, z: -0.29351756, w: 0.45834273}
     speed: 2
-    m_Value: {x: 0.036614776, y: -0.0038983142, z: 0.00015809847, w: 0.9993219}
+    m_Value: {x: 0.16348265, y: 0.82288355, z: -0.29351756, w: 0.45834273}
   m_Size:
-    m_Target: 0.8660254
+    m_Target: 2.182593
     speed: 2
-    m_Value: 0.8660254
+    m_Value: 2.182593
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 1133
+  controlID: 2292
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 4c660000
     m_LastClickedInstanceID: 26188
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000012a30000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

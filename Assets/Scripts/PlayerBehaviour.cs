@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [field: SerializeField] public GameSettings GameSettings { get; private set; }
     [field: SerializeField] public MovementSettings MovementSettings { get; private set; }
     [field: SerializeField] public Camera WeaponCamera { get; private set; }
 
@@ -14,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Awake ()
     {
         PlayerMovement = new PlayerMovement(transform, MovementSettings, InputManager.Instance);
-        PlayerRotation = new PlayerRotation(transform, MovementSettings, InputManager.Instance);
+        PlayerRotation = new PlayerRotation(transform, GameSettings, InputManager.Instance);
         PlayerAction = new PlayerAction();
         Health = new Health();
         Weapon = new Weapon();
