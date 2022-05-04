@@ -14,20 +14,15 @@ public class PlayerBehaviour : MonoBehaviour
     void Awake ()
     {
         PlayerMovement = new PlayerMovement(transform, MovementSettings, InputManager.Instance);
-        PlayerRotation = new PlayerRotation(transform, MovementSettings, InputManager.Instance, WeaponCamera);
+        PlayerRotation = new PlayerRotation(transform, MovementSettings, InputManager.Instance);
         PlayerAction = new PlayerAction();
         Health = new Health();
         Weapon = new Weapon();
     }
 
-    void Start ()
-    {
-
-    }
-
     void Update ()
     {
-        PlayerRotation.Update();
         PlayerMovement.Update();
+        PlayerRotation.Update();
     }
 }
