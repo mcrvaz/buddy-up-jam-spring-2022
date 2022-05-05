@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public event Action<EnemyBehaviour> OnDeath;
+
     [field: SerializeField] public MovementSettings MovementSettings { get; private set; }
 
     public EnemyMovement Movement { get; private set; }

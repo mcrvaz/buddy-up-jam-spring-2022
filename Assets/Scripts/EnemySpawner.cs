@@ -1,18 +1,24 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner
 {
+    public event Action OnEnemyCountChanged;
+
+    public int LiveEnemiesCount => liveEnemies.Count;
+
     float TimeSinceWaveStart => Time.time - currentWaveStartTime;
 
     readonly List<SpawnPoint> spawnPoints;
     readonly EnemySpawnerSettings settings;
     readonly Queue<float> spawnTimes = new Queue<float>();
+    readonly HashSet<EnemyBehaviour> liveEnemies = new HashSet<EnemyBehaviour>();
 
     EnemySpawnerWaveSettings currentWaveSettings;
     float currentWaveStartTime;
-    float currentWaveEndTime;
     int spawnedEnemies;
+    bool waveSpawnEnded;
 
     public EnemySpawner (List<SpawnPoint> spawnPoints, EnemySpawnerSettings settings)
     {
@@ -20,19 +26,27 @@ public class EnemySpawner
         this.settings = settings;
     }
 
-    public void StartFirstWave () => StartWave(0);
     public void StartWave (int wave)
     {
+        spawnedEnemies = 0;
         currentWaveSettings = settings.Waves[wave];
         currentWaveStartTime = Time.time;
-        currentWaveEndTime = currentWaveStartTime + currentWaveSettings.Duration;
+        liveEnemies.Clear();
+        spawnTimes.Clear();
+        waveSpawnEnded = false;
         EvaluateSpawnTimes();
     }
 
     public void Update ()
     {
-        if (Time.time > currentWaveEndTime || spawnedEnemies >= currentWaveSettings.EnemyCount)
+        if (waveSpawnEnded)
             return;
+
+        if (spawnedEnemies >= currentWaveSettings.EnemyCount)
+        {
+            EndWaveSpawn();
+            return;
+        }
 
         float time = TimeSinceWaveStart;
         while (spawnTimes.Count > 0 && time > spawnTimes.Peek())
@@ -60,11 +74,24 @@ public class EnemySpawner
             spawnPoint.Position,
             Quaternion.identity
         );
+        enemy.OnDeath += HandleEnemyDeath;
         spawnedEnemies++;
+        liveEnemies.Add(enemy);
+    }
+
+    void HandleEnemyDeath (EnemyBehaviour enemy)
+    {
+        enemy.OnDeath -= HandleEnemyDeath;
+        liveEnemies.Remove(enemy);
+    }
+
+    void EndWaveSpawn ()
+    {
+        waveSpawnEnded = true;
     }
 
     EnemyBehaviour GetNextEnemyPrefab () =>
         RandomUtils.WeightedRandom(currentWaveSettings.EnemyChances, x => x.Chance).EnemyPrefab;
 
-    SpawnPoint GetRandomSpawnPoint () => spawnPoints[Random.Range(0, spawnPoints.Count)];
+    SpawnPoint GetRandomSpawnPoint () => spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)];
 }
