@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dfc710c7fc1db45b8bec466573a549, type: 3}
+  m_Name: EnemySpawnerSettings
+  m_EditorClassIdentifier: 
+  <Waves>k__BackingField:
+  - {fileID: 11400000, guid: 86741966b2bca9342916c3181607ab34, type: 2}
