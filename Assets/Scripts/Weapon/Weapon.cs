@@ -1,9 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public partial class Weapon
+public class Weapon
 {
     public event Action OnAmmoUpdated;
+    public event Action OnReloadStart;
+    public event Action OnReloadEnd;
+    public event Action OnShoot;
 
     public int CurrentAmmo { get; private set; }
     public int MaxAmmo => settings.MaxAmmo;
@@ -15,23 +19,33 @@ public partial class Weapon
     readonly Transform weaponTransform;
     readonly Transform[] projectileSpawnPoints;
     readonly WeaponSettings settings;
+    readonly MonoBehaviour coroutineRunner;
 
-    public Weapon (Transform weaponTransform, Transform[] projectileSpawnPoints, WeaponSettings settings)
+    float nextShotTime = float.MinValue;
+    float reloadEndTime;
+    bool isReloading;
+
+    public Weapon (
+        Transform weaponTransform,
+        Transform[] projectileSpawnPoints,
+        WeaponSettings settings,
+        MonoBehaviour coroutineRunner
+    )
     {
         pool = new ProjectilePool(settings.ProjectilePrefab);
         this.projectileSpawnPoints = projectileSpawnPoints;
         this.settings = settings;
         this.weaponTransform = weaponTransform;
+        this.coroutineRunner = coroutineRunner;
         SetupInitialAmmo();
     }
 
     public void Shoot ()
     {
-        if (RoundsInClip <= 0)
-        {
-            ReloadClip();
+        if (isReloading)
             return;
-        }
+        if (Time.time < nextShotTime)
+            return;
 
         for (int i = 0; i < settings.ProjectileCount; i++)
         {
@@ -42,6 +56,16 @@ public partial class Weapon
             projectile.Damage = Damage;
             projectile.Forward = weaponTransform.forward;
         }
+        nextShotTime = Time.time + settings.IntervalBetweenShots;
+        OnShoot?.Invoke();
+
+        if (RoundsInClip <= 0)
+            StartReloadRoutine();
+    }
+
+    void StartReloadRoutine ()
+    {
+        coroutineRunner.StartCoroutine(ReloadRoutine());
     }
 
     bool ConsumeAmmo ()
@@ -59,6 +83,7 @@ public partial class Weapon
         RoundsInClip = Mathf.Min(CurrentAmmo, RoundsPerClip);
         CurrentAmmo = Mathf.Max(0, CurrentAmmo - RoundsInClip);
         OnAmmoUpdated?.Invoke();
+        OnReloadEnd?.Invoke();
     }
 
     void SetupInitialAmmo ()
@@ -66,5 +91,16 @@ public partial class Weapon
         CurrentAmmo = settings.StartingAmmo;
         ReloadClip();
         OnAmmoUpdated?.Invoke();
+    }
+
+    IEnumerator ReloadRoutine ()
+    {
+        OnReloadStart?.Invoke();
+        isReloading = true;
+        reloadEndTime = settings.ReloadTime;
+        while (Time.time < reloadEndTime)
+            yield return null;
+        isReloading = false;
+        ReloadClip();
     }
 }
