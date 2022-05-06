@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnerBehaviour : MonoBehaviour
+public class EnemyWaveManagerBehaviour : MonoBehaviour
 {
     [field: SerializeField] public List<SpawnPoint> SpawnPoints { get; private set; }
     [field: SerializeField] public EnemySpawnerSettings SpawnerSettings { get; private set; }

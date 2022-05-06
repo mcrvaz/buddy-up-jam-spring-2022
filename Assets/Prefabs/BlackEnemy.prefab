@@ -145,9 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63404aed8fc564b488106f23c697b791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MovementSettings>k__BackingField: {fileID: 11400000, guid: ce06e93b16ea23145801f032842b0cee,
-    type: 2}
-  <HealthSettings>k__BackingField: {fileID: 11400000, guid: 00d7e673d32efec44b82a1df8ff23d7c,
+  <Settings>k__BackingField: {fileID: 11400000, guid: cc4bfe32bd313db408685983b4a74733,
     type: 2}
   <Collider>k__BackingField: {fileID: 5532831902368730658}
 --- !u!136 &5532831902368730658

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner
 {
+    public event Action<EnemyBehaviour> OnEnemyDeath;
     public event Action OnEnemyCountChanged;
 
     public int LiveEnemiesCount => liveEnemies.Count;
@@ -77,6 +78,7 @@ public class EnemySpawner
         enemy.OnDeath += HandleEnemyDeath;
         spawnedEnemies++;
         liveEnemies.Add(enemy);
+        OnEnemyCountChanged?.Invoke();
     }
 
     void HandleEnemyDeath (EnemyBehaviour enemy)
@@ -84,6 +86,7 @@ public class EnemySpawner
         enemy.OnDeath -= HandleEnemyDeath;
         liveEnemies.Remove(enemy);
         OnEnemyCountChanged?.Invoke();
+        OnEnemyDeath?.Invoke(enemy);
     }
 
     void EndWaveSpawn ()

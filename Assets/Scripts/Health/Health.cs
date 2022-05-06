@@ -22,6 +22,7 @@ public class Health
     public void Start ()
     {
         Current = settings.InitialHealth;
+        OnHealthChanged?.Invoke(0, Current);
     }
 
     public void TakeDamage (float damage)

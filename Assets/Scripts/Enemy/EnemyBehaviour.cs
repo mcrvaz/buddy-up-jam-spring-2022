@@ -5,8 +5,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public event Action<EnemyBehaviour> OnDeath;
 
-    [field: SerializeField] public MovementSettings MovementSettings { get; private set; }
-    [field: SerializeField] public HealthSettings HealthSettings { get; private set; }
+    [field: SerializeField] public EnemySettings Settings { get; private set; }
     [field: SerializeField] public Collider Collider { get; private set; }
 
     public EnemyMovement Movement { get; private set; }
@@ -23,9 +22,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Start ()
     {
-        Movement = new EnemyMovement(transform, MovementSettings, player);
+        Movement = new EnemyMovement(transform, Settings.MovementSettings, player);
         Rotation = new EnemyRotation(transform, player);
-        Health = new Health(HealthSettings);
+        Health = new Health(Settings.HealthSettings);
         Enemy = new Enemy(Movement, Rotation, Health, Collider);
 
         Enemy.OnDeath += HandleDeath;

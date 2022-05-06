@@ -7,6 +7,12 @@ public class EnemyWaveManager
     public event Action OnWaveStarted;
     public event Action OnWaveEnded;
 
+    public event Action<EnemyBehaviour> OnEnemyDeath
+    {
+        add => spawner.OnEnemyDeath += value;
+        remove => spawner.OnEnemyDeath -= value;
+    }
+
     public float TimeUntilNextWave => nextWaveStartTime - Time.time;
 
     readonly EnemySpawnerSettings spawnerSettings;
