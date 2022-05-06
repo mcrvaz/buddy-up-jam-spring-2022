@@ -6,6 +6,12 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public ProjectilePool Pool { get; set; }
     public Projectile Projectile { get; private set; }
+
+    public float Damage
+    {
+        get => Projectile.Damage;
+        set => Projectile.Damage = value;
+    }
     public Vector3 Forward
     {
         get => transform.forward;

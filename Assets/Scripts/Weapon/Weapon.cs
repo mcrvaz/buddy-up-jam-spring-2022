@@ -39,6 +39,7 @@ public partial class Weapon
                 return;
             var projectile = pool.Get();
             projectile.transform.position = projectileSpawnPoints[i].position;
+            projectile.Damage = Damage;
             projectile.Forward = weaponTransform.forward;
         }
     }

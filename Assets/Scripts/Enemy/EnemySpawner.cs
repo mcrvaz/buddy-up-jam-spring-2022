@@ -83,6 +83,7 @@ public class EnemySpawner
     {
         enemy.OnDeath -= HandleEnemyDeath;
         liveEnemies.Remove(enemy);
+        OnEnemyCountChanged?.Invoke();
     }
 
     void EndWaveSpawn ()

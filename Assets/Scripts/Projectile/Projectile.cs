@@ -5,6 +5,8 @@ public class Projectile
 {
     public event Action OnDestroyed;
 
+    public float Damage { get; set; }
+
     readonly Transform transform;
     readonly ProjectileSettings settings;
 

@@ -16,30 +16,31 @@ public class EnemyWaveManager
     float nextWaveStartTime;
     int waveIndex;
 
-    public EnemyWaveManager (EnemySpawnerSettings spawnerSettings, EnemySpawner spawner)
+    public EnemyWaveManager (EnemySpawnerSettings spawnerSettings, EnemySpawner spawner, MonoBehaviour coroutineRunner)
     {
         this.spawnerSettings = spawnerSettings;
         this.spawner = spawner;
 
         spawner.OnEnemyCountChanged += HandleLiveEnemyCountChanged;
+        this.coroutineRunner = coroutineRunner;
     }
 
     public void Start ()
     {
-        spawner.StartWave(waveIndex);
-        OnWaveStarted?.Invoke();
+        StartNextWave();
     }
 
     void StartNextWave ()
     {
-        waveIndex++;
         spawner.StartWave(waveIndex);
+        OnWaveStarted?.Invoke();
     }
 
     void HandleWaveEnded ()
     {
         OnWaveEnded?.Invoke();
 
+        waveIndex++;
         if (waveIndex >= spawnerSettings.Waves.Count)
         {
             UnityEngine.Debug.Log("No more waves!");

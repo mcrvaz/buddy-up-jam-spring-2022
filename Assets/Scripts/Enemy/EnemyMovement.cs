@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyMovement : Movement
 {
+    public bool Enabled { get; set; } = true;
+
     readonly PlayerBehaviour player;
 
     public EnemyMovement (Transform transform, MovementSettings settings, PlayerBehaviour player)
@@ -12,6 +14,9 @@ public class EnemyMovement : Movement
 
     public override void Update ()
     {
+        if (!Enabled)
+            return;
+
         Vector3 position = transform.position;
         float deltaTime = Time.deltaTime;
         Move(ref position, GetPlayerDirection(), deltaTime);

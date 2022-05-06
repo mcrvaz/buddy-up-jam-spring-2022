@@ -12,7 +12,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour
     void Awake ()
     {
         Spawner = new EnemySpawner(SpawnPoints, SpawnerSettings);
-        WaveManager = new EnemyWaveManager(SpawnerSettings, Spawner);
+        WaveManager = new EnemyWaveManager(SpawnerSettings, Spawner, this);
     }
 
     void Start ()

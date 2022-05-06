@@ -4,6 +4,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [field: SerializeField] public GameSettings GameSettings { get; private set; }
     [field: SerializeField] public MovementSettings MovementSettings { get; private set; }
+    [field: SerializeField] public HealthSettings HealthSettings { get; private set; }
     [field: SerializeField] public Camera WeaponCamera { get; private set; }
 
     public PlayerMovement PlayerMovement { get; private set; }
@@ -11,6 +12,7 @@ public class PlayerBehaviour : MonoBehaviour
     public PlayerAction PlayerAction { get; private set; }
     public Health Health { get; private set; }
     public WeaponBehaviour WeaponBehaviour { get; private set; }
+    public Player Player { get; private set; }
 
     void Awake ()
     {
@@ -19,16 +21,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start ()
     {
-        Health = new Health();
+        Health = new Health(HealthSettings);
         PlayerMovement = new PlayerMovement(transform, MovementSettings, InputManager.Instance);
         PlayerRotation = new PlayerRotation(transform, GameSettings, InputManager.Instance);
         PlayerAction = new PlayerAction(InputManager.Instance, WeaponBehaviour.Weapon);
+        Player = new Player(PlayerMovement, PlayerRotation, PlayerAction, Health, WeaponBehaviour.Weapon);
+
+        Player.Start();
     }
 
     void Update ()
     {
-        PlayerMovement.Update();
-        PlayerRotation.Update();
-        PlayerAction.Update();
+        Player.Update();
+    }
+
+    void OnTriggerEnter (Collider collider)
+    {
+        Player.HandleCollision(collider);
     }
 }

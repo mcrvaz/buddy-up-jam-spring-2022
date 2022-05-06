@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyRotation
 {
+    public bool Enabled { get; set; } = true;
+
     readonly Transform transform;
     readonly PlayerBehaviour player;
 
@@ -13,6 +15,9 @@ public class EnemyRotation
 
     public void Update ()
     {
+        if (!Enabled)
+            return;
+
         transform.LookAt(player.transform);
     }
 }
