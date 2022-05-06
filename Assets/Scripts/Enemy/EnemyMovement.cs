@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyMovement : Movement
 {
-    public bool Enabled { get; set; } = true;
-
     readonly PlayerBehaviour player;
 
     public EnemyMovement (Transform transform, MovementSettings settings, PlayerBehaviour player)

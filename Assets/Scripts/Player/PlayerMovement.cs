@@ -12,6 +12,9 @@ public class PlayerMovement : Movement
 
     public override void Update ()
     {
+        if (!Enabled)
+            return;
+
         Vector3 position = transform.position;
         float deltaTime = Time.deltaTime;
         float time = Time.time;

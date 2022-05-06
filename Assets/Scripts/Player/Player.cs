@@ -3,25 +3,31 @@ using UnityEngine;
 
 public class Player
 {
-    public PlayerMovement PlayerMovement { get; private set; }
-    public PlayerRotation PlayerRotation { get; private set; }
-    public PlayerAction PlayerAction { get; private set; }
+    public event Action OnDeath;
+
+    public PlayerMovement Movement { get; private set; }
+    public PlayerRotation Rotation { get; private set; }
+    public PlayerAction Action { get; private set; }
     public Health Health { get; private set; }
     public Weapon Weapon { get; private set; }
+    public Collider Collider { get; private set; }
 
     public Player (
         PlayerMovement playerMovement,
         PlayerRotation playerRotation,
         PlayerAction playerAction,
         Health health,
-        Weapon weapon
+        Weapon weapon,
+        Collider collider
     )
     {
-        PlayerMovement = playerMovement;
-        PlayerRotation = playerRotation;
-        PlayerAction = playerAction;
+        Movement = playerMovement;
+        Rotation = playerRotation;
+        Action = playerAction;
         Health = health;
         Weapon = weapon;
+        Health.OnHealthChanged += HandleHealthChanged;
+        Collider = collider;
     }
 
     public void Start ()
@@ -31,9 +37,9 @@ public class Player
 
     public void Update ()
     {
-        PlayerMovement.Update();
-        PlayerRotation.Update();
-        PlayerAction.Update();
+        Movement.Update();
+        Rotation.Update();
+        Action.Update();
     }
 
     public void HandleCollision (Collider collider)
@@ -44,6 +50,23 @@ public class Player
 
     void HandleEnemyCollision (EnemyBehaviour enemy)
     {
-        throw new NotImplementedException();
+        if (Health.IsDead)
+            return;
+        Health.TakeDamage(enemy.Settings.Damage);
+    }
+
+    void HandleHealthChanged (float previous, float current)
+    {
+        if (current <= 0)
+            HandleDeath();
+    }
+
+    void HandleDeath ()
+    {
+        Movement.Stop();
+        Movement.Enabled = false;
+        Rotation.Enabled = false;
+        Collider.enabled = false;
+        OnDeath?.Invoke();
     }
 }

@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
         Movement = new EnemyMovement(transform, Settings.MovementSettings, player);
         Rotation = new EnemyRotation(transform, player);
         Health = new Health(Settings.HealthSettings);
-        Enemy = new Enemy(Movement, Rotation, Health, Collider);
+        Enemy = new Enemy(Movement, Rotation, Health, Collider, Settings);
 
         Enemy.OnDeath += HandleDeath;
 

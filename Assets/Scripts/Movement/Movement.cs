@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class Movement
 {
+    public bool Enabled { get; set; } = true;
+
     protected Vector3 Gravity => Physics.gravity * settings.GravityModifier;
 
     protected readonly MovementSettings settings;
@@ -9,9 +11,9 @@ public abstract class Movement
     protected readonly int groundLayerMask;
     protected readonly float entityHeight;
 
-    int jumpCount;
-    float jumpEndTime = float.MinValue;
-    Vector3 velocity;
+    protected int jumpCount;
+    protected float jumpEndTime = float.MinValue;
+    protected Vector3 velocity;
 
     public Movement (Transform transform, MovementSettings settings)
     {
@@ -23,6 +25,11 @@ public abstract class Movement
     }
 
     public abstract void Update ();
+
+    public void Stop ()
+    {
+        velocity = Vector3.zero;
+    }
 
     protected bool IsAerial (in Vector3 position) => GetDistanceToGround(position) > entityHeight;
 

@@ -10,8 +10,14 @@ public class Enemy
     public Health Health { get; private set; }
     public Collider Collider { get; private set; }
 
-    public Enemy (EnemyMovement movement, EnemyRotation rotation, Health health, Collider collider)
+    public int Damage => settings.Damage;
+    public int CurrencyReward => settings.CurrencyReward;
+
+    readonly EnemySettings settings;
+
+    public Enemy (EnemyMovement movement, EnemyRotation rotation, Health health, Collider collider, EnemySettings settings)
     {
+        this.settings = settings;
         Movement = movement;
         Rotation = rotation;
         Health = health;
@@ -39,7 +45,6 @@ public class Enemy
 
     void HandleProjectileCollision (ProjectileBehaviour projectile)
     {
-        UnityEngine.Debug.Log(Health.Current);
         if (Health.IsDead)
             return;
 
@@ -54,6 +59,7 @@ public class Enemy
 
     void HandleDeath ()
     {
+        Movement.Stop();
         Movement.Enabled = false;
         Rotation.Enabled = false;
         Collider.enabled = false;

@@ -20,8 +20,8 @@ public class CurrencyManager : MonoBehaviour
         Currency.Start();
     }
 
-    void HandleEnemyDeath (EnemyBehaviour enemy)
+    void HandleEnemyDeath (Enemy enemy)
     {
-        Currency.Earn(enemy.Settings.CurrencyReward);
+        Currency.Earn(enemy.CurrencyReward);
     }
 }

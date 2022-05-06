@@ -5,6 +5,7 @@ public class PlayerBehaviour : MonoBehaviour
     [field: SerializeField] public GameSettings GameSettings { get; private set; }
     [field: SerializeField] public PlayerSettings Settings { get; private set; }
     [field: SerializeField] public Camera WeaponCamera { get; private set; }
+    [field: SerializeField] public Collider Collider { get; private set; }
 
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerRotation PlayerRotation { get; private set; }
@@ -30,7 +31,8 @@ public class PlayerBehaviour : MonoBehaviour
             PlayerRotation,
             PlayerAction,
             Health,
-            WeaponBehaviour.Weapon
+            WeaponBehaviour.Weapon,
+            Collider
         );
 
         Player.Start();

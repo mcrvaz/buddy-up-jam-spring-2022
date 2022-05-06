@@ -7,7 +7,7 @@ public class EnemyWaveManager
     public event Action OnWaveStarted;
     public event Action OnWaveEnded;
 
-    public event Action<EnemyBehaviour> OnEnemyDeath
+    public event Action<Enemy> OnEnemyDeath
     {
         add => spawner.OnEnemyDeath += value;
         remove => spawner.OnEnemyDeath -= value;

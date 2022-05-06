@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerRotation
 {
+    public bool Enabled { get; set; } = true;
+
     const float VERTICAL_ANGLE_LIMIT = 45f;
 
     readonly GameSettings settings;
@@ -19,6 +21,9 @@ public class PlayerRotation
 
     public void Update ()
     {
+        if (!Enabled)
+            return;
+
         Rotate();
     }
 
