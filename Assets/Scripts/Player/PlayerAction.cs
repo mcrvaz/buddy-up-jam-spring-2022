@@ -1,5 +1,7 @@
 public class PlayerAction
 {
+    public bool Enabled { get; set; }
+
     readonly InputManager inputManager;
     readonly Weapon weapon;
 
@@ -11,6 +13,9 @@ public class PlayerAction
 
     public void Update ()
     {
+        if (!Enabled)
+            return;
+
         if (inputManager.GetFireDown())
             weapon.Shoot();
     }

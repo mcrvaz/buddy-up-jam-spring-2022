@@ -64,6 +64,7 @@ public class Player
     void HandleDeath ()
     {
         Movement.Stop();
+        Action.Enabled = false;
         Movement.Enabled = false;
         Rotation.Enabled = false;
         Collider.enabled = false;

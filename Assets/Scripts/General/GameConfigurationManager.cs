@@ -9,7 +9,10 @@ public class GameConfigurationManager : MonoBehaviour
         QualitySettings.vSyncCount = Settings.VSync ? 0 : 1;
         Application.targetFrameRate = Settings.MaxFPS;
         Screen.fullScreenMode = Settings.Fullscreen;
+    }
 
+    void Start ()
+    {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
