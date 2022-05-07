@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon
 {
     public event Action OnAmmoUpdated;
-    public event Action OnReloadStart;
+    public event Action<float> OnReloadStart;
     public event Action OnReloadEnd;
     public event Action OnShoot;
 
@@ -95,9 +95,9 @@ public class Weapon
 
     IEnumerator ReloadRoutine ()
     {
-        OnReloadStart?.Invoke();
+        OnReloadStart?.Invoke(settings.ReloadTime);
         isReloading = true;
-        reloadEndTime = settings.ReloadTime;
+        reloadEndTime = Time.time + settings.ReloadTime;
         while (Time.time < reloadEndTime)
             yield return null;
         isReloading = false;

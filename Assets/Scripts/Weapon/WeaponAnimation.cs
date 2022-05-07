@@ -8,6 +8,7 @@ public class WeaponAnimation
 
     readonly Weapon weapon;
     readonly Animation animation;
+    readonly float reloadAnimationDuration;
 
     public WeaponAnimation (Weapon weapon, Animation animation)
     {
@@ -16,6 +17,8 @@ public class WeaponAnimation
         weapon.OnShoot += HandleShoot;
         weapon.OnReloadEnd += HandleReloadEnd;
         weapon.OnReloadStart += HandleReloadStart;
+
+        reloadAnimationDuration = animation[RELOAD].length;
     }
 
     void HandleShoot ()
@@ -33,8 +36,10 @@ public class WeaponAnimation
         animation.Play(IDLE);
     }
 
-    void HandleReloadStart ()
+    void HandleReloadStart (float reloadDuration)
     {
+        float ratio = reloadAnimationDuration / reloadDuration;
+        animation[RELOAD].speed = ratio;
         animation.Play(RELOAD);
         animation.PlayQueued(IDLE);
     }

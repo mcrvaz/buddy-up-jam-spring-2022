@@ -17,7 +17,7 @@ MonoBehaviour:
   <MaxAmmo>k__BackingField: 200
   <RoundsPerClip>k__BackingField: 2
   <ProjectileCount>k__BackingField: 2
-  <ReloadTime>k__BackingField: 1
+  <ReloadTime>k__BackingField: 1.3
   <IntervalBetweenShots>k__BackingField: 0.5
   <ProjectilePrefab>k__BackingField: {fileID: 4984771367537914353, guid: 132d7257991ed5f4d8565c2348a5397e,
     type: 3}
