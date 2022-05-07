@@ -71,6 +71,7 @@ public class Enemy
 
     void HandleDeath ()
     {
+        UnityEngine.Debug.Log("death");
         Movement.Enabled = false;
         Rotation.Enabled = false;
         foreach (var bodyPart in bodyParts)

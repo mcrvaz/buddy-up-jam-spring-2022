@@ -783,10 +783,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 71035714133971399, guid: c5206e01509afac44b1ad91b98fdc013, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 71035714133971402, guid: c5206e01509afac44b1ad91b98fdc013, type: 3}
       propertyPath: m_Name
       value: HUDCanvas
@@ -896,6 +892,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8492169895331830496, guid: 4b2ff6e94e922754c996dede58d45e54, type: 3}
+      propertyPath: <SpawnerSettings>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: f0e717b152de2494d9774c19c93eccc0, type: 2}
     - target: {fileID: 8492169895331830502, guid: 4b2ff6e94e922754c996dede58d45e54, type: 3}
       propertyPath: m_Name
       value: EnemySpawner

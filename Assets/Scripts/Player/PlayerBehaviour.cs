@@ -27,10 +27,6 @@ public class PlayerBehaviour : MonoBehaviour
             Rigidbody
         );
         PlayerRotation = new PlayerRotation(Rigidbody, GameSettings, InputManager.Instance);
-    }
-
-    void Start ()
-    {
         PlayerAction = new PlayerAction(InputManager.Instance, WeaponBehaviour.Weapon);
         Player = new Player(
             PlayerMovement,
@@ -40,7 +36,10 @@ public class PlayerBehaviour : MonoBehaviour
             WeaponBehaviour.Weapon,
             Collider
         );
+    }
 
+    void Start ()
+    {
         Player.Start();
     }
 

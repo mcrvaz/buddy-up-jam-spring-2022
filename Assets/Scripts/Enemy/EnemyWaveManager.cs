@@ -6,6 +6,7 @@ public class EnemyWaveManager
 {
     public event Action OnWaveStarted;
     public event Action OnWaveEnded;
+    public event Action OnTimeUntilNextWaveChanged;
 
     public event Action<Enemy> OnEnemyDeath
     {
@@ -14,6 +15,7 @@ public class EnemyWaveManager
     }
 
     public float TimeUntilNextWave => nextWaveStartTime - Time.time;
+    public bool HasMoreWaves => waveIndex < spawnerSettings.Waves.Count;
 
     readonly EnemySpawnerSettings spawnerSettings;
     readonly EnemySpawner spawner;
@@ -38,6 +40,7 @@ public class EnemyWaveManager
 
     void StartNextWave ()
     {
+        UnityEngine.Debug.Log("starting wave " + (waveIndex + 1));
         spawner.StartWave(waveIndex);
         OnWaveStarted?.Invoke();
     }
@@ -47,7 +50,7 @@ public class EnemyWaveManager
         OnWaveEnded?.Invoke();
 
         waveIndex++;
-        if (waveIndex >= spawnerSettings.Waves.Count)
+        if (!HasMoreWaves)
         {
             UnityEngine.Debug.Log("No more waves!");
             return;
@@ -66,7 +69,10 @@ public class EnemyWaveManager
     IEnumerator WaitForWaveInterval ()
     {
         while (Time.time < nextWaveStartTime)
+        {
+            OnTimeUntilNextWaveChanged?.Invoke();
             yield return null;
+        }
         StartNextWave();
     }
 }

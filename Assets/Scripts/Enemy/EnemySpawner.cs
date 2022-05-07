@@ -15,7 +15,7 @@ public class EnemySpawner
     readonly IReadOnlyList<SpawnPoint> spawnPoints;
     readonly EnemySpawnerSettings settings;
     readonly Queue<float> spawnTimes = new Queue<float>();
-    readonly HashSet<Enemy> liveEnemies = new HashSet<Enemy>();
+    readonly HashSet<EnemyBehaviour> liveEnemies = new HashSet<EnemyBehaviour>();
 
     EnemySpawnerWaveSettings currentWaveSettings;
     float currentWaveStartTime;
@@ -77,25 +77,24 @@ public class EnemySpawner
             position,
             Quaternion.identity
         );
-        var enemy = enemyBehaviour.Enemy;
-        enemy.OnDeath += HandleEnemyDeath;
-        enemy.OnHit += HandleEnemyHit;
+        enemyBehaviour.OnDeath += HandleEnemyDeath;
+        enemyBehaviour.OnHit += HandleEnemyHit;
         spawnedEnemies++;
-        liveEnemies.Add(enemy);
+        liveEnemies.Add(enemyBehaviour);
         OnEnemyCountChanged?.Invoke();
     }
 
-    void HandleEnemyHit (Enemy enemy, BodyPart bodyPart)
+    void HandleEnemyHit (EnemyBehaviour enemy, BodyPart bodyPart)
     {
-        OnEnemyHit?.Invoke(enemy, bodyPart);
+        OnEnemyHit?.Invoke(enemy.Enemy, bodyPart);
     }
 
-    void HandleEnemyDeath (Enemy enemy)
+    void HandleEnemyDeath (EnemyBehaviour enemy)
     {
         enemy.OnDeath -= HandleEnemyDeath;
         liveEnemies.Remove(enemy);
         OnEnemyCountChanged?.Invoke();
-        OnEnemyDeath?.Invoke(enemy);
+        OnEnemyDeath?.Invoke(enemy.Enemy);
     }
 
     void EndWaveSpawn ()

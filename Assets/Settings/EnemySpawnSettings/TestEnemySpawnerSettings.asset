@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59dfc710c7fc1db45b8bec466573a549, type: 3}
-  m_Name: EnemySpawnerSettings
+  m_Name: TestEnemySpawnerSettings
   m_EditorClassIdentifier: 
   <Waves>k__BackingField:
-  - {fileID: 11400000, guid: 86741966b2bca9342916c3181607ab34, type: 2}
-  - {fileID: 11400000, guid: da807c72140cf654caa77da976973b94, type: 2}
-  - {fileID: 11400000, guid: 01d55a7df1edc314dbfb54beb6a4a7be, type: 2}
-  - {fileID: 11400000, guid: 0a0a9d34193be6c439205b05c78eb064, type: 2}
-  - {fileID: 11400000, guid: 0af1aacef08456d45b623c05099fe3a4, type: 2}
+  - {fileID: 11400000, guid: c6fe57c5bf77e214299773e248bb06dc, type: 2}
+  - {fileID: 11400000, guid: c6fe57c5bf77e214299773e248bb06dc, type: 2}
+  - {fileID: 11400000, guid: c6fe57c5bf77e214299773e248bb06dc, type: 2}
   <WaveInterval>k__BackingField: 5
