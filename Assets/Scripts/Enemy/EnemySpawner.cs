@@ -70,9 +70,10 @@ public class EnemySpawner
     void SpawnEnemy ()
     {
         var spawnPoint = GetRandomSpawnPoint();
+        var position = new Vector3(spawnPoint.Position.x, 0, spawnPoint.Position.z);
         var enemy = GameObject.Instantiate<EnemyBehaviour>(
             GetNextEnemyPrefab(),
-            spawnPoint.Position,
+            position,
             Quaternion.identity
         );
         enemy.OnDeath += HandleEnemyDeath;

@@ -28,6 +28,7 @@ public class Enemy
     public void Start ()
     {
         Health.Start();
+        Movement.Start();
     }
 
     public void Update ()

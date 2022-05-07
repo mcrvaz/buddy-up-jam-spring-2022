@@ -18,6 +18,9 @@ public class EnemyRotation
         if (!Enabled)
             return;
 
-        transform.LookAt(player.transform);
+
+        var direction = player.transform.position - transform.position;
+        direction.y = 0;
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 }

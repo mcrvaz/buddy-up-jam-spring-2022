@@ -2,7 +2,11 @@ using UnityEngine;
 
 public abstract class Movement
 {
-    public bool Enabled { get; set; } = true;
+    public virtual bool Enabled
+    {
+        get => enabled;
+        set => SetEnabled(value);
+    }
 
     protected Vector3 Gravity => Physics.gravity * settings.GravityModifier;
 
@@ -15,6 +19,8 @@ public abstract class Movement
     protected float jumpEndTime = float.MinValue;
     protected Vector3 velocity;
 
+    bool enabled = true;
+
     public Movement (Transform transform, MovementSettings settings)
     {
         this.settings = settings;
@@ -23,6 +29,8 @@ public abstract class Movement
         groundLayerMask = LayerMask.GetMask("Ground");
         entityHeight = GetDistanceToGround(transform.position);
     }
+
+    public abstract void Start ();
 
     public abstract void Update ();
 
@@ -73,4 +81,7 @@ public abstract class Movement
             velocity = Vector3.zero;
         }
     }
+
+    protected virtual void SetEnabled (bool enabled) =>
+        this.enabled = enabled;
 }

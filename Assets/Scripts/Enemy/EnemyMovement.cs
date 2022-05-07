@@ -1,32 +1,47 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : Movement
 {
     readonly PlayerBehaviour player;
+    readonly NavMeshAgent agent;
 
-    public EnemyMovement (Transform transform, MovementSettings settings, PlayerBehaviour player)
+    public EnemyMovement (
+        Transform transform,
+        MovementSettings settings,
+        PlayerBehaviour player,
+        NavMeshAgent agent
+    )
         : base(transform, settings)
     {
         this.player = player;
+        this.agent = agent;
+    }
+
+    public override void Start ()
+    {
+        SetupAgent();
     }
 
     public override void Update ()
     {
         if (!Enabled)
+        {
+            agent.enabled = false;
             return;
-
-        Vector3 position = transform.position;
-        float deltaTime = Time.deltaTime;
-        Move(ref position, GetPlayerDirection(), deltaTime);
-        ApplyGravity(ref position, deltaTime);
-        TryLand(ref position);
-        transform.position = position;
+        }
+        agent.destination = player.transform.position;
     }
 
-    void Move (ref Vector3 position, in Vector3 direction, in float deltaTime)
+    void SetupAgent ()
     {
-        position += direction * settings.ForwardSpeed * deltaTime;
+        agent.speed = settings.ForwardSpeed;
+        agent.acceleration = settings.Acceleration;
     }
 
-    Vector3 GetPlayerDirection () => player.transform.position - transform.position;
+    protected override void SetEnabled (bool enabled)
+    {
+        base.SetEnabled(enabled);
+        agent.enabled = enabled;
+    }
 }

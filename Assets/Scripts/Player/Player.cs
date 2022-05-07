@@ -33,6 +33,7 @@ public class Player
     public void Start ()
     {
         Health.Start();
+        Movement.Start();
     }
 
     public void Update ()

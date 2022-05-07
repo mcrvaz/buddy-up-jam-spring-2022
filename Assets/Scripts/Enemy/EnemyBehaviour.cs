@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     [field: SerializeField] public EnemySettings Settings { get; private set; }
     [field: SerializeField] public Collider Collider { get; private set; }
+    [field: SerializeField] public NavMeshAgent Agent { get; private set; }
 
     public EnemyMovement Movement { get; private set; }
     public EnemyRotation Rotation { get; private set; }
@@ -22,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Start ()
     {
-        Movement = new EnemyMovement(transform, Settings.MovementSettings, player);
+        Movement = new EnemyMovement(transform, Settings.MovementSettings, player, Agent);
         Rotation = new EnemyRotation(transform, player);
         Health = new Health(Settings.HealthSettings);
         Enemy = new Enemy(Movement, Rotation, Health, Collider, Settings);

@@ -10,6 +10,8 @@ public class PlayerMovement : Movement
         this.inputManager = inputManager;
     }
 
+    public override void Start () { }
+
     public override void Update ()
     {
         if (!Enabled)
