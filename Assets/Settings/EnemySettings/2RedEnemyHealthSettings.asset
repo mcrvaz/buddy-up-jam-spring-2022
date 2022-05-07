@@ -15,3 +15,13 @@ MonoBehaviour:
   <InitialHealth>k__BackingField: 150
   <MaxHealth>k__BackingField: 150
   <InvulnerabilityTime>k__BackingField: 0
+  <BodyPartDamageSettings>k__BackingField:
+    <Entries>k__BackingField:
+    - <BodyPart>k__BackingField: 1
+      <DamageMultiplier>k__BackingField: 1
+    - <BodyPart>k__BackingField: 0
+      <DamageMultiplier>k__BackingField: 2
+    - <BodyPart>k__BackingField: 2
+      <DamageMultiplier>k__BackingField: 0.75
+    - <BodyPart>k__BackingField: 3
+      <DamageMultiplier>k__BackingField: 0.75

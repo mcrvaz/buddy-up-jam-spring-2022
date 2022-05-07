@@ -7,7 +7,6 @@ public class EnemyBehaviour : MonoBehaviour
     public event Action<EnemyBehaviour> OnDeath;
 
     [field: SerializeField] public EnemySettings Settings { get; private set; }
-    [field: SerializeField] public Collider Collider { get; private set; }
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
 
     public EnemyMovement Movement { get; private set; }
@@ -16,9 +15,11 @@ public class EnemyBehaviour : MonoBehaviour
     public Enemy Enemy { get; private set; }
 
     PlayerBehaviour player;
+    BodyPartBehaviour[] bodyParts;
 
     void Awake ()
     {
+        bodyParts = GetComponentsInChildren<BodyPartBehaviour>();
         player = FindObjectOfType<PlayerBehaviour>();
     }
 
@@ -27,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
         Movement = new EnemyMovement(transform, Settings.MovementSettings, player, Agent);
         Rotation = new EnemyRotation(transform, player);
         Health = new Health(Settings.HealthSettings);
-        Enemy = new Enemy(Movement, Rotation, Health, Collider, Settings);
+        Enemy = new Enemy(Movement, Rotation, Health, bodyParts, Settings);
 
         Enemy.OnDeath += HandleDeath;
 
@@ -37,11 +38,6 @@ public class EnemyBehaviour : MonoBehaviour
     void FixedUpdate ()
     {
         Enemy.FixedUpdate();
-    }
-
-    void OnTriggerEnter (Collider collider)
-    {
-        Enemy.HandleCollision(collider);
     }
 
     void HandleDeath ()

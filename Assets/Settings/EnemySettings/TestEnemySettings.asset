@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e5de24c753d0546b3af5cb03afbf83, type: 3}
   m_Name: TestEnemySettings
   m_EditorClassIdentifier: 
-  <MovementSettings>k__BackingField: {fileID: 11400000, guid: 1ba314d0897da354f9fab61b03cc51c8,
-    type: 2}
-  <HealthSettings>k__BackingField: {fileID: 11400000, guid: 73f94ee55e7953b44b5280f134686537,
-    type: 2}
+  <MovementSettings>k__BackingField: {fileID: 11400000, guid: 4a0d19991bc7ac24cb7a923d2b2b8457, type: 2}
+  <HealthSettings>k__BackingField: {fileID: 11400000, guid: 73f94ee55e7953b44b5280f134686537, type: 2}
   <CurrencyReward>k__BackingField: 100
   <Damage>k__BackingField: 15

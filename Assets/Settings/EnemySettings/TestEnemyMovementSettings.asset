@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TestEnemyMovementSettings
   m_EditorClassIdentifier: 
   <FlyingSpeedModifier>k__BackingField: 0
-  <ForwardSpeed>k__BackingField: 10
-  <BackwardSpeed>k__BackingField: 10
+  <ForwardSpeed>k__BackingField: 0
+  <BackwardSpeed>k__BackingField: 0
   <MaxJumpCount>k__BackingField: 1
   <GravityModifier>k__BackingField: 2
   <Acceleration>k__BackingField: 5
