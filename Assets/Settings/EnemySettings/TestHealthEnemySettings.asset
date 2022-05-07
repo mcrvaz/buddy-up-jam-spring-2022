@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d4d749a4dcd534f8430284c33b7502, type: 3}
-  m_Name: BulletProjectileSettings
+  m_Script: {fileID: 11500000, guid: 11d2dc95e3f80fe43acd8c6c17146ba2, type: 3}
+  m_Name: TestHealthEnemySettings
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 80
-  <TimeToLive>k__BackingField: 5
+  <InitialHealth>k__BackingField: 1
+  <MaxHealth>k__BackingField: 1
+  <InvulnerabilityTime>k__BackingField: 0

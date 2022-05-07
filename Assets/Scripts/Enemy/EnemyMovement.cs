@@ -26,11 +26,15 @@ public class EnemyMovement : Movement
     public override void Update ()
     {
         if (!Enabled)
-        {
-            agent.enabled = false;
             return;
-        }
         agent.destination = player.transform.position;
+    }
+
+    public override void Stop ()
+    {
+        base.Stop();
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
     }
 
     void SetupAgent ()
@@ -42,6 +46,7 @@ public class EnemyMovement : Movement
     protected override void SetEnabled (bool enabled)
     {
         base.SetEnabled(enabled);
-        agent.enabled = enabled;
+        if (!enabled)
+            Stop();
     }
 }

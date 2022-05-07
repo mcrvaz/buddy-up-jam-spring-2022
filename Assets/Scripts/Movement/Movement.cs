@@ -34,7 +34,7 @@ public abstract class Movement
 
     public abstract void Update ();
 
-    public void Stop ()
+    public virtual void Stop ()
     {
         velocity = Vector3.zero;
     }

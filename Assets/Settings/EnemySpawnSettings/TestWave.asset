@@ -39,6 +39,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   <Duration>k__BackingField: 5
   <EnemyChances>k__BackingField:
-  - <EnemyPrefab>k__BackingField: {fileID: 4477151904738796363, guid: 9737a61c84f41c74b99545b47b2eb7a1,
+  - <EnemyPrefab>k__BackingField: {fileID: 4073866963545219310, guid: 72fbf8f6cc0f61e4d879d04036b97746,
       type: 3}
     <Chance>k__BackingField: 1

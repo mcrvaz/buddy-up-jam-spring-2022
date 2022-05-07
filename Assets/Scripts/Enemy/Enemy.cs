@@ -60,7 +60,6 @@ public class Enemy
 
     void HandleDeath ()
     {
-        Movement.Stop();
         Movement.Enabled = false;
         Rotation.Enabled = false;
         Collider.enabled = false;

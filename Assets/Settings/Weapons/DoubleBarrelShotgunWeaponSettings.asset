@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c921929c682934abb9ddc3ebb38416, type: 3}
   m_Name: DoubleBarrelShotgunWeaponSettings
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
+  <Damage>k__BackingField: 200
   <StartingAmmo>k__BackingField: 200
   <MaxAmmo>k__BackingField: 200
   <RoundsPerClip>k__BackingField: 2
