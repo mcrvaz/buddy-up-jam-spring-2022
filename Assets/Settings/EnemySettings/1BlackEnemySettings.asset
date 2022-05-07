@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e5de24c753d0546b3af5cb03afbf83, type: 3}
+  m_Name: 1BlackEnemySettings
+  m_EditorClassIdentifier: 
+  <MovementSettings>k__BackingField: {fileID: 11400000, guid: 1ba314d0897da354f9fab61b03cc51c8,
+    type: 2}
+  <HealthSettings>k__BackingField: {fileID: 11400000, guid: 6b0009c1c2f3e624790cf391caab580f,
+    type: 2}
+  <CurrencyReward>k__BackingField: 100
+  <Damage>k__BackingField: 55
