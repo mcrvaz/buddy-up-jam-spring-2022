@@ -20,7 +20,12 @@ public class PlayerBehaviour : MonoBehaviour
     {
         WeaponBehaviour = GetComponentInChildren<WeaponBehaviour>();
         Health = new Health(Settings.HealthSettings);
-        PlayerMovement = new PlayerMovement(transform, Settings.MovementSettings, InputManager.Instance, Rigidbody);
+        PlayerMovement = new PlayerMovement(
+            transform,
+            Settings.MovementSettings,
+            InputManager.Instance,
+            Rigidbody
+        );
         PlayerRotation = new PlayerRotation(Rigidbody, GameSettings, InputManager.Instance);
     }
 
@@ -52,5 +57,15 @@ public class PlayerBehaviour : MonoBehaviour
     void OnTriggerEnter (Collider collider)
     {
         Player.HandleCollision(collider);
+    }
+
+    void OnCollisionEnter (Collision collisionInfo)
+    {
+        Player.HandleCollisionEnter(collisionInfo.collider);
+    }
+
+    void OnCollisionExit (Collision collisionInfo)
+    {
+        Player.HandleCollisionExit(collisionInfo.collider);
     }
 }

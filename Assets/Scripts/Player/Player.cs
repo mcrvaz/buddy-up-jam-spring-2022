@@ -12,6 +12,8 @@ public class Player
     public Weapon Weapon { get; private set; }
     public Collider Collider { get; private set; }
 
+    readonly int groundLayer;
+
     public Player (
         PlayerMovement playerMovement,
         PlayerRotation playerRotation,
@@ -28,6 +30,8 @@ public class Player
         Weapon = weapon;
         Health.OnHealthChanged += HandleHealthChanged;
         Collider = collider;
+
+        groundLayer = LayerMask.NameToLayer("Ground");
     }
 
     public void Start ()
@@ -52,6 +56,18 @@ public class Player
     {
         if (collider.TryGetComponent<EnemyBehaviour>(out var enemy))
             HandleEnemyCollision(enemy);
+    }
+
+    public void HandleCollisionEnter (Collider collider)
+    {
+        if (collider.gameObject.layer == groundLayer)
+            Movement.IsGrounded = true;
+    }
+
+    public void HandleCollisionExit (Collider collider)
+    {
+        if (collider.gameObject.layer == groundLayer)
+            Movement.IsGrounded = false;
     }
 
     void HandleEnemyCollision (EnemyBehaviour enemy)

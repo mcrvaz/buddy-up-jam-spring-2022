@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement
@@ -5,19 +6,29 @@ public class PlayerMovement
     public virtual bool Enabled
     {
         get => enabled;
-        set => SetEnabled(value);
+        set => enabled = value;
+    }
+
+    public bool IsGrounded
+    {
+        get => grounded;
+        set
+        {
+            grounded = value;
+            if (grounded)
+                jumpCount = 0;
+        }
     }
 
     readonly MovementSettings settings;
     readonly Transform transform;
-    readonly int groundLayerMask;
-    readonly float entityHeight;
     readonly InputManager inputManager;
     readonly Rigidbody rb;
 
-    int jumpCount;
     bool enabled = true;
-    bool jumped;
+    int jumpQueue;
+    int jumpCount;
+    bool grounded;
     Vector3 lastInputDirection;
 
     public PlayerMovement (
@@ -31,8 +42,6 @@ public class PlayerMovement
         this.transform = transform;
         this.inputManager = inputManager;
         this.rb = rb;
-        groundLayerMask = LayerMask.GetMask("Ground");
-        entityHeight = GetDistanceToGround(transform.position);
     }
 
     public void Start () { }
@@ -43,7 +52,7 @@ public class PlayerMovement
             return;
         lastInputDirection = GetNormalizedInputDirection();
         if (inputManager.GetJumpDown())
-            jumped = true;
+            jumpQueue++;
     }
 
     public void FixedUpdate ()
@@ -52,7 +61,6 @@ public class PlayerMovement
             return;
         ApplyInput(lastInputDirection);
         TryJump();
-        TryLand();
     }
 
     public void Stop ()
@@ -80,32 +88,13 @@ public class PlayerMovement
 
     void TryJump ()
     {
-        if (!jumped)
+        if (jumpQueue == 0)
             return;
+        jumpQueue--;
 
         if (jumpCount >= settings.MaxJumpCount)
             return;
-
         jumpCount++;
-        UnityEngine.Debug.Log("Jump");
         rb.AddForce(transform.up * settings.JumpForce);
-        jumped = false;
     }
-
-    void TryLand ()
-    {
-        if (IsAerial(rb.position))
-            return;
-        jumpCount = 0;
-    }
-
-    bool IsAerial (in Vector3 position) => GetDistanceToGround(position) > entityHeight;
-
-    float GetDistanceToGround (in Vector3 position)
-    {
-        Physics.Raycast(position, Vector3.down, out var hit, Mathf.Infinity, groundLayerMask);
-        return hit.distance;
-    }
-
-    void SetEnabled (bool enabled) => this.enabled = enabled;
 }
