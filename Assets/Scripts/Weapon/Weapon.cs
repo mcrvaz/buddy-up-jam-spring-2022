@@ -65,7 +65,7 @@ public class Weapon
 
     void StartReloadRoutine ()
     {
-        coroutineRunner.StartCoroutine(ReloadRoutine());
+        coroutineRunner.StartCoroutine(ReloadRoutine(true));
     }
 
     bool ConsumeAmmo ()
@@ -93,8 +93,14 @@ public class Weapon
         OnAmmoUpdated?.Invoke();
     }
 
-    IEnumerator ReloadRoutine ()
+    IEnumerator ReloadRoutine (bool addShootingDelay)
     {
+        if (addShootingDelay)
+        {
+            while (Time.time < nextShotTime)
+                yield return null;
+        }
+
         OnReloadStart?.Invoke(settings.ReloadTime);
         isReloading = true;
         reloadEndTime = Time.time + settings.ReloadTime;

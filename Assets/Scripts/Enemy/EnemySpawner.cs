@@ -11,7 +11,7 @@ public class EnemySpawner
 
     float TimeSinceWaveStart => Time.time - currentWaveStartTime;
 
-    readonly List<SpawnPoint> spawnPoints;
+    readonly IReadOnlyList<SpawnPoint> spawnPoints;
     readonly EnemySpawnerSettings settings;
     readonly Queue<float> spawnTimes = new Queue<float>();
     readonly HashSet<EnemyBehaviour> liveEnemies = new HashSet<EnemyBehaviour>();
@@ -21,7 +21,7 @@ public class EnemySpawner
     int spawnedEnemies;
     bool waveSpawnEnded;
 
-    public EnemySpawner (List<SpawnPoint> spawnPoints, EnemySpawnerSettings settings)
+    public EnemySpawner (IReadOnlyList<SpawnPoint> spawnPoints, EnemySpawnerSettings settings)
     {
         this.spawnPoints = spawnPoints;
         this.settings = settings;

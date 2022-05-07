@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class EnemyWaveManagerBehaviour : MonoBehaviour
 {
-    [field: SerializeField] public List<SpawnPoint> SpawnPoints { get; private set; }
     [field: SerializeField] public EnemySpawnerSettings SpawnerSettings { get; private set; }
 
     public EnemySpawner Spawner { get; private set; }
     public EnemyWaveManager WaveManager { get; private set; }
 
+    SpawnPoint[] spawnPoints;
+
     void Awake ()
     {
-        Spawner = new EnemySpawner(SpawnPoints, SpawnerSettings);
+        spawnPoints = GetComponentsInChildren<SpawnPoint>();
+        Spawner = new EnemySpawner(spawnPoints, SpawnerSettings);
         WaveManager = new EnemyWaveManager(SpawnerSettings, Spawner, this);
     }
 

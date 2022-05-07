@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class WeaponAnimation
 {
-    public const string SHOOT = "";
+    public const string SHOOT = "Armature|Shotgun_Shoot";
     public const string IDLE = "Armature|Shotgun_Idle";
     public const string RELOAD = "Armature|Shotgun_Reload";
+    public const string SWAP = "Armature|Shotgun_Swap";
 
     readonly Weapon weapon;
     readonly Animation animation;
@@ -15,7 +16,6 @@ public class WeaponAnimation
         this.weapon = weapon;
         this.animation = animation;
         weapon.OnShoot += HandleShoot;
-        weapon.OnReloadEnd += HandleReloadEnd;
         weapon.OnReloadStart += HandleReloadStart;
 
         reloadAnimationDuration = animation[RELOAD].length;
@@ -23,12 +23,7 @@ public class WeaponAnimation
 
     void HandleShoot ()
     {
-        // animation.Play(SHOOT);
-    }
-
-    void HandleReloadEnd ()
-    {
-        // PlayIdle();
+        animation.Play(SHOOT);
     }
 
     void PlayIdle ()
