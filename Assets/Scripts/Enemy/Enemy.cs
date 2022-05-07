@@ -31,10 +31,10 @@ public class Enemy
         Movement.Start();
     }
 
-    public void Update ()
+    public void FixedUpdate ()
     {
-        Movement.Update();
-        Rotation.Update();
+        Movement.FixedUpdate();
+        Rotation.FixedUpdate();
     }
 
     public void HandleCollision (Collider collider)

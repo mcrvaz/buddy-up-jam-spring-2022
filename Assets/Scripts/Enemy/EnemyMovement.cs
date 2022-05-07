@@ -1,10 +1,20 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : Movement
+public class EnemyMovement
 {
+    public bool Enabled
+    {
+        get => enabled;
+        set => SetEnabled(value);
+    }
+
+    readonly Transform transform;
+    readonly MovementSettings settings;
     readonly PlayerBehaviour player;
     readonly NavMeshAgent agent;
+
+    bool enabled = true;
 
     public EnemyMovement (
         Transform transform,
@@ -12,27 +22,27 @@ public class EnemyMovement : Movement
         PlayerBehaviour player,
         NavMeshAgent agent
     )
-        : base(transform, settings)
     {
+        this.transform = transform;
+        this.settings = settings;
         this.player = player;
         this.agent = agent;
     }
 
-    public override void Start ()
+    public void Start ()
     {
         SetupAgent();
     }
 
-    public override void Update ()
+    public void FixedUpdate ()
     {
         if (!Enabled)
             return;
-        agent.destination = player.transform.position;
+        agent.destination = player.Rigidbody.position;
     }
 
-    public override void Stop ()
+    public void Stop ()
     {
-        base.Stop();
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
     }
@@ -43,9 +53,9 @@ public class EnemyMovement : Movement
         agent.acceleration = settings.Acceleration;
     }
 
-    protected override void SetEnabled (bool enabled)
+    void SetEnabled (bool enabled)
     {
-        base.SetEnabled(enabled);
+        this.enabled = enabled;
         if (!enabled)
             Stop();
     }

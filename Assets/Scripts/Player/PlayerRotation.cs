@@ -7,14 +7,14 @@ public class PlayerRotation
     const float VERTICAL_ANGLE_LIMIT = 45f;
 
     readonly GameSettings settings;
-    readonly Transform transform;
+    readonly Rigidbody rb;
     readonly InputManager inputManager;
 
     Vector2 rotation = Vector2.zero;
 
-    public PlayerRotation (Transform transform, GameSettings settings, InputManager inputManager)
+    public PlayerRotation (Rigidbody rb, GameSettings settings, InputManager inputManager)
     {
-        this.transform = transform;
+        this.rb = rb;
         this.settings = settings;
         this.inputManager = inputManager;
     }
@@ -34,6 +34,6 @@ public class PlayerRotation
         rotation.y = Mathf.Clamp(rotation.y, -VERTICAL_ANGLE_LIMIT, VERTICAL_ANGLE_LIMIT);
         var horizontalRotation = Quaternion.AngleAxis(rotation.x, Vector3.up);
         var verticalRotation = Quaternion.AngleAxis(rotation.y, Vector3.left);
-        transform.localRotation = horizontalRotation * verticalRotation;
+        rb.rotation = horizontalRotation * verticalRotation;
     }
 }

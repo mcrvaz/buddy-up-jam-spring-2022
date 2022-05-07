@@ -9,6 +9,7 @@ public class GameConfigurationManager : MonoBehaviour
         QualitySettings.vSyncCount = Settings.VSync ? 0 : 1;
         Application.targetFrameRate = Settings.MaxFPS;
         Screen.fullScreenMode = Settings.Fullscreen;
+        Time.fixedDeltaTime = 1f / Settings.MaxFPS;
     }
 
     void Start ()

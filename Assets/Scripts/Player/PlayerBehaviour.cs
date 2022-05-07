@@ -6,6 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
     [field: SerializeField] public PlayerSettings Settings { get; private set; }
     [field: SerializeField] public Camera WeaponCamera { get; private set; }
     [field: SerializeField] public Collider Collider { get; private set; }
+    [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
 
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerRotation PlayerRotation { get; private set; }
@@ -19,8 +20,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         WeaponBehaviour = GetComponentInChildren<WeaponBehaviour>();
         Health = new Health(Settings.HealthSettings);
-        PlayerMovement = new PlayerMovement(transform, Settings.MovementSettings, InputManager.Instance);
-        PlayerRotation = new PlayerRotation(transform, GameSettings, InputManager.Instance);
+        PlayerMovement = new PlayerMovement(transform, Settings.MovementSettings, InputManager.Instance, Rigidbody);
+        PlayerRotation = new PlayerRotation(Rigidbody, GameSettings, InputManager.Instance);
     }
 
     void Start ()
@@ -36,6 +37,11 @@ public class PlayerBehaviour : MonoBehaviour
         );
 
         Player.Start();
+    }
+
+    void FixedUpdate ()
+    {
+        Player.FixedUpdate();
     }
 
     void Update ()

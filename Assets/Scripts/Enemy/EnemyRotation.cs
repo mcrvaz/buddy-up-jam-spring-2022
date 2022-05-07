@@ -13,7 +13,7 @@ public class EnemyRotation
         this.player = player;
     }
 
-    public void Update ()
+    public void FixedUpdate ()
     {
         if (!Enabled)
             return;

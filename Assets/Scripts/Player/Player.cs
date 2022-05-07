@@ -36,10 +36,15 @@ public class Player
         Movement.Start();
     }
 
+    public void FixedUpdate ()
+    {
+        Rotation.Update();
+        Movement.FixedUpdate();
+    }
+
     public void Update ()
     {
         Movement.Update();
-        Rotation.Update();
         Action.Update();
     }
 

@@ -34,9 +34,9 @@ public class EnemyBehaviour : MonoBehaviour
         Enemy.Start();
     }
 
-    void Update ()
+    void FixedUpdate ()
     {
-        Enemy.Update();
+        Enemy.FixedUpdate();
     }
 
     void OnTriggerEnter (Collider collider)
