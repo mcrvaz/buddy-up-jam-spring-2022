@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner
 {
     public event Action<Enemy> OnEnemyDeath;
+    public event Action<Enemy, BodyPart> OnEnemyHit;
     public event Action OnEnemyCountChanged;
 
     public int LiveEnemiesCount => liveEnemies.Count;
@@ -14,7 +15,7 @@ public class EnemySpawner
     readonly IReadOnlyList<SpawnPoint> spawnPoints;
     readonly EnemySpawnerSettings settings;
     readonly Queue<float> spawnTimes = new Queue<float>();
-    readonly HashSet<EnemyBehaviour> liveEnemies = new HashSet<EnemyBehaviour>();
+    readonly HashSet<Enemy> liveEnemies = new HashSet<Enemy>();
 
     EnemySpawnerWaveSettings currentWaveSettings;
     float currentWaveStartTime;
@@ -71,23 +72,30 @@ public class EnemySpawner
     {
         var spawnPoint = GetRandomSpawnPoint();
         var position = new Vector3(spawnPoint.Position.x, 0, spawnPoint.Position.z);
-        var enemy = GameObject.Instantiate<EnemyBehaviour>(
+        var enemyBehaviour = GameObject.Instantiate<EnemyBehaviour>(
             GetNextEnemyPrefab(),
             position,
             Quaternion.identity
         );
+        var enemy = enemyBehaviour.Enemy;
         enemy.OnDeath += HandleEnemyDeath;
+        enemy.OnHit += HandleEnemyHit;
         spawnedEnemies++;
         liveEnemies.Add(enemy);
         OnEnemyCountChanged?.Invoke();
     }
 
-    void HandleEnemyDeath (EnemyBehaviour enemyBehaviour)
+    void HandleEnemyHit (Enemy enemy, BodyPart bodyPart)
     {
-        enemyBehaviour.OnDeath -= HandleEnemyDeath;
-        liveEnemies.Remove(enemyBehaviour);
+        OnEnemyHit?.Invoke(enemy, bodyPart);
+    }
+
+    void HandleEnemyDeath (Enemy enemy)
+    {
+        enemy.OnDeath -= HandleEnemyDeath;
+        liveEnemies.Remove(enemy);
         OnEnemyCountChanged?.Invoke();
-        OnEnemyDeath?.Invoke(enemyBehaviour.Enemy);
+        OnEnemyDeath?.Invoke(enemy);
     }
 
     void EndWaveSpawn ()

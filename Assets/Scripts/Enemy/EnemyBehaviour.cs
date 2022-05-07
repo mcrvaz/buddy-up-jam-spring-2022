@@ -4,8 +4,6 @@ using UnityEngine.AI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public event Action<EnemyBehaviour> OnDeath;
-
     [field: SerializeField] public EnemySettings Settings { get; private set; }
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
 
@@ -30,18 +28,11 @@ public class EnemyBehaviour : MonoBehaviour
         Health = new Health(Settings.HealthSettings);
         Enemy = new Enemy(Movement, Rotation, Health, bodyParts, Settings);
 
-        Enemy.OnDeath += HandleDeath;
-
         Enemy.Start();
     }
 
     void FixedUpdate ()
     {
         Enemy.FixedUpdate();
-    }
-
-    void HandleDeath ()
-    {
-        OnDeath?.Invoke(this);
     }
 }

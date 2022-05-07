@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy
 {
-    public event Action OnDeath;
+    public event Action<Enemy> OnDeath;
+    public event Action<Enemy, BodyPart> OnHit;
 
     public EnemyMovement Movement { get; private set; }
     public EnemyRotation Rotation { get; private set; }
@@ -59,6 +60,7 @@ public class Enemy
 
         var damageMultiplier = settings.HealthSettings.BodyPartDamageSettings.GetMultiplier(part);
         Health.TakeDamage(projectile.Projectile.Damage * damageMultiplier);
+        OnHit?.Invoke(this, part);
     }
 
     void HandleHealthChanged (float previous, float current)
@@ -73,6 +75,6 @@ public class Enemy
         Rotation.Enabled = false;
         foreach (var bodyPart in bodyParts)
             bodyPart.Enabled = false;
-        OnDeath?.Invoke();
+        OnDeath?.Invoke(this);
     }
 }
