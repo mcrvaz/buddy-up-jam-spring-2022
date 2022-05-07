@@ -1,6 +1,6 @@
 public class PlayerAction
 {
-    public bool Enabled { get; set; }
+    public bool Enabled { get; set; } = true;
 
     readonly InputManager inputManager;
     readonly Weapon weapon;
