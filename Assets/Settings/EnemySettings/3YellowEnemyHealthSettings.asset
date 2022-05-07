@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d2dc95e3f80fe43acd8c6c17146ba2, type: 3}
   m_Name: 3YellowEnemyHealthSettings
   m_EditorClassIdentifier: 
-  <InitialHealth>k__BackingField: 30
-  <MaxHealth>k__BackingField: 30
+  <InitialHealth>k__BackingField: 20
+  <MaxHealth>k__BackingField: 20
   <InvulnerabilityTime>k__BackingField: 0

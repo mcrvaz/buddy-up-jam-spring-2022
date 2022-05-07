@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81399cf28eda9c94d834c7eb74a7de9e, type: 3}
   m_Name: 3YellowEnemyMovementSettings
   m_EditorClassIdentifier: 
-  <ForwardSpeed>k__BackingField: 0.1
-  <BackwardSpeed>k__BackingField: 0.1
-  <JumpSpeed>k__BackingField: 2.5
-  <JumpDuration>k__BackingField: 0.25
+  <FlyingSpeedModifier>k__BackingField: 0
+  <ForwardSpeed>k__BackingField: 10
+  <BackwardSpeed>k__BackingField: 10
   <MaxJumpCount>k__BackingField: 1
   <GravityModifier>k__BackingField: 2
+  <Acceleration>k__BackingField: 10
+  <JumpForce>k__BackingField: 0

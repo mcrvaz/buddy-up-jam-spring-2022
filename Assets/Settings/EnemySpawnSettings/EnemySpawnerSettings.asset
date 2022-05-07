@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: EnemySpawnerSettings
   m_EditorClassIdentifier: 
   <Waves>k__BackingField:
-  - {fileID: 11400000, guid: c6fe57c5bf77e214299773e248bb06dc, type: 2}
+  - {fileID: 11400000, guid: 0af1aacef08456d45b623c05099fe3a4, type: 2}
   - {fileID: 11400000, guid: da807c72140cf654caa77da976973b94, type: 2}
   - {fileID: 11400000, guid: 01d55a7df1edc314dbfb54beb6a4a7be, type: 2}
   - {fileID: 11400000, guid: 0a0a9d34193be6c439205b05c78eb064, type: 2}
+  - {fileID: 11400000, guid: 0af1aacef08456d45b623c05099fe3a4, type: 2}
   <WaveInterval>k__BackingField: 5
