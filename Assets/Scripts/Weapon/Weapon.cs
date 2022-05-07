@@ -20,6 +20,7 @@ public class Weapon
     readonly Transform[] projectileSpawnPoints;
     readonly WeaponSettings settings;
     readonly MonoBehaviour coroutineRunner;
+    readonly Camera camera;
 
     float nextShotTime = float.MinValue;
     float reloadEndTime;
@@ -29,7 +30,8 @@ public class Weapon
         Transform weaponTransform,
         Transform[] projectileSpawnPoints,
         WeaponSettings settings,
-        MonoBehaviour coroutineRunner
+        MonoBehaviour coroutineRunner,
+        Camera camera
     )
     {
         pool = new ProjectilePool(settings.ProjectilePrefab);
@@ -38,6 +40,12 @@ public class Weapon
         this.weaponTransform = weaponTransform;
         this.coroutineRunner = coroutineRunner;
         SetupInitialAmmo();
+        this.camera = camera;
+    }
+
+    public void Update ()
+    {
+        RotateWeaponToScreenCenter();
     }
 
     public void Shoot ()
@@ -108,5 +116,16 @@ public class Weapon
             yield return null;
         isReloading = false;
         ReloadClip();
+    }
+
+    void RotateWeaponToScreenCenter ()
+    {
+        // var screenCenter = camera.ScreenToWorldPoint(
+        //     new Vector3(Screen.width / 2f, Screen.height / 2f, 1000f)
+        // );
+        var screenCenter = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1000f));
+        // Vector3 direction = screenCenter - weaponTransform.position;
+        weaponTransform.LookAt(screenCenter);
+        // weaponTransform.rotation = Quaternion.LookRotation(direction);
     }
 }

@@ -15,7 +15,7 @@ public class PlayerAction
     {
         if (!Enabled)
             return;
-
+        weapon.Update();
         if (inputManager.GetFireDown())
             weapon.Shoot();
     }
