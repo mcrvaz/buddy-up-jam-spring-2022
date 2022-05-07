@@ -1,8 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement
 {
+    Vector3 Gravity => Physics.gravity * settings.GravityModifier;
+
     public virtual bool Enabled
     {
         get => enabled;
@@ -61,6 +62,7 @@ public class PlayerMovement
             return;
         ApplyInput(lastInputDirection);
         TryJump();
+        ApplyGravity();
     }
 
     public void Stop ()
@@ -82,8 +84,15 @@ public class PlayerMovement
         newDirection.y = 0;
 
         rb.velocity += newDirection * settings.Acceleration;
+        rb.velocity += Gravity * Time.fixedDeltaTime;
+
         if (rb.velocity.sqrMagnitude > sqrSpeed)
             rb.velocity *= 0.99f;
+    }
+
+    void ApplyGravity ()
+    {
+        rb.AddForce(Gravity * rb.mass);
     }
 
     void TryJump ()
@@ -95,6 +104,6 @@ public class PlayerMovement
         if (jumpCount >= settings.MaxJumpCount)
             return;
         jumpCount++;
-        rb.AddForce(transform.up * settings.JumpForce);
+        rb.AddForce(Vector3.up * settings.JumpForce);
     }
 }
