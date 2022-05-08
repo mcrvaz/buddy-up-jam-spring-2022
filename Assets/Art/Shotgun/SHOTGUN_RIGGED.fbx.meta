@@ -15,7 +15,32 @@ ModelImporter:
   - first:
       74: 6585474653765562508
     second: Armature|Shotgun_Swap
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Shotgun_Bullet
+    second: {fileID: 2100000, guid: f1146cc61d860a344899b92f90691d1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Shotgun_DarkMetal
+    second: {fileID: 2100000, guid: 63f3e1dec9cf2574596b2e3377d0b2e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Shotgun_Red
+    second: {fileID: 2100000, guid: 05aa4b2e5a1c58e4c976af10391808b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Shotgun_Silver
+    second: {fileID: 2100000, guid: 433eed2238a51c243a2a0e38567d4cb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Shotgun_Wood
+    second: {fileID: 2100000, guid: 1a64da241d173c24f833338cf0fc0616, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -164,14 +189,14 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0

@@ -47,9 +47,8 @@ public class EnemyWaveManager
 
     void HandleWaveEnded ()
     {
-        OnWaveEnded?.Invoke();
-
         waveIndex++;
+        OnWaveEnded?.Invoke();
         if (!HasMoreWaves)
         {
             UnityEngine.Debug.Log("No more waves!");
