@@ -79,7 +79,16 @@ public class Weapon
         OnAmmoUpdated?.Invoke();
 
         if (RoundsInClip <= 0)
-            StartReloadRoutine();
+            Reload();
+    }
+
+    public void Reload ()
+    {
+        if (isReloading)
+            return;
+        if (RoundsInClip == RoundsPerClip)
+            return;
+        StartReloadRoutine();
     }
 
     protected virtual void PlayCameraShake () { }
@@ -109,8 +118,9 @@ public class Weapon
 
     void ReloadClip ()
     {
+        int diff = RoundsPerClip - RoundsInClip;
         RoundsInClip = Mathf.Min(CurrentAmmo, RoundsPerClip);
-        CurrentAmmo = Mathf.Max(0, CurrentAmmo - RoundsInClip);
+        CurrentAmmo = Mathf.Max(0, CurrentAmmo - diff);
         OnAmmoUpdated?.Invoke();
         OnReloadEnd?.Invoke();
     }

@@ -18,5 +18,9 @@ public class PlayerAction
         weapon.Update();
         if (inputManager.GetFireDown())
             weapon.Shoot();
+        else if (inputManager.GetReloadDown())
+        {
+            weapon.Reload();
+        }
     }
 }
