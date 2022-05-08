@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerMovementSettings
   m_EditorClassIdentifier: 
   <FlyingSpeedModifier>k__BackingField: 0.5
-  <ForwardSpeed>k__BackingField: 4
-  <BackwardSpeed>k__BackingField: 4
+  <ForwardSpeed>k__BackingField: 2
+  <BackwardSpeed>k__BackingField: 2
   <MaxJumpCount>k__BackingField: 1
   <GravityModifier>k__BackingField: 4
-  <Acceleration>k__BackingField: 2
-  <JumpForce>k__BackingField: 500000
+  <Acceleration>k__BackingField: 1
+  <JumpForce>k__BackingField: 250000

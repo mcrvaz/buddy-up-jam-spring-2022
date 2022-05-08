@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShotgunWeapon : Weapon
@@ -12,10 +11,16 @@ public class ShotgunWeapon : Weapon
         Transform[] projectileSpawnPoints,
         ShotgunWeaponSettings settings,
         MonoBehaviour coroutineRunner,
-        Camera camera
-    ) : base(weaponTransform, projectileSpawnPoints, settings, coroutineRunner, camera)
+        Camera camera,
+        CameraShake cameraShake
+    ) : base(weaponTransform, projectileSpawnPoints, settings, coroutineRunner, camera, cameraShake)
     {
         shotgunWeaponSettings = settings;
+    }
+
+    protected override void PlayCameraShake ()
+    {
+        cameraShake.PlayStrongShake();
     }
 
     protected override void ShootProjectile (Transform spawnPoint)

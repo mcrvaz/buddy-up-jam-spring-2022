@@ -9,6 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     [field: SerializeField] public EnemySettings Settings { get; private set; }
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
+    [field: SerializeField] public AudioSource AudioSource { get; private set; }
 
     public EnemyMovement Movement { get; private set; }
     public EnemyRotation Rotation { get; private set; }
