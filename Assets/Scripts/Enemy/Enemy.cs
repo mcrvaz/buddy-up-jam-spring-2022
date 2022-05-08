@@ -59,7 +59,9 @@ public class Enemy
             return;
 
         var damageMultiplier = settings.HealthSettings.BodyPartDamageSettings.GetMultiplier(part);
-        Health.TakeDamage(projectile.Projectile.Damage * damageMultiplier);
+        float damage = projectile.Projectile.Damage * damageMultiplier;
+        UnityEngine.Debug.Log($"Enemy hit! BodyPart: {part}, Damage with multiplier: {damage}");
+        Health.TakeDamage(damage);
         OnHit?.Invoke(this, part);
     }
 

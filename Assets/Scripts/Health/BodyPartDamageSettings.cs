@@ -8,6 +8,9 @@ public class BodyPartDamageSettings
 
     public float GetMultiplier (BodyPart part)
     {
+        if (Entries == null)
+            return 1;
+
         foreach (var item in Entries)
         {
             if (item.BodyPart == part)
