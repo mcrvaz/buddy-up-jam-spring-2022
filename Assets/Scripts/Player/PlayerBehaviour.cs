@@ -12,13 +12,13 @@ public class PlayerBehaviour : MonoBehaviour
     public PlayerRotation PlayerRotation { get; private set; }
     public PlayerAction PlayerAction { get; private set; }
     public Health Health { get; private set; }
-    public WeaponBehaviour WeaponBehaviour { get; private set; }
+    public IWeaponBehaviour WeaponBehaviour { get; private set; }
     public Player Player { get; private set; }
     public Currency Currency { get; private set; }
 
     void Awake ()
     {
-        WeaponBehaviour = GetComponentInChildren<WeaponBehaviour>();
+        WeaponBehaviour = GetComponentInChildren<IWeaponBehaviour>();
         Health = new Health(Settings.HealthSettings);
         PlayerMovement = new PlayerMovement(
             transform,

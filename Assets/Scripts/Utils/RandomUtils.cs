@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class RandomUtils
 {
@@ -21,5 +22,10 @@ public static class RandomUtils
             randomPoint -= nodeValue;
         }
         return nodes[nodeCount - 1];
+    }
+
+    public static float Range (Vector2 range)
+    {
+        return UnityEngine.Random.Range(range.x, range.y);
     }
 }

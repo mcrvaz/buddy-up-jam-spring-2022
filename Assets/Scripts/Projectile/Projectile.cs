@@ -12,11 +12,13 @@ public class Projectile
 
     float destroyTime;
     bool destroyed;
+    int penetrationLeft;
 
     public Projectile (Transform transform, ProjectileSettings settings)
     {
         this.transform = transform;
         this.settings = settings;
+        penetrationLeft = settings.PenetrationCount;
     }
 
     public void Reset ()
@@ -27,7 +29,9 @@ public class Projectile
 
     public void HandleCollision (Collider collider)
     {
-        DestroySelf();
+        penetrationLeft--;
+        if (penetrationLeft == 0)
+            DestroySelf();
     }
 
     public void Update ()

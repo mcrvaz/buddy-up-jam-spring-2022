@@ -16,12 +16,12 @@ public class Weapon
     public int RoundsPerClip => settings.RoundsPerClip;
     public int Damage => settings.Damage;
 
-    readonly ProjectilePool pool;
-    readonly Transform weaponTransform;
-    readonly Transform[] projectileSpawnPoints;
-    readonly WeaponSettings settings;
-    readonly MonoBehaviour coroutineRunner;
-    readonly Camera camera;
+    protected readonly ProjectilePool pool;
+    protected readonly Transform weaponTransform;
+    protected readonly Transform[] projectileSpawnPoints;
+    protected readonly WeaponSettings settings;
+    protected readonly MonoBehaviour coroutineRunner;
+    protected readonly Camera camera;
 
     float nextShotTime = float.MinValue;
     float reloadEndTime;
@@ -40,8 +40,8 @@ public class Weapon
         this.settings = settings;
         this.weaponTransform = weaponTransform;
         this.coroutineRunner = coroutineRunner;
-        SetupInitialAmmo();
         this.camera = camera;
+        SetupInitialAmmo();
     }
 
     public void Update ()
@@ -60,10 +60,7 @@ public class Weapon
         {
             if (!ConsumeAmmo())
                 return;
-            var projectile = pool.Get();
-            projectile.transform.position = projectileSpawnPoints[i].position;
-            projectile.Damage = Damage;
-            projectile.Forward = weaponTransform.forward;
+            ShootProjectile(projectileSpawnPoints[i]);
         }
         nextShotTime = Time.time + settings.IntervalBetweenShots;
         OnShoot?.Invoke();
@@ -76,6 +73,14 @@ public class Weapon
     {
         CurrentAmmo = Mathf.Min(CurrentAmmo + amount, MaxAmmo);
         OnAmmoUpdated?.Invoke();
+    }
+
+    protected virtual void ShootProjectile (Transform spawnPoint)
+    {
+        var projectile = pool.Get();
+        projectile.transform.position = spawnPoint.position;
+        projectile.Damage = Damage;
+        projectile.Forward = weaponTransform.forward;
     }
 
     void StartReloadRoutine ()
