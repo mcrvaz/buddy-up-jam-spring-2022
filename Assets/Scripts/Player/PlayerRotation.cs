@@ -29,8 +29,8 @@ public class PlayerRotation
 
     void Rotate ()
     {
-        rotation.x += inputManager.GetMouseHorizontal() * settings.MouseSensibility;
-        rotation.y += inputManager.GetMouseVertical() * settings.MouseSensibility;
+        rotation.x += inputManager.GetMouseHorizontal() * settings.MouseSensitivity;
+        rotation.y += inputManager.GetMouseVertical() * settings.MouseSensitivity;
         rotation.y = Mathf.Clamp(rotation.y, -VERTICAL_ANGLE_LIMIT, VERTICAL_ANGLE_LIMIT);
         var horizontalRotation = Quaternion.AngleAxis(rotation.x, Vector3.up);
         var verticalRotation = Quaternion.AngleAxis(rotation.y, Vector3.left);

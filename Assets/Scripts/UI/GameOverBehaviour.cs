@@ -25,8 +25,7 @@ public class GameOverBehaviour : MonoBehaviour
 
     void HandlePlayerDeath ()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        CursorManager.SetVisible(true);
         GameOverPanel.SetActive(true);
     }
 

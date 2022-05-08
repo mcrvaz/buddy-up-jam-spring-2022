@@ -16,14 +16,6 @@ public class GameConfigurationManager : MonoBehaviour
     void Start ()
     {
         GameAudio.ApplySettings(Settings);
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    void Update ()
-    {
-        if (InputManager.Instance.GetCancelDown())
-            Cursor.visible = !Cursor.visible;
+        CursorManager.SetVisible(false);
     }
 }
