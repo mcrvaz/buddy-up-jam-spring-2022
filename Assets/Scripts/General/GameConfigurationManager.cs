@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameConfigurationManager : MonoBehaviour
 {
     [field: SerializeField] public GameSettings Settings { get; private set; }
+    [field: SerializeField] public GameAudioBehaviour GameAudio { get; private set; }
 
     void Awake ()
     {
@@ -14,6 +15,8 @@ public class GameConfigurationManager : MonoBehaviour
 
     void Start ()
     {
+        GameAudio.ApplySettings(Settings);
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

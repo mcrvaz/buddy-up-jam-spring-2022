@@ -8,6 +8,9 @@ public class PlayerBehaviour : MonoBehaviour
     [field: SerializeField] public Collider Collider { get; private set; }
     [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
 
+    [field:SerializeField] public AudioSource PlayerAudioSource { get; private set; }
+    [field:SerializeField] public AudioSource PlayerFootstepsAudioSource { get; private set; }
+
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerRotation PlayerRotation { get; private set; }
     public PlayerAction PlayerAction { get; private set; }
