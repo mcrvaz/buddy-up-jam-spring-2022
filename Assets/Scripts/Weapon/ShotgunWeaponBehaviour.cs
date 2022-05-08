@@ -13,7 +13,8 @@ public class ShotgunWeaponBehaviour : WeaponBehaviour<ShotgunWeapon>
             ProjectileSpawnPoints,
             WeaponSettings,
             this,
-            playerBehaviour.WeaponCamera
+            playerBehaviour.WeaponCamera,
+            playerBehaviour.MainCamera.CameraShake
         );
     }
 }

@@ -4,6 +4,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [field: SerializeField] public GameSettings GameSettings { get; private set; }
     [field: SerializeField] public PlayerSettings Settings { get; private set; }
+    [field: SerializeField] public CameraBehaviour MainCamera { get; private set; }
     [field: SerializeField] public Camera WeaponCamera { get; private set; }
     [field: SerializeField] public Collider Collider { get; private set; }
     [field: SerializeField] public Rigidbody Rigidbody { get; private set; }

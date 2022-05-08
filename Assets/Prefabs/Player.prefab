@@ -246,6 +246,8 @@ GameObject:
   - component: {fileID: 7754612083943803312}
   - component: {fileID: 7754612083943803313}
   - component: {fileID: 7586901152485146630}
+  - component: {fileID: 9195387946003796113}
+  - component: {fileID: 2421590230832510555}
   m_Layer: 6
   m_Name: MainCamera
   m_TagString: Untagged
@@ -354,6 +356,33 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7754612083943803315}
   m_Enabled: 1
+--- !u!114 &9195387946003796113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7754612083943803315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47835ea275c0264ea39b0c80af517b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Camera>k__BackingField: {fileID: 7754612083943803312}
+  <CameraShake>k__BackingField: {fileID: 2421590230832510555}
+--- !u!114 &2421590230832510555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7754612083943803315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cccbf0dbad8a5ba47b862ab4d310bea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ShakeSettings>k__BackingField: {fileID: 11400000, guid: fdaeec245edd2ea49886208bc3fa5c88, type: 2}
 --- !u!1 &7754612084125408149
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,9 +546,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GameSettings>k__BackingField: {fileID: 11400000, guid: 013b0525dd9d2a74caa3ea9799f672fb, type: 2}
   <Settings>k__BackingField: {fileID: 11400000, guid: a3dc7e3fa4564ce4594b106c475531e2, type: 2}
+  <MainCamera>k__BackingField: {fileID: 9195387946003796113}
   <WeaponCamera>k__BackingField: {fileID: 7754612084125408153}
   <Collider>k__BackingField: {fileID: 2362148920375112526}
   <Rigidbody>k__BackingField: {fileID: 7754612084655628592}
+  <PlayerAudioSource>k__BackingField: {fileID: 7998002495024102039}
+  <PlayerFootstepsAudioSource>k__BackingField: {fileID: 5639699163041961816}
 --- !u!54 &7754612084655628592
 Rigidbody:
   m_ObjectHideFlags: 0

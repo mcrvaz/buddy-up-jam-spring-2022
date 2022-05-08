@@ -22,6 +22,7 @@ public class Weapon
     protected readonly WeaponSettings settings;
     protected readonly MonoBehaviour coroutineRunner;
     protected readonly Camera camera;
+    protected readonly CameraShake cameraShake;
 
     float nextShotTime = float.MinValue;
     float reloadEndTime;
@@ -32,7 +33,8 @@ public class Weapon
         Transform[] projectileSpawnPoints,
         WeaponSettings settings,
         MonoBehaviour coroutineRunner,
-        Camera camera
+        Camera camera,
+        CameraShake cameraShake
     )
     {
         pool = new ProjectilePool(settings.ProjectilePrefab);
@@ -41,6 +43,7 @@ public class Weapon
         this.weaponTransform = weaponTransform;
         this.coroutineRunner = coroutineRunner;
         this.camera = camera;
+        this.cameraShake = cameraShake;
         SetupInitialAmmo();
     }
 
@@ -63,6 +66,7 @@ public class Weapon
             ShootProjectile(projectileSpawnPoints[i]);
         }
         nextShotTime = Time.time + settings.IntervalBetweenShots;
+        PlayCameraShake();
         OnShoot?.Invoke();
 
         if (RoundsInClip <= 0)
@@ -73,7 +77,12 @@ public class Weapon
     {
         CurrentAmmo = Mathf.Min(CurrentAmmo + amount, MaxAmmo);
         OnAmmoUpdated?.Invoke();
+
+        if (RoundsInClip <= 0)
+            StartReloadRoutine();
     }
+
+    protected virtual void PlayCameraShake () { }
 
     protected virtual void ShootProjectile (Transform spawnPoint)
     {
@@ -85,7 +94,7 @@ public class Weapon
 
     void StartReloadRoutine ()
     {
-        coroutineRunner.StartCoroutine(ReloadRoutine(true));
+        coroutineRunner.StartCoroutine(ReloadRoutine());
     }
 
     bool ConsumeAmmo ()
@@ -113,13 +122,10 @@ public class Weapon
         OnAmmoUpdated?.Invoke();
     }
 
-    IEnumerator ReloadRoutine (bool addShootingDelay)
+    IEnumerator ReloadRoutine ()
     {
-        if (addShootingDelay)
-        {
-            while (Time.time < nextShotTime)
-                yield return null;
-        }
+        while (Time.time < nextShotTime)
+            yield return null;
 
         OnReloadStart?.Invoke(settings.ReloadTime);
         isReloading = true;
