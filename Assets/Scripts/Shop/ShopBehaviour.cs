@@ -7,11 +7,17 @@ public class ShopBehaviour : MonoBehaviour
 
     [field: SerializeField] public GameObject ShopDoor { get; private set; }
 
+    public ItemSale ItemSale { get; private set; }
+    public ItemPurchaseFulfillment PurchaseFulfillment { get; private set; }
+
+    PlayerBehaviour playerBehaviour;
     ItemSaleBehaviour[] itemsOnSale;
 
     void Awake ()
     {
+        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         itemsOnSale = GetComponentsInChildren<ItemSaleBehaviour>();
+        PurchaseFulfillment = new ItemPurchaseFulfillment(playerBehaviour);
     }
 
     void Start ()

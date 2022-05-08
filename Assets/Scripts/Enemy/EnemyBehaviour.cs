@@ -16,11 +16,14 @@ public class EnemyBehaviour : MonoBehaviour
     public Enemy Enemy { get; private set; }
 
     PlayerBehaviour player;
-    BodyPartBehaviour[] bodyParts;
+    EnemyBodyPartBehaviour[] bodyParts;
 
     void Awake ()
     {
-        bodyParts = GetComponentsInChildren<BodyPartBehaviour>();
+        bodyParts = GetComponentsInChildren<EnemyBodyPartBehaviour>();
+        foreach (var bodyPart in bodyParts)
+            bodyPart.EnemyBehaviour = this;
+
         player = FindObjectOfType<PlayerBehaviour>();
     }
 

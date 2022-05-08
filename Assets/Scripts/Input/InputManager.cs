@@ -14,4 +14,5 @@ public class InputManager
     public bool GetJumpDown () => Input.GetButtonDown("Jump");
     public Vector3 GetMousePosition () => Input.mousePosition;
     public bool GetCancelDown () => Input.GetButtonDown("Cancel");
+    public bool GetConfirmDown () => Input.GetButtonDown("Confirm");
 }

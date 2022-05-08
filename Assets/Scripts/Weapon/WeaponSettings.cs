@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class WeaponSettings : ScriptableObject
 {
+    [field: SerializeField] public WeaponId WeaponId { get; private set; }
     [field: SerializeField] public int Damage { get; private set; }
     [field: SerializeField] public int StartingAmmo { get; private set; }
     [field: SerializeField] public int MaxAmmo { get; private set; }

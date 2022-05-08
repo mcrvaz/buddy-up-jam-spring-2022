@@ -9,6 +9,7 @@ public class Weapon
     public event Action OnReloadEnd;
     public event Action OnShoot;
 
+    public WeaponId WeaponId => settings.WeaponId;
     public int CurrentAmmo { get; private set; }
     public int MaxAmmo => settings.MaxAmmo;
     public int RoundsInClip { get; private set; }
@@ -71,6 +72,12 @@ public class Weapon
             StartReloadRoutine();
     }
 
+    public void RestoreAmmo (int amount)
+    {
+        CurrentAmmo = Mathf.Min(CurrentAmmo + amount, MaxAmmo);
+        OnAmmoUpdated?.Invoke();
+    }
+
     void StartReloadRoutine ()
     {
         coroutineRunner.StartCoroutine(ReloadRoutine(true));
@@ -120,12 +127,7 @@ public class Weapon
 
     void RotateWeaponToScreenCenter ()
     {
-        // var screenCenter = camera.ScreenToWorldPoint(
-        //     new Vector3(Screen.width / 2f, Screen.height / 2f, 1000f)
-        // );
         var screenCenter = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1000f));
-        // Vector3 direction = screenCenter - weaponTransform.position;
         weaponTransform.LookAt(screenCenter);
-        // weaponTransform.rotation = Quaternion.LookRotation(direction);
     }
 }

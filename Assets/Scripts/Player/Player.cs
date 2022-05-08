@@ -54,8 +54,8 @@ public class Player
 
     public void HandleCollision (Collider collider)
     {
-        if (collider.TryGetComponent<EnemyBehaviour>(out var enemy))
-            HandleEnemyCollision(enemy);
+        if (collider.TryGetComponent<EnemyBodyPartBehaviour>(out var enemyBodyPart))
+            HandleEnemyCollision(enemyBodyPart.EnemyBehaviour);
     }
 
     public void HandleCollisionEnter (Collider collider)
@@ -68,6 +68,11 @@ public class Player
     {
         if (collider.gameObject.layer == groundLayer)
             Movement.IsGrounded = false;
+    }
+
+    public Weapon GetWeaponById (WeaponId _)
+    {
+        return Weapon;
     }
 
     void HandleEnemyCollision (EnemyBehaviour enemy)
