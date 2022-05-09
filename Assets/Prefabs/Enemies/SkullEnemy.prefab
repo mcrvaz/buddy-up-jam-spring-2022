@@ -178,6 +178,7 @@ MonoBehaviour:
   <Settings>k__BackingField: {fileID: 11400000, guid: 2cbbdaa8919576f458b919c87f8d03fa, type: 2}
   <Agent>k__BackingField: {fileID: -1857703303171180605}
   <AudioSource>k__BackingField: {fileID: 2101638749216782844}
+  <Animation>k__BackingField: {fileID: 7370113776906515885}
 --- !u!195 &-1857703303171180605
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -341,6 +342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26f32e8efef3413428c4683bbe7e4877, type: 3}
+--- !u!111 &7370113776906515885 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 2223639932434330405, guid: 26f32e8efef3413428c4683bbe7e4877, type: 3}
+  m_PrefabInstance: {fileID: 8690843176864745096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9157694564073202019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26f32e8efef3413428c4683bbe7e4877, type: 3}

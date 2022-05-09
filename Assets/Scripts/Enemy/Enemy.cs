@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Enemy
 {
+    const float PLAYER_DISTANCE_THRESHOLD = 2f;
+    const float PLAYER_DISTANCE_THRESHOLD_SQUARED =
+        PLAYER_DISTANCE_THRESHOLD * PLAYER_DISTANCE_THRESHOLD;
+
+    public event Action<Enemy> OnCloseToPlayer;
     public event Action<Enemy> OnDeath;
     public event Action<Enemy, BodyPart> OnHit;
 
@@ -16,17 +21,23 @@ public class Enemy
 
     readonly IReadOnlyList<BodyPartBehaviour> bodyParts;
     readonly EnemySettings settings;
+    readonly PlayerBehaviour player;
+    readonly Transform transform;
 
     public Enemy (
+        Transform transform,
         EnemyMovement movement,
         EnemyRotation rotation,
         Health health,
         IReadOnlyList<BodyPartBehaviour> bodyParts,
-        EnemySettings settings
+        EnemySettings settings,
+        PlayerBehaviour player
     )
     {
         this.settings = settings;
+        this.player = player;
         this.bodyParts = bodyParts;
+        this.transform = transform;
         Movement = movement;
         Rotation = rotation;
         Health = health;
@@ -45,6 +56,9 @@ public class Enemy
     {
         Movement.FixedUpdate();
         Rotation.FixedUpdate();
+
+        if (IsCloseToPlayer())
+            OnCloseToPlayer?.Invoke(this);
     }
 
     void HandleBodyPartCollision (BodyPart part, Collider collider)
@@ -79,4 +93,10 @@ public class Enemy
             bodyPart.Enabled = false;
         OnDeath?.Invoke(this);
     }
+
+    bool IsCloseToPlayer () => GetDistanceToPlayer() <= PLAYER_DISTANCE_THRESHOLD_SQUARED;
+
+    float GetDistanceToPlayer () => Vector3.SqrMagnitude(
+        player.transform.position - transform.position
+    );
 }
