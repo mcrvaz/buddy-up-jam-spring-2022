@@ -9,15 +9,17 @@ public class Projectile
 
     readonly Transform transform;
     readonly ProjectileSettings settings;
+    readonly Collider collider;
 
     float destroyTime;
     bool destroyed;
     int penetrationLeft;
 
-    public Projectile (Transform transform, ProjectileSettings settings)
+    public Projectile (Transform transform, ProjectileSettings settings, Collider collider)
     {
         this.transform = transform;
         this.settings = settings;
+        this.collider = collider;
         penetrationLeft = settings.PenetrationCount;
     }
 
@@ -30,7 +32,7 @@ public class Projectile
     public void HandleCollision (Collider collider)
     {
         penetrationLeft--;
-        if (penetrationLeft == 0)
+        if (penetrationLeft <= 0)
             DestroySelf();
     }
 

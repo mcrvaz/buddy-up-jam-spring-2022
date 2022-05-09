@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 90
   <TimeToLive>k__BackingField: 5
+  <PenetrationCount>k__BackingField: 0

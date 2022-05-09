@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ProjectileSettings>k__BackingField: {fileID: 11400000, guid: bda14860a97c54b479c3817e0673370a, type: 2}
+  <Collider>k__BackingField: {fileID: 5856998010094067363}
 --- !u!54 &3802535827701990132
 Rigidbody:
   m_ObjectHideFlags: 0

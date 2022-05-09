@@ -23,6 +23,12 @@ public class BodyPartBehaviour : MonoBehaviour
         _collider = GetComponent<Collider>();
     }
 
+    public void ForceCollision (Collider collider)
+    {
+        OnBodyPartCollisionEnter?.Invoke(Part, collider);
+        OnBodyPartCollisionExit?.Invoke(Part, collider);
+    }
+
     void OnCollisionEnter (Collision collision) => OnBodyPartCollisionEnter?.Invoke(Part, collision.collider);
 
     void OnCollisionExit (Collision collision) => OnBodyPartCollisionExit?.Invoke(Part, collision.collider);

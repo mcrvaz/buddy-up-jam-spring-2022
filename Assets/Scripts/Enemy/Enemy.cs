@@ -66,7 +66,7 @@ public class Enemy
             OnCloseToPlayer?.Invoke(this);
     }
 
-    void HandleBodyPartCollisionEnter (BodyPart part, Collider collider)
+    public void HandleBodyPartCollisionEnter (BodyPart part, Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out var player))
             Movement.Stop(settings.PauseTimeAfterHit);
@@ -75,13 +75,13 @@ public class Enemy
             HandleProjectileCollision(part, projectile);
     }
 
-    void HandleBodyPartCollisionStay (BodyPart part, Collider collider)
+    public void HandleBodyPartCollisionStay (BodyPart part, Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out var player))
             Movement.Stop();
     }
 
-    void HandleBodyPartCollisionExit (BodyPart part, Collider collider)
+    public void HandleBodyPartCollisionExit (BodyPart part, Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out var player))
             Movement.Resume();

@@ -3,6 +3,7 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour
 {
     [field: SerializeField] public ProjectileSettings ProjectileSettings { get; private set; }
+    [field: SerializeField] public Collider Collider { get; private set; }
 
     public ProjectilePool Pool { get; set; }
     public Projectile Projectile { get; private set; }
@@ -20,7 +21,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     void Awake ()
     {
-        Projectile = new Projectile(transform, ProjectileSettings);
+        Projectile = new Projectile(transform, ProjectileSettings, Collider);
         Projectile.OnDestroyed += HandleDestroy;
     }
 

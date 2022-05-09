@@ -99,6 +99,18 @@ public class Weapon
         projectile.transform.position = spawnPoint.position;
         projectile.Damage = Damage;
         projectile.Forward = weaponTransform.forward;
+        EvaluateHitsBetweenCameraAndProjectileSpawnPoint(projectile, spawnPoint);
+    }
+
+    protected void EvaluateHitsBetweenCameraAndProjectileSpawnPoint (ProjectileBehaviour projectile, Transform spawnPoint)
+    {
+        var spawnDistanceFromCamera = Vector3.Distance(spawnPoint.position, camera.transform.position) + 0.1f;
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out var hit, spawnDistanceFromCamera))
+        {
+            if (hit.collider.TryGetComponent<EnemyBodyPartBehaviour>(out var bodyPart))
+                bodyPart.ForceCollision(projectile.Collider);
+            projectile.Projectile.HandleCollision(hit.collider);
+        }
     }
 
     void StartReloadRoutine ()

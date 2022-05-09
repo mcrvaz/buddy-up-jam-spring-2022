@@ -47,6 +47,7 @@ public class ShotgunWeapon : Weapon
                 0
             );
             projectile.transform.Rotate(spread);
+            EvaluateHitsBetweenCameraAndProjectileSpawnPoint(projectile, spawnPoint);
         }
     }
 }
