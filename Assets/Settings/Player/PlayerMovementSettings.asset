@@ -16,6 +16,6 @@ MonoBehaviour:
   <ForwardSpeed>k__BackingField: 2
   <BackwardSpeed>k__BackingField: 2
   <MaxJumpCount>k__BackingField: 1
-  <GravityModifier>k__BackingField: 4
+  <GravityModifier>k__BackingField: 3
   <Acceleration>k__BackingField: 1
-  <JumpForce>k__BackingField: 250000
+  <JumpForce>k__BackingField: 310000
