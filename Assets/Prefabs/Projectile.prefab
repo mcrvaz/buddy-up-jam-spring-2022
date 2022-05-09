@@ -130,8 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c100fc4eb9f53445ad63bd1ab50c8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ProjectileSettings>k__BackingField: {fileID: 11400000, guid: bda14860a97c54b479c3817e0673370a,
-    type: 2}
+  <ProjectileSettings>k__BackingField: {fileID: 11400000, guid: bda14860a97c54b479c3817e0673370a, type: 2}
 --- !u!54 &3802535827701990132
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -156,7 +155,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6982988241932534511}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1
   m_Height: 4

@@ -15,6 +15,8 @@ public class CameraShake : MonoBehaviour
 
     public void PlayStrongShake () => FireOnce(ShakeSettings.StrongShake);
 
+    public void PlayHitShake () => FireOnce(ShakeSettings.HitShake);
+
     public void FireOnce (CustomShake customShake)
     {
         speed = customShake.Speed;

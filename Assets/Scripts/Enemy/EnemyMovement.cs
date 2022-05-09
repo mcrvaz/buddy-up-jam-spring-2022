@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,21 +10,23 @@ public class EnemyMovement
         set => SetEnabled(value);
     }
 
-    readonly Transform transform;
+    readonly MonoBehaviour coroutineRunner;
     readonly MovementSettings settings;
     readonly PlayerBehaviour player;
     readonly NavMeshAgent agent;
 
     bool enabled = true;
+    float movementResumeTime;
+    Coroutine movementResumeRoutine;
 
     public EnemyMovement (
-        Transform transform,
+        MonoBehaviour coroutineRunner,
         MovementSettings settings,
         PlayerBehaviour player,
         NavMeshAgent agent
     )
     {
-        this.transform = transform;
+        this.coroutineRunner = coroutineRunner;
         this.settings = settings;
         this.player = player;
         this.agent = agent;
@@ -41,10 +44,25 @@ public class EnemyMovement
         agent.destination = player.Rigidbody.position;
     }
 
+    public void Resume ()
+    {
+        agent.isStopped = false;
+    }
+
     public void Stop ()
     {
+        if (movementResumeRoutine != null)
+            coroutineRunner.StopCoroutine(movementResumeRoutine);
+
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
+    }
+
+    public void Stop (float seconds)
+    {
+        Stop();
+        movementResumeTime = Time.time + seconds;
+        movementResumeRoutine = coroutineRunner.StartCoroutine(StopRoutine());
     }
 
     void SetupAgent ()
@@ -58,5 +76,12 @@ public class EnemyMovement
         this.enabled = enabled;
         if (!enabled)
             Stop();
+    }
+
+    IEnumerator StopRoutine ()
+    {
+        while (Time.time < movementResumeTime)
+            yield return null;
+        Resume();
     }
 }

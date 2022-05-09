@@ -13,6 +13,7 @@ public class Player
     public Collider Collider { get; private set; }
 
     readonly int groundLayer;
+    readonly CameraShake cameraShake;
 
     public Player (
         PlayerMovement playerMovement,
@@ -20,9 +21,11 @@ public class Player
         PlayerAction playerAction,
         Health health,
         Weapon weapon,
-        Collider collider
+        Collider collider,
+        CameraShake cameraShake
     )
     {
+        this.cameraShake = cameraShake;
         Movement = playerMovement;
         Rotation = playerRotation;
         Action = playerAction;
@@ -30,7 +33,6 @@ public class Player
         Weapon = weapon;
         Health.OnHealthChanged += HandleHealthChanged;
         Collider = collider;
-
         groundLayer = LayerMask.NameToLayer("Ground");
     }
 
@@ -52,18 +54,28 @@ public class Player
         Action.Update();
     }
 
-    public void HandleCollision (Collider collider)
+    public void HandleCollisionEnter (Collision collisionInfo) =>
+        HandleCollisionEnter(collisionInfo.collider);
+
+    public void HandleCollisionEnter (Collider collider)
+    {
+        if (collider.TryGetComponent<EnemyBodyPartBehaviour>(out var enemyBodyPart))
+            HandleEnemyCollision(enemyBodyPart.EnemyBehaviour);
+
+        if (collider.gameObject.layer == groundLayer)
+            Movement.IsGrounded = true;
+    }
+
+    public void HandleCollisionStay (Collision collisionInfo) =>
+        HandleCollisionStay(collisionInfo.collider);
+    public void HandleCollisionStay (Collider collider)
     {
         if (collider.TryGetComponent<EnemyBodyPartBehaviour>(out var enemyBodyPart))
             HandleEnemyCollision(enemyBodyPart.EnemyBehaviour);
     }
 
-    public void HandleCollisionEnter (Collider collider)
-    {
-        if (collider.gameObject.layer == groundLayer)
-            Movement.IsGrounded = true;
-    }
-
+    public void HandleCollisionExit (Collision collisionInfo) =>
+        HandleCollisionExit(collisionInfo.collider);
     public void HandleCollisionExit (Collider collider)
     {
         if (collider.gameObject.layer == groundLayer)
@@ -79,7 +91,8 @@ public class Player
     {
         if (Health.IsDead)
             return;
-        Health.TakeDamage(enemy.Settings.Damage);
+        if (Health.TakeDamage(enemy.Settings.Damage))
+            cameraShake.PlayHitShake();
     }
 
     void HandleHealthChanged (float previous, float current)

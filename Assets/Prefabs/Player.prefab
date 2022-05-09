@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4947736527115090374}
   - component: {fileID: 7230412551417544731}
   - component: {fileID: 3587094906113724792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458659325041328705}
   - component: {fileID: 5639699163041961816}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerFootstepsAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7754612083074219749}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 7586901152485146630}
   - component: {fileID: 9195387946003796113}
   - component: {fileID: 2421590230832510555}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: MainCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 1975
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 7754612084125408148}
   - component: {fileID: 7754612084125408153}
   - component: {fileID: 7754612084125408155}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: WeaponCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 7754612084655628592}
   - component: {fileID: 7568120262558245563}
   - component: {fileID: 2362148920375112526}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -608,7 +608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268598569110027601}
   - component: {fileID: 7998002495024102039}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,6 +724,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7754612084125408148}
     m_Modifications:
+    - target: {fileID: 874999237160708283, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087671101654058599, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333876830052679939, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933765334913141779, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4399506035673303244, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -771,6 +787,54 @@ PrefabInstance:
     - target: {fileID: 4399506035673303247, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
       propertyPath: m_Name
       value: ShotgunWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399506035673303247, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416021378887314765, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171081495458930813, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620828083961772840, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618204657321829876, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096794187196040713, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389696535161024243, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881508665159293267, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202974766940251650, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8770185331804861426, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135460136164447919, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196045924624253586, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5864bb5657ca3e04396152cd3298f921, type: 3}

@@ -14,8 +14,8 @@ TagManager:
   - PlayerWeapon
   - Ground
   - Projectiles
-  - 
-  - 
+  - Character
+  - CharacterHitbox
   - 
   - 
   - 

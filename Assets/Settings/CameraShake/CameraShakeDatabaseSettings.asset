@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CameraShakeDatabaseSettings
   m_EditorClassIdentifier: 
   <StrongShake>k__BackingField: {fileID: 11400000, guid: 05b6d90cce955f44aae711c6ea656d77, type: 2}
+  <HitShake>k__BackingField: {fileID: 11400000, guid: 3767f6b3829c5db41a1aed6329ca657f, type: 2}

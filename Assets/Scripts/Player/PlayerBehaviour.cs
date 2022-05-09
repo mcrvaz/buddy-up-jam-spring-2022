@@ -9,8 +9,8 @@ public class PlayerBehaviour : MonoBehaviour
     [field: SerializeField] public Collider Collider { get; private set; }
     [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
 
-    [field:SerializeField] public AudioSource PlayerAudioSource { get; private set; }
-    [field:SerializeField] public AudioSource PlayerFootstepsAudioSource { get; private set; }
+    [field: SerializeField] public AudioSource PlayerAudioSource { get; private set; }
+    [field: SerializeField] public AudioSource PlayerFootstepsAudioSource { get; private set; }
 
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerRotation PlayerRotation { get; private set; }
@@ -38,7 +38,8 @@ public class PlayerBehaviour : MonoBehaviour
             PlayerAction,
             Health,
             WeaponBehaviour.Weapon,
-            Collider
+            Collider,
+            MainCamera.CameraShake
         );
     }
 
@@ -59,16 +60,21 @@ public class PlayerBehaviour : MonoBehaviour
 
     void OnTriggerEnter (Collider collider)
     {
-        Player.HandleCollision(collider);
+        Player.HandleCollisionEnter(collider);
     }
 
     void OnCollisionEnter (Collision collisionInfo)
     {
-        Player.HandleCollisionEnter(collisionInfo.collider);
+        Player.HandleCollisionEnter(collisionInfo);
+    }
+
+    void OnCollisionStay (Collision collisionInfo)
+    {
+        Player.HandleCollisionStay(collisionInfo);
     }
 
     void OnCollisionExit (Collision collisionInfo)
     {
-        Player.HandleCollisionExit(collisionInfo.collider);
+        Player.HandleCollisionExit(collisionInfo);
     }
 }

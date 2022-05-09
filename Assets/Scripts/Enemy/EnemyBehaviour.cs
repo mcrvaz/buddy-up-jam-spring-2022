@@ -33,7 +33,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Start ()
     {
-        Movement = new EnemyMovement(transform, Settings.MovementSettings, player, Agent);
+        Movement = new EnemyMovement(this, Settings.MovementSettings, player, Agent);
         Rotation = new EnemyRotation(transform, player);
         Health = new Health(Settings.HealthSettings);
         Enemy = new Enemy(transform, Movement, Rotation, Health, bodyParts, Settings, player);

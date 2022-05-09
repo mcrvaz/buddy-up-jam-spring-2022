@@ -25,14 +25,15 @@ public class Health
         OnHealthChanged?.Invoke(0, Current);
     }
 
-    public void TakeDamage (float damage)
+    public bool TakeDamage (float damage)
     {
         if (Time.time < invulEndTime)
-            return;
+            return false;
         invulEndTime = Time.time + settings.InvulnerabilityTime;
         var previous = Current;
         Current = Mathf.Max(0, Current - damage);
         OnHealthChanged?.Invoke(previous, Current);
+        return true;
     }
 
     public void RestoreHealth (float health)

@@ -70,6 +70,17 @@ public class PlayerMovement
         rb.velocity = Vector3.zero;
     }
 
+    public void PushBackwards (float force)
+    {
+        var backwards = rb.transform.forward * -1;
+        rb.AddForce(backwards * force);
+    }
+
+    public void ApplyForce (Vector3 force)
+    {
+        rb.AddForce(force * Time.fixedDeltaTime, ForceMode.Impulse);
+    }
+
     Vector3 GetNormalizedInputDirection () =>
         new Vector3(inputManager.GetHorizontal(), 0, inputManager.GetVertical()).normalized;
 

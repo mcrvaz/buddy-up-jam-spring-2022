@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy
 {
-    const float PLAYER_DISTANCE_THRESHOLD = 2f;
+    const float PLAYER_DISTANCE_THRESHOLD = 1.5f;
     const float PLAYER_DISTANCE_THRESHOLD_SQUARED =
         PLAYER_DISTANCE_THRESHOLD * PLAYER_DISTANCE_THRESHOLD;
 
@@ -18,6 +18,7 @@ public class Enemy
 
     public int Damage => settings.Damage;
     public int CurrencyReward => settings.CurrencyReward;
+    public float PushForceOnHit => settings.PushForceOnHit;
 
     readonly IReadOnlyList<BodyPartBehaviour> bodyParts;
     readonly EnemySettings settings;
@@ -43,7 +44,11 @@ public class Enemy
         Health = health;
         Health.OnHealthChanged += HandleHealthChanged;
         foreach (var bodyPart in bodyParts)
-            bodyPart.OnBodyPartCollisionEnter += HandleBodyPartCollision;
+        {
+            bodyPart.OnBodyPartCollisionEnter += HandleBodyPartCollisionEnter;
+            bodyPart.OnBodyPartCollisionExit += HandleBodyPartCollisionExit;
+            bodyPart.OnBodyPartCollisionStay += HandleBodyPartCollisionStay;
+        }
     }
 
     public void Start ()
@@ -61,10 +66,25 @@ public class Enemy
             OnCloseToPlayer?.Invoke(this);
     }
 
-    void HandleBodyPartCollision (BodyPart part, Collider collider)
+    void HandleBodyPartCollisionEnter (BodyPart part, Collider collider)
     {
+        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+            Movement.Stop(settings.PauseTimeAfterHit);
+
         if (collider.TryGetComponent<ProjectileBehaviour>(out var projectile))
             HandleProjectileCollision(part, projectile);
+    }
+
+    void HandleBodyPartCollisionStay (BodyPart part, Collider collider)
+    {
+        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+            Movement.Stop();
+    }
+
+    void HandleBodyPartCollisionExit (BodyPart part, Collider collider)
+    {
+        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+            Movement.Resume();
     }
 
     void HandleProjectileCollision (BodyPart part, ProjectileBehaviour projectile)

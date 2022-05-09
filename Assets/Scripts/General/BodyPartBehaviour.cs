@@ -5,6 +5,7 @@ public delegate void BodyPartCollisionHandler (BodyPart part, Collider collider)
 public class BodyPartBehaviour : MonoBehaviour
 {
     public event BodyPartCollisionHandler OnBodyPartCollisionEnter;
+    public event BodyPartCollisionHandler OnBodyPartCollisionStay;
     public event BodyPartCollisionHandler OnBodyPartCollisionExit;
 
     public bool Enabled
@@ -25,6 +26,10 @@ public class BodyPartBehaviour : MonoBehaviour
     void OnCollisionEnter (Collision collision) => OnBodyPartCollisionEnter?.Invoke(Part, collision.collider);
 
     void OnCollisionExit (Collision collision) => OnBodyPartCollisionExit?.Invoke(Part, collision.collider);
+
+    void OnCollisionStay (Collision collision) => OnBodyPartCollisionStay?.Invoke(Part, collision.collider);
+
+    void OnTriggerCollisionStay (Collider collider) => OnBodyPartCollisionStay?.Invoke(Part, collider);
 
     void OnTriggerEnter (Collider collider) => OnBodyPartCollisionEnter?.Invoke(Part, collider);
 
