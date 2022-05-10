@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Player
 {
+    public event Action OnHit;
     public event Action OnDeath;
 
     public PlayerMovement Movement { get; private set; }
@@ -92,7 +93,10 @@ public class Player
         if (Health.IsDead)
             return;
         if (Health.TakeDamage(enemy.Settings.Damage))
+        {
+            OnHit?.Invoke();
             cameraShake.PlayHitShake();
+        }
     }
 
     void HandleHealthChanged (float previous, float current)

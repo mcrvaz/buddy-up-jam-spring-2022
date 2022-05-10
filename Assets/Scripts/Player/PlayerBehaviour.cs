@@ -19,9 +19,13 @@ public class PlayerBehaviour : MonoBehaviour
     public IWeaponBehaviour WeaponBehaviour { get; private set; }
     public Player Player { get; private set; }
     public Currency Currency { get; private set; }
+    public PlayerSounds PlayerSounds { get; private set; }
+
+    GameAudioBehaviour audioBehaviour;
 
     void Awake ()
     {
+        audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
         WeaponBehaviour = GetComponentInChildren<IWeaponBehaviour>();
         Health = new Health(Settings.HealthSettings);
         PlayerMovement = new PlayerMovement(
@@ -45,13 +49,19 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start ()
     {
-
+        PlayerSounds = new PlayerSounds(
+            Player,
+            audioBehaviour.AudioManager,
+            PlayerAudioSource,
+            PlayerFootstepsAudioSource
+        );
 
         Player.Start();
     }
 
     void FixedUpdate ()
     {
+        PlayerSounds.Update();
         Player.FixedUpdate();
     }
 

@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement
 {
-    Vector3 Gravity => Physics.gravity * settings.GravityModifier;
+    public event Action<bool> OnGroundedStatusChanged;
 
     public virtual bool Enabled
     {
@@ -15,11 +16,20 @@ public class PlayerMovement
         get => grounded;
         set
         {
+            var previous = grounded;
             grounded = value;
             if (grounded)
                 jumpCount = 0;
+
+            if (previous != grounded)
+                OnGroundedStatusChanged?.Invoke(grounded);
         }
     }
+
+    public bool IsMoving { get; private set; }
+    public Vector3 MovementDirection => lastInputDirection;
+
+    Vector3 Gravity => Physics.gravity * settings.GravityModifier;
 
     readonly MovementSettings settings;
     readonly Transform transform;
@@ -86,6 +96,7 @@ public class PlayerMovement
 
     void ApplyInput (in Vector3 direction)
     {
+        IsMoving = direction != Vector3.zero;
         float dot = Vector3.Dot(transform.forward, direction);
         float maxSpeed = dot >= 0 ? settings.ForwardSpeed : settings.BackwardSpeed;
         float sqrSpeed = maxSpeed * maxSpeed;

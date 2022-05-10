@@ -11,4 +11,6 @@ public class AudioClipDatabaseSettings : ScriptableObject
     [field: SerializeField] public AudioClip ShopOpen { get; private set; }
     [field: SerializeField] public AudioClip EnemyDeath { get; private set; }
     [field: SerializeField] public AudioClip EnemyHit { get; private set; }
+    [field: SerializeField] public AudioClip PlayerDeath { get; private set; }
+    [field: SerializeField] public AudioClip PlayerHit { get; private set; }
 }

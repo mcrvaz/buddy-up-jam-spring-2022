@@ -3,6 +3,8 @@ using UnityEngine.Audio;
 
 public class AudioManager
 {
+    const string PLAYER_FOOTSTEPS_PITCH = "PlayerFootstepsPitch";
+
     const string MASTER_VOLUME = "MasterVolume";
     const string MUSIC_VOLUME = "BackgroundMusicVolume";
     const string SFX_VOLUME = "SoundEffectsVolume";
@@ -34,8 +36,17 @@ public class AudioManager
         soundEffectsMixer = mixerAsset.FindMatchingGroups("Master/SoundEffects")[0].audioMixer;
     }
 
+    public void PlayFootsteps (AudioSource source) =>
+        PlayWithPitchVariation(source, audioClipDatabase.PlayerFootsteps, PLAYER_FOOTSTEPS_PITCH);
+
     public void PlayEmptyAmmo (AudioSource source) =>
         Play(source, audioClipDatabase.EmptyAmmo);
+
+    public void PlayPlayerHit (AudioSource audioSource) =>
+        Play(audioSource, audioClipDatabase.PlayerHit);
+
+    public void PlayPlayerDeath (AudioSource audioSource) =>
+        Play(audioSource, audioClipDatabase.PlayerDeath);
 
     public void PlayShotgunReload (AudioSource source) =>
         Play(source, audioClipDatabase.ShotgunReload);
@@ -69,7 +80,12 @@ public class AudioManager
         return db;
     }
 
-    bool PlayWithPitchVariation (AudioSource source, AudioClip clip, string pitchParam, float? pitch)
+    bool PlayWithPitchVariation (
+        AudioSource source,
+        AudioClip clip,
+        string pitchParam,
+        float? pitch = null
+    )
     {
         if (source == null)
             source = defaultSoundEffectsSource;
