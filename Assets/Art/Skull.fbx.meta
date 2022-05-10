@@ -1,8 +1,17 @@
 fileFormatVersion: 2
-guid: 111495bbb6bdcc94aa329cc8b6447daa
+guid: 72d0fa5f16b927845927e44d5cbbb21d
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1290785654041264439
+    second: Armature|Skull_Damage
+  - first:
+      74: -8974508581490693175
+    second: Armature|Skull_Hunting
+  - first:
+      74: 458061453561307017
+    second: Armature|Skull_Strike
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -91,11 +100,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
