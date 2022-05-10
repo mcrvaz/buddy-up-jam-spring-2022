@@ -18,12 +18,15 @@ public class EnemyBehaviour : MonoBehaviour
     public Health Health { get; private set; }
     public Enemy Enemy { get; private set; }
     public EnemyAnimation EnemyAnimation { get; private set; }
+    public EnemySounds EnemySounds { get; private set; }
 
     PlayerBehaviour player;
+    GameAudioBehaviour audioBehaviour;
     EnemyBodyPartBehaviour[] bodyParts;
 
     void Awake ()
     {
+        audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
         bodyParts = GetComponentsInChildren<EnemyBodyPartBehaviour>();
         foreach (var bodyPart in bodyParts)
             bodyPart.EnemyBehaviour = this;
@@ -38,6 +41,7 @@ public class EnemyBehaviour : MonoBehaviour
         Health = new Health(Settings.HealthSettings);
         Enemy = new Enemy(transform, Movement, Rotation, Health, bodyParts, Settings, player);
         EnemyAnimation = new EnemyAnimation(Enemy, Animation);
+        EnemySounds = new EnemySounds(Enemy, audioBehaviour.AudioManager, AudioSource);
         Enemy.OnDeath += RaiseOnDeath;
         Enemy.OnHit += RaiseOnHit;
         Enemy.OnCloseToPlayer += RaiseOnCloseToPlayer;

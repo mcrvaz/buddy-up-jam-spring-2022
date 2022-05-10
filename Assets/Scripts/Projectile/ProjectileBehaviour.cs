@@ -4,6 +4,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     [field: SerializeField] public ProjectileSettings ProjectileSettings { get; private set; }
     [field: SerializeField] public Collider Collider { get; private set; }
+    [field: SerializeField] public TrailRenderer Trail { get; private set; }
 
     public ProjectilePool Pool { get; set; }
     public Projectile Projectile { get; private set; }
@@ -46,6 +47,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     void HandleDestroy ()
     {
+        Trail.Clear();
         Pool.Release(this);
     }
 }

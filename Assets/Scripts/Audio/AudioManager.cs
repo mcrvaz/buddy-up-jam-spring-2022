@@ -15,7 +15,6 @@ public class AudioManager
     readonly AudioSource musicSource;
     readonly AudioSource defaultSoundEffectsSource;
     readonly AudioClipDatabaseSettings audioClipDatabase;
-
     readonly AudioMixer masterMixer;
     readonly AudioMixer musicMixer;
     readonly AudioMixer soundEffectsMixer;
@@ -35,6 +34,12 @@ public class AudioManager
         musicMixer = mixerAsset.FindMatchingGroups("Master/BackgroundMusic")[0].audioMixer;
         soundEffectsMixer = mixerAsset.FindMatchingGroups("Master/SoundEffects")[0].audioMixer;
     }
+
+    public void PlayEnemyDeath (AudioSource source) =>
+        Play(source, audioClipDatabase.EnemyDeath);
+
+    public void PlayEnemyHit (AudioSource source) =>
+        Play(source, audioClipDatabase.EnemyHit);
 
     public void PlayFootsteps (AudioSource source) =>
         PlayWithPitchVariation(source, audioClipDatabase.PlayerFootsteps, PLAYER_FOOTSTEPS_PITCH);
