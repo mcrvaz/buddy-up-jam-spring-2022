@@ -45,6 +45,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Start ()
     {
+
+
         Player.Start();
     }
 

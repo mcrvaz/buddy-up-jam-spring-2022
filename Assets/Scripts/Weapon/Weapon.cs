@@ -107,6 +107,7 @@ public class Weapon
         var spawnDistanceFromCamera = Vector3.Distance(spawnPoint.position, camera.transform.position) + 0.1f;
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out var hit, spawnDistanceFromCamera))
         {
+            // TODO maybe teleport projectile to collision point
             if (hit.collider.TryGetComponent<EnemyBodyPartBehaviour>(out var bodyPart))
                 bodyPart.ForceCollision(projectile.Collider);
             projectile.Projectile.HandleCollision(hit.collider);

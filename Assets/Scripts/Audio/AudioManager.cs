@@ -34,10 +34,8 @@ public class AudioManager
         soundEffectsMixer = mixerAsset.FindMatchingGroups("Master/SoundEffects")[0].audioMixer;
     }
 
-    public void PlayTestClip ()
-    {
-        Play(defaultSoundEffectsSource, audioClipDatabase.TestClip);
-    }
+    public void PlayShotgunFire (AudioSource source) =>
+        Play(source, audioClipDatabase.ShotgunFire);
 
     public void PlayMusic ()
     {

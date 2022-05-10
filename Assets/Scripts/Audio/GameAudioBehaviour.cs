@@ -8,11 +8,11 @@ public class GameAudioBehaviour : MonoBehaviour
     [field: SerializeField] public AudioClipDatabaseSettings AudioClipDatabase { get; private set; }
     [field: SerializeField] public AudioMixer AudioMixer { get; private set; }
 
-    AudioManager audioManager;
+    public AudioManager AudioManager { get; private set; }
 
     void Awake ()
     {
-        audioManager = new AudioManager(
+        AudioManager = new AudioManager(
             MusicSource,
             DefaultSoundEffectsSource,
             AudioClipDatabase,
@@ -27,8 +27,8 @@ public class GameAudioBehaviour : MonoBehaviour
     public void ApplySettings (GameSettings settings)
     {
         var audioSettings = settings.Audio;
-        audioManager.SetMasterVolume(audioSettings.MasterVolume);
-        audioManager.SetBackgroundMusicVolume(audioSettings.MusicVolume);
-        audioManager.SetSoundEffectsVolume(audioSettings.SoundEffectsVolume);
+        AudioManager.SetMasterVolume(audioSettings.MasterVolume);
+        AudioManager.SetBackgroundMusicVolume(audioSettings.MusicVolume);
+        AudioManager.SetSoundEffectsVolume(audioSettings.SoundEffectsVolume);
     }
 }

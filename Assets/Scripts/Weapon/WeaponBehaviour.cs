@@ -8,19 +8,26 @@ public abstract class WeaponBehaviour<T> : MonoBehaviour, IWeaponBehaviour where
 
     public Weapon Weapon { get; private set; }
     public WeaponAnimation WeaponAnimation { get; private set; }
+    public WeaponSounds WeaponSounds { get; private set; }
 
     protected PlayerBehaviour playerBehaviour;
+    protected GameAudioBehaviour audioBehaviour;
 
     void Awake ()
     {
+        audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
         playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         Weapon = CreateWeapon();
-        WeaponAnimation = new WeaponAnimation(Weapon, Animation);
     }
 
     void Start ()
     {
-
+        WeaponAnimation = new WeaponAnimation(Weapon, Animation);
+        WeaponSounds = new WeaponSounds(
+            Weapon,
+            audioBehaviour.AudioManager,
+            playerBehaviour.PlayerAudioSource
+        );
     }
 
     protected abstract T CreateWeapon ();
