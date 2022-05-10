@@ -8,6 +8,7 @@ public class Weapon
     public event Action<float> OnReloadStart;
     public event Action OnReloadEnd;
     public event Action OnShoot;
+    public event Action OnEmptyAmmoFire;
 
     public WeaponId WeaponId => settings.WeaponId;
     public int CurrentAmmo { get; private set; }
@@ -62,7 +63,10 @@ public class Weapon
         for (int i = 0; i < settings.ProjectileCount; i++)
         {
             if (!ConsumeAmmo())
+            {
+                OnEmptyAmmoFire?.Invoke();
                 return;
+            }
             ShootProjectile(projectileSpawnPoints[i]);
         }
         nextShotTime = Time.time + settings.IntervalBetweenShots;

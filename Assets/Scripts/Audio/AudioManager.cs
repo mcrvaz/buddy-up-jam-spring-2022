@@ -34,6 +34,12 @@ public class AudioManager
         soundEffectsMixer = mixerAsset.FindMatchingGroups("Master/SoundEffects")[0].audioMixer;
     }
 
+    public void PlayEmptyAmmo (AudioSource source) =>
+        Play(source, audioClipDatabase.EmptyAmmo);
+
+    public void PlayShotgunReload (AudioSource source) =>
+        Play(source, audioClipDatabase.ShotgunReload);
+
     public void PlayShotgunFire (AudioSource source) =>
         Play(source, audioClipDatabase.ShotgunFire);
 
