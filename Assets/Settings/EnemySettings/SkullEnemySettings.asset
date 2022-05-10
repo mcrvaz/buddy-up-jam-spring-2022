@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementSettings>k__BackingField: {fileID: 11400000, guid: 446668c9b6e949443834c3196214807d, type: 2}
   <HealthSettings>k__BackingField: {fileID: 11400000, guid: 433b236f66583a149b3fff0a63b84392, type: 2}
+  <AttackInterval>k__BackingField: 1
   <PauseTimeAfterHit>k__BackingField: 1
   <PushForceOnHit>k__BackingField: 0
   <CurrencyReward>k__BackingField: 100

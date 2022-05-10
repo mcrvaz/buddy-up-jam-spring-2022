@@ -19,11 +19,14 @@ public class Enemy
     public int Damage => settings.Damage;
     public int CurrencyReward => settings.CurrencyReward;
     public float PushForceOnHit => settings.PushForceOnHit;
+    public bool CanAttack => Time.time >= nextAttackTime;
 
     readonly IReadOnlyList<BodyPartBehaviour> bodyParts;
     readonly EnemySettings settings;
     readonly PlayerBehaviour player;
     readonly Transform transform;
+
+    float nextAttackTime = float.MinValue;
 
     public Enemy (
         Transform transform,
@@ -63,13 +66,16 @@ public class Enemy
         Rotation.FixedUpdate();
 
         if (IsCloseToPlayer())
+        {
+            UnityEngine.Debug.Log("close");
             OnCloseToPlayer?.Invoke(this);
+        }
     }
 
     public void HandleBodyPartCollisionEnter (BodyPart part, Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out var player))
-            Movement.Stop(settings.PauseTimeAfterHit);
+            HandlePlayerCollision();
 
         if (collider.TryGetComponent<ProjectileBehaviour>(out var projectile))
             HandleProjectileCollision(part, projectile);
@@ -78,13 +84,20 @@ public class Enemy
     public void HandleBodyPartCollisionStay (BodyPart part, Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out var player))
-            Movement.Stop();
+            HandlePlayerCollision();
     }
 
     public void HandleBodyPartCollisionExit (BodyPart part, Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out var player))
             Movement.Resume();
+    }
+
+    void HandlePlayerCollision ()
+    {
+        if (CanAttack)
+            nextAttackTime = Time.time + settings.AttackInterval;
+        Movement.Stop();
     }
 
     void HandleProjectileCollision (BodyPart part, ProjectileBehaviour projectile)

@@ -26,10 +26,12 @@ public class EnemyAnimation
 
     void HandleCloseToPlayer (Enemy enemy)
     {
-        if (animation.IsPlaying(STRIKE))
+        UnityEngine.Debug.Log(enemy.CanAttack);
+        if (!enemy.CanAttack)
             return;
+
         animation.Play(STRIKE);
-        animation.PlayQueued(IDLE);
+        // animation.PlayQueued(IDLE);
     }
 
     void HandleHit (Enemy enemy, BodyPart bodyPart)
