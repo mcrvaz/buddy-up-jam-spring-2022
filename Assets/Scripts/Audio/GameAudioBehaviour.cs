@@ -5,6 +5,7 @@ public class GameAudioBehaviour : MonoBehaviour
 {
     [field: SerializeField] public AudioSource MusicSource { get; private set; }
     [field: SerializeField] public AudioSource DefaultSoundEffectsSource { get; private set; }
+    [field: SerializeField] public AudioSource AmbientSource { get; private set; }
     [field: SerializeField] public AudioClipDatabaseSettings AudioClipDatabase { get; private set; }
     [field: SerializeField] public AudioMixer AudioMixer { get; private set; }
 
@@ -14,6 +15,7 @@ public class GameAudioBehaviour : MonoBehaviour
     {
         AudioManager = new AudioManager(
             MusicSource,
+            AmbientSource,
             DefaultSoundEffectsSource,
             AudioClipDatabase,
             AudioMixer
@@ -22,6 +24,7 @@ public class GameAudioBehaviour : MonoBehaviour
 
     void Start ()
     {
+        AudioManager.Start();
     }
 
     public void ApplySettings (GameSettings settings)

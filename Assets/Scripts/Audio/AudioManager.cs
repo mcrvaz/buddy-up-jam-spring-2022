@@ -13,6 +13,7 @@ public class AudioManager
     const float MAX_PITCH_VARIATION = 1.1f;
 
     readonly AudioSource musicSource;
+    readonly AudioSource ambientSource;
     readonly AudioSource defaultSoundEffectsSource;
     readonly AudioClipDatabaseSettings audioClipDatabase;
     readonly AudioMixer masterMixer;
@@ -21,12 +22,14 @@ public class AudioManager
 
     public AudioManager (
         AudioSource musicSource,
+        AudioSource ambientSource,
         AudioSource defaultSoundEffectsSource,
         AudioClipDatabaseSettings audioClipDatabase,
         AudioMixer mixerAsset
     )
     {
         this.musicSource = musicSource;
+        this.ambientSource = ambientSource;
         this.defaultSoundEffectsSource = defaultSoundEffectsSource;
         this.audioClipDatabase = audioClipDatabase;
 
@@ -34,6 +37,15 @@ public class AudioManager
         musicMixer = mixerAsset.FindMatchingGroups("Master/BackgroundMusic")[0].audioMixer;
         soundEffectsMixer = mixerAsset.FindMatchingGroups("Master/SoundEffects")[0].audioMixer;
     }
+
+    public void Start ()
+    {
+        PlayMusic();
+        PlayAmbient();
+    }
+
+    public void PlayShopPurchase (AudioSource source) =>
+        Play(source, audioClipDatabase.ShopPurchase);
 
     public void PlayEnemyDeath (AudioSource source) =>
         Play(source, audioClipDatabase.EnemyDeath);
@@ -59,10 +71,11 @@ public class AudioManager
     public void PlayShotgunFire (AudioSource source) =>
         Play(source, audioClipDatabase.ShotgunFire);
 
-    public void PlayMusic ()
-    {
-        musicSource.Play();
-    }
+    public void PlayMusic () =>
+        PlayLooping(musicSource, audioClipDatabase.BackgroundMusic);
+
+    public void PlayAmbient () =>
+        PlayLooping(ambientSource, audioClipDatabase.Ambient);
 
     public void SetMasterVolume (float volume)
     {

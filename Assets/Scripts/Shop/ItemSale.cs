@@ -1,5 +1,9 @@
+using System;
+
 public class ItemSale
 {
+    public event Action<ItemSale> OnPurchase;
+
     readonly ItemSaleSettings settings;
     readonly Currency currency;
     readonly InputManager inputManager;
@@ -26,7 +30,9 @@ public class ItemSale
 
     void PurchaseActiveItem ()
     {
-        if (currency.Spend(settings.Price))
-            fulfillment.GrantReward(settings);
+        if (!currency.Spend(settings.Price))
+            return;
+        fulfillment.GrantReward(settings);
+        OnPurchase?.Invoke(this);
     }
 }

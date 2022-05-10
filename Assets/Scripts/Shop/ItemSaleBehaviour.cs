@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemSaleBehaviour : MonoBehaviour
 {
     public event Action<ItemSaleBehaviour, bool> OnItemSaleActiveChanged;
+    public event Action<ItemSaleBehaviour> OnPurchase;
 
     [field: SerializeField] public TextMeshPro PriceText { get; private set; }
     [field: SerializeField] public ItemSaleSettings Settings { get; private set; }
@@ -28,6 +29,7 @@ public class ItemSaleBehaviour : MonoBehaviour
             Settings,
             currencyManager.Currency
         );
+        ItemSale.OnPurchase += RaiseOnPurchase;
         PriceText.text = $"${Settings.Price}";
         enabled = false;
     }
@@ -54,4 +56,6 @@ public class ItemSaleBehaviour : MonoBehaviour
             OnItemSaleActiveChanged?.Invoke(this, false);
         }
     }
+
+    void RaiseOnPurchase (ItemSale obj) => OnPurchase?.Invoke(this);
 }
