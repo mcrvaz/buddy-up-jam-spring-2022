@@ -22,5 +22,5 @@ MonoBehaviour:
   <ShopOpen>k__BackingField: {fileID: 0}
   <EnemyDeath>k__BackingField: {fileID: 8300000, guid: be34cc84c8e08a944af3e8bc034859e5, type: 3}
   <EnemyHit>k__BackingField: {fileID: 8300000, guid: c09551137769233418154d9962e0411f, type: 3}
-  <PlayerDeath>k__BackingField: {fileID: 0}
-  <PlayerHit>k__BackingField: {fileID: 0}
+  <PlayerDeath>k__BackingField: {fileID: 8300000, guid: a12fc95295f720447ac7072a4883d9ca, type: 3}
+  <PlayerHit>k__BackingField: {fileID: 8300000, guid: c09551137769233418154d9962e0411f, type: 3}

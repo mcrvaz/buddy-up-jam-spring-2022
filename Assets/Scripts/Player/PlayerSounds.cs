@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerSounds
 {
-    const float FOOTSTEPS_INTERVAL = 0.75f;
+    const float FOOTSTEPS_INTERVAL = 0.45f;
 
     readonly Player player;
     readonly AudioManager audioManager;

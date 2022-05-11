@@ -18,4 +18,4 @@ MonoBehaviour:
   <PauseTimeAfterHit>k__BackingField: 1
   <PushForceOnHit>k__BackingField: 0
   <CurrencyReward>k__BackingField: 100
-  <Damage>k__BackingField: 1
+  <Damage>k__BackingField: 50
