@@ -24,8 +24,11 @@ public class ItemPurchaseFulfillment
 
     void GrantAmmo (AmmoItem ammoItem)
     {
-        player.Player.GetWeaponById(ammoItem.WeaponId).RestoreAmmo(ammoItem.Amount);
+        player.Player.GetWeapon(ammoItem.WeaponId).RestoreAmmo(ammoItem.Amount);
     }
 
-    void GrantWeapon (WeaponItem weaponItem) { }
+    void GrantWeapon (WeaponItem weaponItem)
+    {
+        player.PlayerWeapon.EarnWeapon(weaponItem.WeaponId, true);
+    }
 }

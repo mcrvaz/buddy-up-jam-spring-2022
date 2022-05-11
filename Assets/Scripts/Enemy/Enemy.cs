@@ -66,10 +66,7 @@ public class Enemy
         Rotation.FixedUpdate();
 
         if (IsCloseToPlayer())
-        {
-            UnityEngine.Debug.Log("close");
             OnCloseToPlayer?.Invoke(this);
-        }
     }
 
     public void HandleBodyPartCollisionEnter (BodyPart part, Collider collider)

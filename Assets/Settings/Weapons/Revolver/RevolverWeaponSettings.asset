@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c921929c682934abb9ddc3ebb38416, type: 3}
+  m_Name: RevolverWeaponSettings
+  m_EditorClassIdentifier: 
+  <WeaponId>k__BackingField: 1
+  <Damage>k__BackingField: 50
+  <StartingAmmo>k__BackingField: 100
+  <MaxAmmo>k__BackingField: 100
+  <RoundsPerClip>k__BackingField: 6
+  <ProjectileCount>k__BackingField: 1
+  <ReloadTime>k__BackingField: 1
+  <IntervalBetweenShots>k__BackingField: 0.1
+  <ProjectilePrefab>k__BackingField: {fileID: 4984771367537914353, guid: 132d7257991ed5f4d8565c2348a5397e, type: 3}
+  <SwapInTime>k__BackingField: 0.5
+  <SwapOutTime>k__BackingField: 0.5

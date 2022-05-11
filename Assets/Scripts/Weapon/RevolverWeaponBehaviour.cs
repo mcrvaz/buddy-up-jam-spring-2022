@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class ShotgunWeaponBehaviour : WeaponBehaviour<ShotgunWeapon>
+public class RevolverWeaponBehaviour : WeaponBehaviour<RevolverWeapon>
 {
-    [field: SerializeField] public ShotgunWeaponSettings WeaponSettings { get; private set; }
+    [field: SerializeField] public WeaponSettings WeaponSettings { get; private set; }
 
-    public ShotgunWeapon ShotgunWeapon => (ShotgunWeapon)Weapon;
+    public RevolverWeapon RevolverWeapon => (RevolverWeapon)Weapon;
 
-    protected override ShotgunWeapon CreateWeapon ()
+    protected override RevolverWeapon CreateWeapon ()
     {
-        return new ShotgunWeapon(
+        return new RevolverWeapon(
             WeaponTransform,
             ProjectileSpawnPoints,
             WeaponSettings,
@@ -20,7 +20,7 @@ public class ShotgunWeaponBehaviour : WeaponBehaviour<ShotgunWeapon>
 
     protected override IWeaponSounds CreateWeaponSounds ()
     {
-        return new ShotgunWeaponSounds(
+        return new RevolverWeaponSounds(
             audioBehaviour.AudioManager,
             playerBehaviour.PlayerAudioSource
         );

@@ -3,22 +3,28 @@ public class PlayerAction
     public bool Enabled { get; set; } = true;
 
     readonly InputManager inputManager;
-    readonly Weapon weapon;
+    readonly PlayerWeapon playerWeapon;
 
-    public PlayerAction (InputManager inputManager, Weapon weapon)
+    public PlayerAction (InputManager inputManager, PlayerWeapon playerWeapon)
     {
         this.inputManager = inputManager;
-        this.weapon = weapon;
+        this.playerWeapon = playerWeapon;
     }
 
     public void Update ()
     {
         if (!Enabled)
             return;
-        weapon.Update();
+
+        var activeWeapon = playerWeapon.ActiveWeapon;
+        activeWeapon.Update();
         if (inputManager.GetFireDown())
-            weapon.Shoot();
+            activeWeapon.Shoot();
         else if (inputManager.GetReloadDown())
-            weapon.Reload();
+            activeWeapon.Reload();
+
+        int numericKeyPressed = inputManager.GetNumericKeyPressed();
+        if (numericKeyPressed != -1)
+            playerWeapon.ChangeWeapon(numericKeyPressed);
     }
 }

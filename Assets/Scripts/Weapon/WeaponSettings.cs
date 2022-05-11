@@ -11,4 +11,7 @@ public class WeaponSettings : ScriptableObject
     [field: SerializeField] public float ReloadTime { get; private set; }
     [field: SerializeField] public float IntervalBetweenShots { get; private set; }
     [field: SerializeField] public ProjectileBehaviour ProjectilePrefab { get; private set; }
+
+    [field:SerializeField] public float SwapInTime { get; private set; }
+    [field:SerializeField] public float SwapOutTime { get; private set; }
 }

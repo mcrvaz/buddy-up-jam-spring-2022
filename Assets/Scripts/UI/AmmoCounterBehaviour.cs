@@ -16,6 +16,7 @@ public class AmmoCounterBehaviour : MonoBehaviour
 
     void Start ()
     {
-        AmmoCounter = new AmmoCounter(playerBehaviour.WeaponBehaviour.Weapon, ammoText);
+        AmmoCounter = new AmmoCounter(playerBehaviour.PlayerWeapon, ammoText);
+        AmmoCounter.Start();
     }
 }

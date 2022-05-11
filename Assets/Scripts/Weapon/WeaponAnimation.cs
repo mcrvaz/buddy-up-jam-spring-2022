@@ -1,24 +1,36 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponAnimation
 {
-    const string SHOOT = "Armature|Shotgun_Shoot";
-    const string IDLE = "Armature|Shotgun_Idle";
-    const string RELOAD = "Armature|Shotgun_Reload";
-    const string SWAP = "Armature|Shotgun_Swap";
-
     readonly Weapon weapon;
     readonly Animation animation;
     readonly float reloadAnimationDuration;
+    readonly float swapInAnimationDuration;
+    readonly float swapOutAnimationDuration;
+    readonly IReadOnlyList<ParticleSystem> particles;
+    readonly WeaponAnimationMapping animationMapping;
 
-    public WeaponAnimation (Weapon weapon, Animation animation)
+    public WeaponAnimation (
+        Weapon weapon,
+        Animation animation,
+        IReadOnlyList<ParticleSystem> particles,
+        WeaponAnimationMapping animationMapping
+    )
     {
         this.weapon = weapon;
         this.animation = animation;
+        this.particles = particles;
+        this.animationMapping = animationMapping;
         weapon.OnShoot += HandleShoot;
         weapon.OnReloadStart += HandleReloadStart;
+        weapon.OnWeaponSwapInStart += HandleWeaponSwapInStart;
+        weapon.OnWeaponSwapOutStart += HandleWeaponSwapOutStart;
 
-        reloadAnimationDuration = animation[RELOAD].length;
+        reloadAnimationDuration = animation[GetAnimationName(WeaponAnimationId.Reload)].length;
+        swapInAnimationDuration = animation[GetAnimationName(WeaponAnimationId.SwapIn)].length;
+        swapOutAnimationDuration = animation[GetAnimationName(WeaponAnimationId.SwapOut)].length;
     }
 
     public void Start ()
@@ -28,19 +40,44 @@ public class WeaponAnimation
 
     void HandleShoot ()
     {
-        animation.Play(SHOOT);
+        animation.Stop();
+        animation.Play(GetAnimationName(WeaponAnimationId.Shoot));
     }
 
     void PlayIdle ()
     {
-        animation.Play(IDLE);
+        animation.Play(GetAnimationName(WeaponAnimationId.Idle));
     }
 
     void HandleReloadStart (float reloadDuration)
     {
-        float ratio = reloadAnimationDuration / reloadDuration;
-        animation[RELOAD].speed = ratio;
-        animation.Play(RELOAD);
-        animation.PlayQueued(IDLE);
+        animation.Stop();
+        var animationName = GetAnimationName(WeaponAnimationId.Reload);
+        animation[animationName].speed = GetSpeedMultiplier(reloadDuration, reloadAnimationDuration);
+        animation.Play(animationName);
+        animation.PlayQueued(GetAnimationName(WeaponAnimationId.Idle));
     }
+
+    void HandleWeaponSwapOutStart (float duration)
+    {
+        animation.Stop();
+        var animationName = GetAnimationName(WeaponAnimationId.SwapOut);
+        animation[animationName].speed = GetSpeedMultiplier(duration, swapOutAnimationDuration);
+        animation.Play(animationName);
+    }
+
+    void HandleWeaponSwapInStart (float duration)
+    {
+        animation.Stop();
+        var animationName = GetAnimationName(WeaponAnimationId.SwapIn);
+        animation.Play(GetAnimationName(WeaponAnimationId.SwapIn));
+        animation[animationName].speed = GetSpeedMultiplier(duration, swapInAnimationDuration);
+        animation.PlayQueued(GetAnimationName(WeaponAnimationId.Idle));
+    }
+
+    float GetSpeedMultiplier (float actionDuration, float animationDuration) =>
+        animationDuration / actionDuration;
+
+    string GetAnimationName (WeaponAnimationId animationId) =>
+        animationMapping.GetClipName(animationId);
 }

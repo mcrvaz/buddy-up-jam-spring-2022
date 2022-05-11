@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Weapon
+public class Weapon : IWeapon
 {
     public event Action OnAmmoUpdated;
     public event Action<float> OnReloadStart;
@@ -10,12 +10,36 @@ public class Weapon
     public event Action OnShoot;
     public event Action OnEmptyAmmoFire;
 
+    public event Action<float> OnWeaponSwapInStart;
+    public event Action<float> OnWeaponSwapOutStart;
+
+    public event Action<IWeapon> OnSwapOutEnded;
+    public event Action<IWeapon> OnSwapInEnded;
+
     public WeaponId WeaponId => settings.WeaponId;
     public int CurrentAmmo { get; private set; }
     public int MaxAmmo => settings.MaxAmmo;
     public int RoundsInClip { get; private set; }
     public int RoundsPerClip => settings.RoundsPerClip;
     public int Damage => settings.Damage;
+    public float SwapInTime => settings.SwapInTime;
+    public float SwapOutTime => settings.SwapOutTime;
+    public bool CanShoot
+    {
+        get
+        {
+            if (isReloading)
+                return false;
+            var time = Time.time;
+            if (time < nextShotTime)
+                return false;
+            if (time < swapOutEndTime)
+                return false;
+            if (time < swapInEndTime)
+                return false;
+            return true;
+        }
+    }
 
     protected readonly ProjectilePool pool;
     protected readonly Transform weaponTransform;
@@ -26,8 +50,12 @@ public class Weapon
     protected readonly CameraShake cameraShake;
 
     float nextShotTime = float.MinValue;
+    float swapInEndTime = float.MinValue;
+    float swapOutEndTime = float.MinValue;
     float reloadEndTime;
     bool isReloading;
+
+    Coroutine weaponSwapRoutine;
 
     public Weapon (
         Transform weaponTransform,
@@ -48,6 +76,12 @@ public class Weapon
         SetupInitialAmmo();
     }
 
+    public void SetAsActive ()
+    {
+        if (RoundsInClip <= 0)
+            StartReloadRoutine();
+    }
+
     public void Update ()
     {
         RotateWeaponToScreenCenter();
@@ -55,9 +89,7 @@ public class Weapon
 
     public void Shoot ()
     {
-        if (isReloading)
-            return;
-        if (Time.time < nextShotTime)
+        if (!CanShoot)
             return;
 
         for (int i = 0; i < settings.ProjectileCount; i++)
@@ -93,6 +125,24 @@ public class Weapon
         if (RoundsInClip == RoundsPerClip)
             return;
         StartReloadRoutine();
+    }
+
+    public void SwapOut ()
+    {
+        if (weaponSwapRoutine != null)
+            coroutineRunner.StopCoroutine(weaponSwapRoutine);
+        weaponSwapRoutine = coroutineRunner.StartCoroutine(
+            SwapOutRoutine()
+        );
+    }
+
+    public void SwapIn ()
+    {
+        if (weaponSwapRoutine != null)
+            coroutineRunner.StopCoroutine(weaponSwapRoutine);
+        weaponSwapRoutine = coroutineRunner.StartCoroutine(
+            SwapInRoutine()
+        );
     }
 
     protected virtual void PlayCameraShake () { }
@@ -147,6 +197,26 @@ public class Weapon
         CurrentAmmo = settings.StartingAmmo;
         ReloadClip();
         OnAmmoUpdated?.Invoke();
+    }
+
+    IEnumerator SwapOutRoutine ()
+    {
+        float swapOutDuration = SwapOutTime;
+        swapOutEndTime = Time.time + swapOutDuration;
+        OnWeaponSwapOutStart?.Invoke(SwapOutTime);
+        while (Time.time < swapOutEndTime)
+            yield return null;
+        OnSwapOutEnded?.Invoke(this);
+    }
+
+    IEnumerator SwapInRoutine ()
+    {
+        float swapInDuration = SwapInTime;
+        swapInEndTime = Time.time + swapInDuration;
+        OnWeaponSwapInStart?.Invoke(SwapInTime);
+        while (Time.time < swapInEndTime)
+            yield return null;
+        OnSwapInEnded?.Invoke(this);
     }
 
     IEnumerator ReloadRoutine ()

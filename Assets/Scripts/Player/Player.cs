@@ -10,28 +10,29 @@ public class Player
     public PlayerRotation Rotation { get; private set; }
     public PlayerAction Action { get; private set; }
     public Health Health { get; private set; }
-    public Weapon Weapon { get; private set; }
     public Collider Collider { get; private set; }
+    public IWeapon ActiveWeapon => playerWeapon.ActiveWeapon;
 
     readonly int groundLayer;
+    readonly PlayerWeapon playerWeapon;
     readonly CameraShake cameraShake;
 
     public Player (
         PlayerMovement playerMovement,
         PlayerRotation playerRotation,
         PlayerAction playerAction,
+        PlayerWeapon playerWeapon,
         Health health,
-        Weapon weapon,
         Collider collider,
         CameraShake cameraShake
     )
     {
         this.cameraShake = cameraShake;
+        this.playerWeapon = playerWeapon;
         Movement = playerMovement;
         Rotation = playerRotation;
         Action = playerAction;
         Health = health;
-        Weapon = weapon;
         Health.OnHealthChanged += HandleHealthChanged;
         Collider = collider;
         groundLayer = LayerMask.NameToLayer("Ground");
@@ -83,10 +84,7 @@ public class Player
             Movement.IsGrounded = false;
     }
 
-    public Weapon GetWeaponById (WeaponId _)
-    {
-        return Weapon;
-    }
+    public IWeapon GetWeapon (WeaponId id) => playerWeapon.GetWeapon(id);
 
     void HandleEnemyCollision (EnemyBehaviour enemy)
     {

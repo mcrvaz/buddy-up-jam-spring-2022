@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -14,9 +15,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerRotation PlayerRotation { get; private set; }
+    public PlayerWeapon PlayerWeapon { get; private set; }
     public PlayerAction PlayerAction { get; private set; }
     public Health Health { get; private set; }
-    public IWeaponBehaviour WeaponBehaviour { get; private set; }
+    public IReadOnlyList<IWeaponBehaviour> WeaponBehaviours { get; private set; }
+    public PlayerWeapon Weapon { get; private set; }
     public Player Player { get; private set; }
     public Currency Currency { get; private set; }
     public PlayerSounds PlayerSounds { get; private set; }
@@ -26,7 +29,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Awake ()
     {
         audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
-        WeaponBehaviour = GetComponentInChildren<IWeaponBehaviour>();
+        WeaponBehaviours = GetComponentsInChildren<IWeaponBehaviour>();
         Health = new Health(Settings.HealthSettings);
         PlayerMovement = new PlayerMovement(
             transform,
@@ -35,13 +38,14 @@ public class PlayerBehaviour : MonoBehaviour
             Rigidbody
         );
         PlayerRotation = new PlayerRotation(Rigidbody, GameSettings, InputManager.Instance);
-        PlayerAction = new PlayerAction(InputManager.Instance, WeaponBehaviour.Weapon);
+        PlayerWeapon = new PlayerWeapon(WeaponBehaviours, Settings);
+        PlayerAction = new PlayerAction(InputManager.Instance, PlayerWeapon);
         Player = new Player(
             PlayerMovement,
             PlayerRotation,
             PlayerAction,
+            PlayerWeapon,
             Health,
-            WeaponBehaviour.Weapon,
             Collider,
             MainCamera.CameraShake
         );

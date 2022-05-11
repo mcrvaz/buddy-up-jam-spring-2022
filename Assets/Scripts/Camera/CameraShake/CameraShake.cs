@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class CameraShake : MonoBehaviour
     public void PlayStrongShake () => FireOnce(ShakeSettings.StrongShake);
 
     public void PlayHitShake () => FireOnce(ShakeSettings.HitShake);
+
+    public void PlayLightShake () => FireOnce(ShakeSettings.LightShake);
 
     public void FireOnce (CustomShake customShake)
     {

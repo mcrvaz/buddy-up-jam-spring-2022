@@ -5,10 +5,11 @@ public abstract class WeaponBehaviour<T> : MonoBehaviour, IWeaponBehaviour where
     [field: SerializeField] public Transform[] ProjectileSpawnPoints { get; private set; }
     [field: SerializeField] public Transform WeaponTransform { get; private set; }
     [field: SerializeField] public Animation Animation { get; private set; }
+    [field: SerializeField] public WeaponAnimationMapping WeaponAnimationMapping { get; private set; }
 
     public Weapon Weapon { get; private set; }
     public WeaponAnimation WeaponAnimation { get; private set; }
-    public WeaponSounds WeaponSounds { get; private set; }
+    public WeaponSoundManager WeaponSounds { get; private set; }
 
     protected PlayerBehaviour playerBehaviour;
     protected GameAudioBehaviour audioBehaviour;
@@ -22,13 +23,20 @@ public abstract class WeaponBehaviour<T> : MonoBehaviour, IWeaponBehaviour where
 
     void Start ()
     {
-        WeaponAnimation = new WeaponAnimation(Weapon, Animation);
-        WeaponSounds = new WeaponSounds(
+        WeaponAnimation = new WeaponAnimation(
             Weapon,
-            audioBehaviour.AudioManager,
-            playerBehaviour.PlayerAudioSource
+            Animation,
+            GetComponentsInChildren<ParticleSystem>(true),
+            WeaponAnimationMapping
+        );
+        WeaponSounds = new WeaponSoundManager(
+            Weapon,
+            CreateWeaponSounds()
         );
     }
 
     protected abstract T CreateWeapon ();
+    protected abstract IWeaponSounds CreateWeaponSounds ();
+
+    public void SetActive (bool active) => gameObject.SetActive(active);
 }
