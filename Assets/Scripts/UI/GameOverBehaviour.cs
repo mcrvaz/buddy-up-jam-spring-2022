@@ -31,7 +31,6 @@ public class GameOverBehaviour : MonoBehaviour
 
     void HandleRetryClick ()
     {
-        var activeScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
+        SceneManager.LoadScene("Reload", LoadSceneMode.Single);
     }
 }
