@@ -16,7 +16,7 @@ MonoBehaviour:
   <ShotgunReload>k__BackingField: {fileID: 8300000, guid: 453ea2b8c4fc9cd49966e6f6f774f64a, type: 3}
   <EmptyAmmo>k__BackingField: {fileID: 8300000, guid: ab20186e28cc23a4789a430ee6203082, type: 3}
   <PlayerFootsteps>k__BackingField: {fileID: 8300000, guid: f0354f7386913ce45b09291cb42c0b25, type: 3}
-  <BackgroundMusic>k__BackingField: {fileID: 0}
+  <BackgroundMusic>k__BackingField: {fileID: 8300000, guid: 01c767dd60c9fee49ba8bf8a7ee242e0, type: 3}
   <Ambient>k__BackingField: {fileID: 8300000, guid: 3615ee146c98f654d9d638ea2f8b7ca4, type: 3}
   <ShopPurchase>k__BackingField: {fileID: 8300000, guid: 11bbcbb7a283e25408689bfae228bad6, type: 3}
   <ShopOpen>k__BackingField: {fileID: 0}
