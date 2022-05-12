@@ -18,7 +18,7 @@ public class ShotgunWeaponSounds : IWeaponSounds
 
     public void Reload ()
     {
-        audioManager.PlayEmptyAmmo(audioSource);
+        audioManager.PlayShotgunReload(audioSource);
     }
 
     public void Shoot ()
@@ -26,8 +26,13 @@ public class ShotgunWeaponSounds : IWeaponSounds
         audioManager.PlayShotgunFire(audioSource);
     }
 
-    public void Swap ()
+    public void SwapIn ()
     {
-        throw new System.NotImplementedException();
+        audioManager.PlayShotgunSwapIn(audioSource);
+    }
+
+    public void SwapOut ()
+    {
+        audioManager.PlayShotgunSwapOut(audioSource);
     }
 }

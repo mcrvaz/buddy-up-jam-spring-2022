@@ -13,7 +13,13 @@ public class WeaponSoundManager
         weapon.OnShoot += HandleWeaponShoot;
         weapon.OnReloadStart += HandleWeaponReloadStart;
         weapon.OnEmptyAmmoFire += HandleEmptyAmmoFire;
+        weapon.OnSwapInStart += HandleSwapInStart;
+        weapon.OnSwapOutStart += HandleSwapOutStart;
     }
+
+    void HandleSwapOutStart (float _) => weaponSounds.SwapOut();
+
+    void HandleSwapInStart (float _) => weaponSounds.SwapIn();
 
     void HandleEmptyAmmoFire () => weaponSounds.EmptyClip();
 

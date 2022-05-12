@@ -18,16 +18,21 @@ public class RevolverWeaponSounds : IWeaponSounds
 
     public void Reload ()
     {
-        audioManager.PlayEmptyAmmo(audioSource);
+        audioManager.PlayRevolverReload(audioSource);
     }
 
     public void Shoot ()
     {
-        audioManager.PlayShotgunFire(audioSource);
+        audioManager.PlayRevolverFire(audioSource);
     }
 
-    public void Swap ()
+    public void SwapIn ()
     {
-        throw new System.NotImplementedException();
+        audioManager.PlayRevolverSwapIn(audioSource);
+    }
+
+    public void SwapOut ()
+    {
+        audioManager.PlayRevolverSwapOut(audioSource);
     }
 }

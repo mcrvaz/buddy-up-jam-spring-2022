@@ -71,6 +71,24 @@ public class AudioManager
     public void PlayShotgunFire (AudioSource source) =>
         Play(source, audioClipDatabase.ShotgunFire);
 
+    public void PlayShotgunSwapIn (AudioSource source) =>
+        Play(source, audioClipDatabase.ShotgunSwapIn);
+
+    public void PlayShotgunSwapOut (AudioSource source) =>
+        Play(source, audioClipDatabase.ShotgunSwapOut);
+
+    public void PlayRevolverReload (AudioSource source) =>
+        Play(source, audioClipDatabase.RevolverReload);
+
+    public void PlayRevolverFire (AudioSource source) =>
+        Play(source, audioClipDatabase.RevolverFire);
+
+    public void PlayRevolverSwapIn (AudioSource source) =>
+        Play(source, audioClipDatabase.RevolverSwapIn);
+
+    public void PlayRevolverSwapOut (AudioSource source) =>
+        Play(source, audioClipDatabase.RevolverSwapOut);
+
     public void PlayMusic () =>
         PlayLooping(musicSource, audioClipDatabase.BackgroundMusic);
 
