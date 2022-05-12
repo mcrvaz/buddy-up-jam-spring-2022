@@ -20,6 +20,6 @@ MonoBehaviour:
   - <AnimationId>k__BackingField: 2
     <AnimationName>k__BackingField: Armature|Shotgun_Reload
   - <AnimationId>k__BackingField: 3
-    <AnimationName>k__BackingField: Armature|Shotgun_Swap
+    <AnimationName>k__BackingField: Armature|Shotgun_Swap_Out
   - <AnimationId>k__BackingField: 4
-    <AnimationName>k__BackingField: Armature|Shotgun_Swap
+    <AnimationName>k__BackingField: Armature|Shotgun_Swap_In

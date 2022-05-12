@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,8 +24,8 @@ public class WeaponAnimation
         this.animationMapping = animationMapping;
         weapon.OnShoot += HandleShoot;
         weapon.OnReloadStart += HandleReloadStart;
-        weapon.OnWeaponSwapInStart += HandleWeaponSwapInStart;
-        weapon.OnWeaponSwapOutStart += HandleWeaponSwapOutStart;
+        weapon.OnSwapInStart += HandleWeaponSwapInStart;
+        weapon.OnSwapOutStart += HandleWeaponSwapOutStart;
 
         reloadAnimationDuration = animation[GetAnimationName(WeaponAnimationId.Reload)].length;
         swapInAnimationDuration = animation[GetAnimationName(WeaponAnimationId.SwapIn)].length;

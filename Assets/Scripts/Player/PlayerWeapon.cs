@@ -45,9 +45,10 @@ public class PlayerWeapon
             return;
 
         var currentWeapon = ActiveWeapon;
-        newWeapon = GetWeapon(weaponId);
-        if (currentWeapon == newWeapon)
+        var weaponToSwap = GetWeapon(weaponId);
+        if (currentWeapon == weaponToSwap || weaponToSwap == newWeapon)
             return;
+        newWeapon = weaponToSwap;
         currentWeapon.SwapOut();
     }
 
@@ -71,7 +72,7 @@ public class PlayerWeapon
             weapon.OnSwapInEnded += HandleSwapInEnded;
             weapon.OnSwapOutEnded += HandleSwapOutEnded;
         }
-        SetWeaponActive(startingWeapon);
+        SetWeaponActive(startingWeapon, false);
     }
 
     void HandleSwapInEnded (IWeapon weapon)
@@ -81,7 +82,7 @@ public class PlayerWeapon
             if (item.Weapon.WeaponId == weapon.WeaponId)
                 item.SetActive(true);
         }
-        SetWeaponActive(weapon.WeaponId);
+        SetWeaponActive(weapon.WeaponId, false);
     }
 
     void HandleSwapOutEnded (IWeapon weapon)
@@ -89,18 +90,23 @@ public class PlayerWeapon
         foreach (var item in weaponBehaviours)
         {
             if (item.Weapon.WeaponId == weapon.WeaponId)
+            {
                 item.SetActive(false);
+                weapon.SetAsInactive();
+            }
         }
-        newWeapon.SwapIn();
+        SetWeaponActive(newWeapon.WeaponId, true);
     }
 
-    void SetWeaponActive (WeaponId weaponId)
+    void SetWeaponActive (WeaponId weaponId, bool swapIn)
     {
         if (!acquiredWeapons.Contains(weaponId))
             return;
         foreach (var item in weaponBehaviours)
             item.SetActive(item.Weapon.WeaponId == weaponId);
         ActiveWeapon = GetWeapon(weaponId);
+        if (swapIn)
+            ActiveWeapon.SwapIn();
         ActiveWeapon.SetAsActive();
         OnWeaponChanged?.Invoke();
     }

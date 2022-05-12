@@ -2,8 +2,8 @@ using System;
 
 public interface IWeapon
 {
-    event Action<float> OnWeaponSwapInStart;
-    event Action<float> OnWeaponSwapOutStart;
+    event Action<float> OnSwapInStart;
+    event Action<float> OnSwapOutStart;
     event Action<IWeapon> OnSwapOutEnded;
     event Action<IWeapon> OnSwapInEnded;
 
@@ -27,6 +27,7 @@ public interface IWeapon
     void Shoot ();
     void Update ();
     void SetAsActive ();
+    void SetAsInactive ();
     void SwapIn ();
     void SwapOut ();
 }

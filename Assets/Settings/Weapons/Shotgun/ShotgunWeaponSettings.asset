@@ -21,8 +21,8 @@ MonoBehaviour:
   <ReloadTime>k__BackingField: 1.3
   <IntervalBetweenShots>k__BackingField: 0.5
   <ProjectilePrefab>k__BackingField: {fileID: 4984771367537914353, guid: 132d7257991ed5f4d8565c2348a5397e, type: 3}
-  <SwapInTime>k__BackingField: 0.5
-  <SwapOutTime>k__BackingField: 0.5
+  <SwapInTime>k__BackingField: 0.25
+  <SwapOutTime>k__BackingField: 0.25
   <PelletCount>k__BackingField: 4
   <SpreadVerticalAngleRange>k__BackingField: {x: -2.5, y: 2.5}
   <SpreadHorizontalAngleRange>k__BackingField: {x: -2.5, y: 2.5}

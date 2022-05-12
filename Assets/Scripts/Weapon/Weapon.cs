@@ -10,8 +10,8 @@ public class Weapon : IWeapon
     public event Action OnShoot;
     public event Action OnEmptyAmmoFire;
 
-    public event Action<float> OnWeaponSwapInStart;
-    public event Action<float> OnWeaponSwapOutStart;
+    public event Action<float> OnSwapInStart;
+    public event Action<float> OnSwapOutStart;
 
     public event Action<IWeapon> OnSwapOutEnded;
     public event Action<IWeapon> OnSwapInEnded;
@@ -56,6 +56,7 @@ public class Weapon : IWeapon
     bool isReloading;
 
     Coroutine weaponSwapRoutine;
+    Coroutine reloadRoutine;
 
     public Weapon (
         Transform weaponTransform,
@@ -78,8 +79,14 @@ public class Weapon : IWeapon
 
     public void SetAsActive ()
     {
+        StopReloading();
         if (RoundsInClip <= 0)
-            StartReloadRoutine();
+            Reload();
+    }
+
+    public void SetAsInactive ()
+    {
+        StopReloading();
     }
 
     public void Update ()
@@ -106,7 +113,7 @@ public class Weapon : IWeapon
         OnShoot?.Invoke();
 
         if (RoundsInClip <= 0)
-            StartReloadRoutine();
+            Reload();
     }
 
     public void RestoreAmmo (int amount)
@@ -129,6 +136,8 @@ public class Weapon : IWeapon
 
     public void SwapOut ()
     {
+        StopReloading();
+
         if (weaponSwapRoutine != null)
             coroutineRunner.StopCoroutine(weaponSwapRoutine);
         weaponSwapRoutine = coroutineRunner.StartCoroutine(
@@ -138,6 +147,8 @@ public class Weapon : IWeapon
 
     public void SwapIn ()
     {
+        StopReloading();
+
         if (weaponSwapRoutine != null)
             coroutineRunner.StopCoroutine(weaponSwapRoutine);
         weaponSwapRoutine = coroutineRunner.StartCoroutine(
@@ -170,7 +181,14 @@ public class Weapon : IWeapon
 
     void StartReloadRoutine ()
     {
-        coroutineRunner.StartCoroutine(ReloadRoutine());
+        reloadRoutine = coroutineRunner.StartCoroutine(ReloadRoutine());
+    }
+
+    void StopReloading ()
+    {
+        isReloading = false;
+        if (reloadRoutine != null)
+            coroutineRunner.StopCoroutine(reloadRoutine);
     }
 
     bool ConsumeAmmo ()
@@ -203,7 +221,7 @@ public class Weapon : IWeapon
     {
         float swapOutDuration = SwapOutTime;
         swapOutEndTime = Time.time + swapOutDuration;
-        OnWeaponSwapOutStart?.Invoke(SwapOutTime);
+        OnSwapOutStart?.Invoke(SwapOutTime);
         while (Time.time < swapOutEndTime)
             yield return null;
         OnSwapOutEnded?.Invoke(this);
@@ -213,7 +231,7 @@ public class Weapon : IWeapon
     {
         float swapInDuration = SwapInTime;
         swapInEndTime = Time.time + swapInDuration;
-        OnWeaponSwapInStart?.Invoke(SwapInTime);
+        OnSwapInStart?.Invoke(SwapInTime);
         while (Time.time < swapInEndTime)
             yield return null;
         OnSwapInEnded?.Invoke(this);
@@ -221,6 +239,8 @@ public class Weapon : IWeapon
 
     IEnumerator ReloadRoutine ()
     {
+        while (Time.time < swapInEndTime)
+            yield return null;
         while (Time.time < nextShotTime)
             yield return null;
 
