@@ -17,8 +17,8 @@ MonoBehaviour:
   <ShotgunReload>k__BackingField: {fileID: 8300000, guid: 453ea2b8c4fc9cd49966e6f6f774f64a, type: 3}
   <ShotgunSwapIn>k__BackingField: {fileID: 8300000, guid: 72270cbbc4dc29c4aa1bb928c6c155bc, type: 3}
   <ShotgunSwapOut>k__BackingField: {fileID: 8300000, guid: 72270cbbc4dc29c4aa1bb928c6c155bc, type: 3}
-  <RevolverFire>k__BackingField: {fileID: 0}
-  <RevolverReload>k__BackingField: {fileID: 0}
+  <RevolverFire>k__BackingField: {fileID: 8300000, guid: bddd9a2feba3ee64389197dbb57f4398, type: 3}
+  <RevolverReload>k__BackingField: {fileID: 8300000, guid: 1857c6226b2fd034cafc0259ee241315, type: 3}
   <RevolverSwapIn>k__BackingField: {fileID: 8300000, guid: 1857c6226b2fd034cafc0259ee241315, type: 3}
   <RevolverSwapOut>k__BackingField: {fileID: 8300000, guid: 72270cbbc4dc29c4aa1bb928c6c155bc, type: 3}
   <PlayerDeath>k__BackingField: {fileID: 8300000, guid: a12fc95295f720447ac7072a4883d9ca, type: 3}
