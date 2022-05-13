@@ -11,18 +11,14 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6351241823b464fbadf883d8c981f2, type: 3}
   m_Name: AudioClipDatabaseSettings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
   <EmptyAmmo>k__BackingField: {fileID: 8300000, guid: ab20186e28cc23a4789a430ee6203082, type: 3}
   <ShotgunFire>k__BackingField: {fileID: 8300000, guid: f58bb4b465a1b1f40bd717bb29fe200b, type: 3}
   <ShotgunReload>k__BackingField: {fileID: 8300000, guid: 453ea2b8c4fc9cd49966e6f6f774f64a, type: 3}
   <ShotgunSwapIn>k__BackingField: {fileID: 8300000, guid: 72270cbbc4dc29c4aa1bb928c6c155bc, type: 3}
   <ShotgunSwapOut>k__BackingField: {fileID: 8300000, guid: 72270cbbc4dc29c4aa1bb928c6c155bc, type: 3}
   <RevolverFire>k__BackingField: {fileID: 8300000, guid: bddd9a2feba3ee64389197dbb57f4398, type: 3}
-<<<<<<< HEAD
   <RevolverReload>k__BackingField: {fileID: 8300000, guid: 1857c6226b2fd034cafc0259ee241315, type: 3}
-=======
-  <RevolverReload>k__BackingField: {fileID: 0}
->>>>>>> 7ccc89bf26d65878bb388cd8cfd1311d7d50b31f
   <RevolverSwapIn>k__BackingField: {fileID: 8300000, guid: 1857c6226b2fd034cafc0259ee241315, type: 3}
   <RevolverSwapOut>k__BackingField: {fileID: 8300000, guid: 72270cbbc4dc29c4aa1bb928c6c155bc, type: 3}
   <PlayerDeath>k__BackingField: {fileID: 8300000, guid: a12fc95295f720447ac7072a4883d9ca, type: 3}
