@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FadeOutBehaviour : MonoBehaviour
 {
-    [field: SerializeField] public GameObject FadeOut;
+    [field: SerializeField] public GameObject FadeOut { get; private set; }
 
     void Awake ()
     {

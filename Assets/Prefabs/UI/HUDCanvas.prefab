@@ -3108,7 +3108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fd83f28bbe809458bf612760e5604a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeOut: {fileID: 9054849080107184951}
+  <FadeOut>k__BackingField: {fileID: 9054849080107184951}
 --- !u!1 &9054849080107184951
 GameObject:
   m_ObjectHideFlags: 0

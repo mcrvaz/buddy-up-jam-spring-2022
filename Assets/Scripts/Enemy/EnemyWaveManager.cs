@@ -16,6 +16,7 @@ public class EnemyWaveManager
 
     public float TimeUntilNextWave => nextWaveStartTime - Time.time;
     public bool HasMoreWaves => waveIndex < spawnerSettings.Waves.Count;
+    public bool IsWaveInProgress { get; private set; }
 
     readonly EnemySpawnerSettings spawnerSettings;
     readonly EnemySpawner spawner;
@@ -40,13 +41,15 @@ public class EnemyWaveManager
 
     void StartNextWave ()
     {
-        UnityEngine.Debug.Log("starting wave " + (waveIndex + 1));
+        UnityEngine.Debug.Log("Starting wave " + (waveIndex + 1));
         spawner.StartWave(waveIndex);
         OnWaveStarted?.Invoke();
+        IsWaveInProgress = true;
     }
 
     void HandleWaveEnded ()
     {
+        IsWaveInProgress = false;
         waveIndex++;
         OnWaveEnded?.Invoke();
         if (!HasMoreWaves)

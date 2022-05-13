@@ -41,6 +41,7 @@ public class WeaponAnimation
     {
         animation.Stop();
         animation.Play(GetAnimationName(WeaponAnimationId.Shoot));
+        animation.PlayQueued(GetAnimationName(WeaponAnimationId.Idle));
     }
 
     void PlayIdle ()
