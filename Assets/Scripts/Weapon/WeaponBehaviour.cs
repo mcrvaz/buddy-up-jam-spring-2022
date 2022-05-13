@@ -33,6 +33,7 @@ public abstract class WeaponBehaviour<T> : MonoBehaviour, IWeaponBehaviour where
             Weapon,
             CreateWeaponSounds()
         );
+        Weapon.Start();
     }
 
     protected abstract T CreateWeapon ();

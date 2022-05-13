@@ -4,6 +4,8 @@ public class ItemSale
 {
     public event Action<ItemSale> OnPurchase;
 
+    public bool Enabled { get; set; }
+
     readonly ItemSaleSettings settings;
     readonly Currency currency;
     readonly InputManager inputManager;
@@ -24,6 +26,9 @@ public class ItemSale
 
     public void Update ()
     {
+        if (!Enabled)
+            return;
+
         if (inputManager.GetConfirmDown())
             PurchaseActiveItem();
     }

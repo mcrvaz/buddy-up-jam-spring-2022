@@ -80,15 +80,10 @@ public class PlayerMovement
         rb.velocity = Vector3.zero;
     }
 
-    public void PushBackwards (float force)
+    public void Teleport (Transform targetTransform)
     {
-        var backwards = rb.transform.forward * -1;
-        rb.AddForce(backwards * force);
-    }
-
-    public void ApplyForce (Vector3 force)
-    {
-        rb.AddForce(force * Time.fixedDeltaTime, ForceMode.Impulse);
+        Stop();
+        rb.MovePosition(targetTransform.position);
     }
 
     Vector3 GetNormalizedInputDirection () =>

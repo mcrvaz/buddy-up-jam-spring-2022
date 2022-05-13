@@ -28,6 +28,8 @@ public class Weapon : IWeapon
     {
         get
         {
+            if (!enabled)
+                return false;
             if (isReloading)
                 return false;
             var time = Time.time;
@@ -53,6 +55,7 @@ public class Weapon : IWeapon
     float swapInEndTime = float.MinValue;
     float swapOutEndTime = float.MinValue;
     float reloadEndTime;
+    bool enabled;
     bool isReloading;
 
     Coroutine weaponSwapRoutine;
@@ -75,6 +78,11 @@ public class Weapon : IWeapon
         this.camera = camera;
         this.cameraShake = cameraShake;
         SetupInitialAmmo();
+    }
+
+    public void Start ()
+    {
+        enabled = true;
     }
 
     public void SetAsActive ()
