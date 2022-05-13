@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Entries>k__BackingField:
   - <AnimationId>k__BackingField: 0
-    <AnimationName>k__BackingField: Armature|Shotgun_Idle
+    <AnimationName>k__BackingField: Armature|Revolver_Idle
   - <AnimationId>k__BackingField: 1
-    <AnimationName>k__BackingField: Armature|Shotgun_Shoot
+    <AnimationName>k__BackingField: Armature|Revolver_Shoot
   - <AnimationId>k__BackingField: 2
-    <AnimationName>k__BackingField: Armature|Shotgun_Reload
+    <AnimationName>k__BackingField: Armature|Revolver_Reload
   - <AnimationId>k__BackingField: 3
-    <AnimationName>k__BackingField: Armature|Shotgun_Swap_Out
+    <AnimationName>k__BackingField: Armature|Revolver_Swap_Out
   - <AnimationId>k__BackingField: 4
-    <AnimationName>k__BackingField: Armature|Shotgun_Swap_In
+    <AnimationName>k__BackingField: Armature|Revolver_Swap_In

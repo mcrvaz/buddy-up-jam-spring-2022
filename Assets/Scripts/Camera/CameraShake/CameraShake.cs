@@ -40,7 +40,6 @@ public class CameraShake : MonoBehaviour
         Vector2 newDirection;
         float fadeOutStart = Time.time;
         float fadeOutComplete = fadeOutStart + fadeDuration;
-
         float time = Time.time;
         while (time < fadeOutComplete)
         {

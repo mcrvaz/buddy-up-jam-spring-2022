@@ -13,6 +13,6 @@ public class RevolverWeapon : Weapon
 
     protected override void PlayCameraShake ()
     {
-        cameraShake.PlayLightShake();
+        // cameraShake.PlayLightShake();
     }
 }
