@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 650450805621117362}
   - component: {fileID: 650450805621117363}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HealthKitItemSale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 650450806007656831}
   - component: {fileID: 650450806007656825}
   - component: {fileID: 650450806007656824}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 3103590663331864100}
   - component: {fileID: 659813980022571230}
   - component: {fileID: 6655609028642456249}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235022664711539209}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -327,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5459637744228592124}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Products
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7079486134134357361}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,6 +445,10 @@ PrefabInstance:
       value: SHOTGUN_BULLET (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -467,8 +471,16 @@ PrefabInstance:
       value: Plank_Box
       objectReference: {fileID: 0}
     - target: {fileID: 808652153844448449, guid: 6bacba550879c8742bbefe0ef0bd82c5, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 808652153844448449, guid: 6bacba550879c8742bbefe0ef0bd82c5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114113819697003655, guid: 6bacba550879c8742bbefe0ef0bd82c5, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1114113819697003655, guid: 6bacba550879c8742bbefe0ef0bd82c5, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -589,6 +601,10 @@ PrefabInstance:
       value: SHOTGUN_BULLET
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -653,6 +669,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_Name
       value: SHOTGUN_BULLET (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -721,6 +741,10 @@ PrefabInstance:
       value: SHOTGUN_BULLET (6)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -785,6 +809,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_Name
       value: SHOTGUN_BULLET (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -853,6 +881,10 @@ PrefabInstance:
       value: SHOTGUN_BULLET (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -917,6 +949,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_Name
       value: SHOTGUN_BULLET (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9cc47333158f48a4da4297660a417254, type: 3}
       propertyPath: m_StaticEditorFlags

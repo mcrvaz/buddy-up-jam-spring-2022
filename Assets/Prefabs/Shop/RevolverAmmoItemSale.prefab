@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7781451000075914552}
   - component: {fileID: 5316304087437431746}
   - component: {fileID: 2067739441935585701}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597261689926146325}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804992789144156896}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Products
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1793991283510719136}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5325984540308964014}
   - component: {fileID: 5325984540308964015}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RevolverAmmoItemSale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 5325984541767934563}
   - component: {fileID: 5325984541767934565}
   - component: {fileID: 5325984541767934564}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,8 +405,16 @@ PrefabInstance:
       value: Revolver_Bullet (8)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -475,8 +483,16 @@ PrefabInstance:
       value: Revolver_Bullet (6)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -545,8 +561,16 @@ PrefabInstance:
       value: Revolver_Bullet (3)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -615,8 +639,16 @@ PrefabInstance:
       value: Revolver_Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -741,8 +773,16 @@ PrefabInstance:
       value: Plate
       objectReference: {fileID: 0}
     - target: {fileID: 467577313058870513, guid: 9c3da6dff13b7da49a51f024fc67754f, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 467577313058870513, guid: 9c3da6dff13b7da49a51f024fc67754f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080128649631066395, guid: 9c3da6dff13b7da49a51f024fc67754f, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4080128649631066395, guid: 9c3da6dff13b7da49a51f024fc67754f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -767,8 +807,16 @@ PrefabInstance:
       value: Revolver_Bullet (2)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -837,8 +885,16 @@ PrefabInstance:
       value: Revolver_Bullet (4)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -907,8 +963,16 @@ PrefabInstance:
       value: Revolver_Bullet (1)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -977,8 +1041,16 @@ PrefabInstance:
       value: Revolver_Bullet (10)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1047,8 +1119,16 @@ PrefabInstance:
       value: Revolver_Bullet (7)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1117,8 +1197,16 @@ PrefabInstance:
       value: Revolver_Bullet (5)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1187,8 +1275,16 @@ PrefabInstance:
       value: Revolver_Bullet (9)
       objectReference: {fileID: 0}
     - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 886601525759108, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5892444996479167630, guid: 8143827c34b7afc4992029f9692e6f38, type: 3}
       propertyPath: m_StaticEditorFlags
