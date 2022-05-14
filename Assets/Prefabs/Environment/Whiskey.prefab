@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2ce314ff533c0b54dbfebd67e996357c, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c5c92f95c4cc3b3419faa8b9800f1c9c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c522cae4f1968a54c8be09db315a7c56, type: 2}
     - target: {fileID: 919132149155446097, guid: c5c92f95c4cc3b3419faa8b9800f1c9c, type: 3}
       propertyPath: m_Name
       value: Whiskey

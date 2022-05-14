@@ -860,7 +860,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1107,7 +1107,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2647,6 +2647,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3596975355340930275}
     m_Modifications:
+    - target: {fileID: 669839981770998301, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a08c6e7a8c9a6f946abc52de6d514fe3, type: 2}
     - target: {fileID: 1318221645436888008, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -3267,6 +3271,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3596975355340930275}
     m_Modifications:
+    - target: {fileID: 669839981770998301, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a08c6e7a8c9a6f946abc52de6d514fe3, type: 2}
     - target: {fileID: 1318221645436888008, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -4535,6 +4543,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3596975355340930275}
     m_Modifications:
+    - target: {fileID: 669839981770998301, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c522cae4f1968a54c8be09db315a7c56, type: 2}
     - target: {fileID: 1318221645436888008, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -4809,6 +4821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3596975355340930275}
     m_Modifications:
+    - target: {fileID: 669839981770998301, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a08c6e7a8c9a6f946abc52de6d514fe3, type: 2}
     - target: {fileID: 1318221645436888008, guid: 3603a3f774ab16146bb0b2b1346b36d1, type: 3}
       propertyPath: m_Layer
       value: 11
