@@ -19,6 +19,8 @@ public class ShopBehaviour : MonoBehaviour
     EnemyWaveManagerBehaviour waveManagerBehaviour;
     FadeOutBehaviour fadeOut;
 
+    bool playerInsideShop;
+
     void Awake ()
     {
         audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
@@ -62,6 +64,8 @@ public class ShopBehaviour : MonoBehaviour
 
     void TeleportPlayerOutOfShop ()
     {
+        if (!playerInsideShop)
+            return;
         playerBehaviour.Player.Teleport(ShopExit);
         fadeOut.PlayFadeOut();
     }
@@ -70,4 +74,18 @@ public class ShopBehaviour : MonoBehaviour
 
     void HandleItemSaleActive (ItemSaleBehaviour itemSale, bool active) =>
         OnItemSaleActiveChanged?.Invoke(itemSale, active);
+
+    void OnTriggerEnter (Collider collider)
+    {
+        UnityEngine.Debug.Log("trigger");
+        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+            playerInsideShop = true;
+    }
+
+    void OnTriggerExit (Collider collider)
+    {
+        UnityEngine.Debug.Log("trigger");
+        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+            playerInsideShop = false;
+    }
 }
