@@ -48,6 +48,7 @@ public class ItemSaleBehaviour : MonoBehaviour
         if (collider.TryGetComponent<PlayerBehaviour>(out _))
         {
             enabled = true;
+            ItemSale.Enabled = true;
             OnItemSaleActiveChanged?.Invoke(this, true);
         }
     }
@@ -57,6 +58,7 @@ public class ItemSaleBehaviour : MonoBehaviour
         if (collider.TryGetComponent<PlayerBehaviour>(out _))
         {
             enabled = false;
+            ItemSale.Enabled = false;
             OnItemSaleActiveChanged?.Invoke(this, false);
         }
     }

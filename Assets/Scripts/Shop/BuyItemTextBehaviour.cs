@@ -15,6 +15,7 @@ public class BuyItemTextBehaviour : MonoBehaviour
 
     ShopBehaviour shopBehaviour;
     Coroutine textHideRoutine;
+    int triggerCount;
 
     void Awake ()
     {
@@ -28,18 +29,26 @@ public class BuyItemTextBehaviour : MonoBehaviour
 
     void HandleItemSaleActive (ItemSaleBehaviour itemSale, bool active)
     {
-        BuyItemText.text = string.Format(TEXT, itemSale.Settings.Name, itemSale.Settings.Price);
+        if (active)
+            triggerCount++;
+        else
+            triggerCount--;
 
         if (textHideRoutine != null)
             StopCoroutine(textHideRoutine);
 
         if (active)
         {
+            BuyItemText.text = string.Format(TEXT, itemSale.Settings.Name, itemSale.Settings.Price);
             BuyItemTextContainer.SetActive(true);
+            Animation.Stop();
             Animation.Play(BUY_ITEM_FADE_IN);
         }
         else
         {
+            if (triggerCount > 0)
+                return;
+            BuyItemTextContainer.SetActive(false);
             textHideRoutine = StartCoroutine(TextHideRoutine());
         }
     }
