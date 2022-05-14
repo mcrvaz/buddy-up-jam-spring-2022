@@ -53,6 +53,8 @@ public class EnemySpawner
         float time = TimeSinceWaveStart;
         while (spawnTimes.Count > 0 && time > spawnTimes.Peek())
         {
+            if (liveEnemies.Count >= settings.MaxEnemies)
+                return;
             spawnTimes.Dequeue();
             SpawnEnemy();
         }

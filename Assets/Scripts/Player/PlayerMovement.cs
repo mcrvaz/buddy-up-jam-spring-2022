@@ -72,7 +72,6 @@ public class PlayerMovement
             return;
         ApplyInput(lastInputDirection);
         TryJump();
-        // ApplyGravity();
     }
 
     public void Stop ()
