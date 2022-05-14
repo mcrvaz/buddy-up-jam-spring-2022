@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementSettings>k__BackingField: {fileID: 11400000, guid: 8ee60d7226e9a9840a7bee259e10e859, type: 2}
   <HealthSettings>k__BackingField: {fileID: 11400000, guid: b92ad50283276cd4584cf25bfdf042c4, type: 2}
-  <StartingWeapons>k__BackingField: 01000000
+  <StartingWeapons>k__BackingField: 0100000000000000

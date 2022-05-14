@@ -41,6 +41,7 @@ public class WeaponAnimation
         animation.Stop();
         animation.Play(GetAnimationName(WeaponAnimationId.Shoot));
         animation.PlayQueued(GetAnimationName(WeaponAnimationId.Idle));
+        PlayParticles();
     }
 
     void PlayIdle ()
@@ -72,6 +73,12 @@ public class WeaponAnimation
         animation.Play(GetAnimationName(WeaponAnimationId.SwapIn));
         animation[animationName].speed = GetSpeedMultiplier(duration, swapInAnimationDuration);
         animation.PlayQueued(GetAnimationName(WeaponAnimationId.Idle));
+    }
+
+    void PlayParticles ()
+    {
+        foreach (var item in particles)
+            item.Play();
     }
 
     float GetSpeedMultiplier (float actionDuration, float animationDuration) =>
