@@ -15,4 +15,4 @@ MonoBehaviour:
   <Waves>k__BackingField:
   - {fileID: 11400000, guid: c6fe57c5bf77e214299773e248bb06dc, type: 2}
   - {fileID: 11400000, guid: c6fe57c5bf77e214299773e248bb06dc, type: 2}
-  <WaveInterval>k__BackingField: 5
+  <WaveInterval>k__BackingField: 25
