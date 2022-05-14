@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eee634ad725ed648999f0315f70490a, type: 3}
   m_Name: CurrencySettings
   m_EditorClassIdentifier: 
-  <InitialCurrency>k__BackingField: 100
+  <InitialCurrency>k__BackingField: 200
