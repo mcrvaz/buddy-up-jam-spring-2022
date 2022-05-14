@@ -72,7 +72,7 @@ public class PlayerMovement
             return;
         ApplyInput(lastInputDirection);
         TryJump();
-        ApplyGravity();
+        // ApplyGravity();
     }
 
     public void Stop ()
@@ -100,16 +100,12 @@ public class PlayerMovement
         Vector3 newDirection = xMov + zMov;
         newDirection.y = 0;
 
-        rb.velocity += newDirection * settings.Acceleration;
-        rb.velocity += Gravity * Time.fixedDeltaTime;
+        rb.velocity += newDirection * settings.Acceleration * Time.deltaTime;
+        rb.velocity += Gravity * Time.deltaTime;
 
-        if (rb.velocity.sqrMagnitude > sqrSpeed)
+        var planarVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        if (planarVelocity.sqrMagnitude > sqrSpeed)
             rb.velocity *= 0.99f;
-    }
-
-    void ApplyGravity ()
-    {
-        rb.AddForce(Gravity * rb.mass);
     }
 
     void TryJump ()
@@ -121,6 +117,6 @@ public class PlayerMovement
         if (jumpCount >= settings.MaxJumpCount)
             return;
         jumpCount++;
-        rb.AddForce(Vector3.up * settings.JumpForce);
+        rb.AddForce(Vector3.up * settings.JumpForce, ForceMode.Impulse);
     }
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   <MaxFPS>k__BackingField: 144
   <VSync>k__BackingField: 0
   <Fullscreen>k__BackingField: 0
-  <MouseSensibility>k__BackingField: 1
+  <MouseSensitivity>k__BackingField: 1
   <Audio>k__BackingField: {fileID: 11400000, guid: 26fc1fd102aa96c488778a8d2f3037b5, type: 2}
