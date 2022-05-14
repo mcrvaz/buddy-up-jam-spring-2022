@@ -14,13 +14,13 @@ public class CameraShake : MonoBehaviour
     Coroutine shakeRoutine;
     float fadeOut = 0f;
 
-    public void PlayStrongShake () => FireOnce(ShakeSettings.StrongShake);
+    public void PlayStrongShake () => FireOnce(0.1f, ShakeSettings.StrongShake);
 
-    public void PlayHitShake () => FireOnce(ShakeSettings.HitShake);
+    public void PlayHitShake () => FireOnce(0f, ShakeSettings.HitShake);
 
-    public void PlayLightShake () => FireOnce(ShakeSettings.LightShake);
+    public void PlayLightShake () => FireOnce(0.1f, ShakeSettings.LightShake);
 
-    public void FireOnce (CustomShake customShake)
+    public void FireOnce (float delay, CustomShake customShake)
     {
         speed = customShake.Speed;
         maxMagnitude = customShake.MaxMagnitude;
@@ -30,17 +30,22 @@ public class CameraShake : MonoBehaviour
 
         if (shakeRoutine != null)
             StopCoroutine(shakeRoutine);
-        shakeRoutine = StartCoroutine(ShakeAndStop(time));
+        shakeRoutine = StartCoroutine(ShakeAndStop(delay, time));
     }
 
-    IEnumerator ShakeAndStop (float fadeDuration)
+    IEnumerator ShakeAndStop (float delay, float fadeDuration)
     {
+        float time = Time.time;
+        float delayComplete = time + delay;
+        while (Time.time < delayComplete)
+            yield return null;
+
         fadeOut = 1f;
         float sin;
         Vector2 newDirection;
-        float fadeOutStart = Time.time;
+        time = Time.time;
+        float fadeOutStart = time;
         float fadeOutComplete = fadeOutStart + fadeDuration;
-        float time = Time.time;
         while (time < fadeOutComplete)
         {
             time = Time.time;
