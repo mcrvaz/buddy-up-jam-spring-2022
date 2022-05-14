@@ -56,6 +56,11 @@ public class Player
         Action.Update();
     }
 
+    public void Teleport (Transform targetTransform)
+    {
+        Movement.Teleport(targetTransform);
+    }
+
     public void HandleCollisionEnter (Collision collisionInfo) =>
         HandleCollisionEnter(collisionInfo.collider);
 

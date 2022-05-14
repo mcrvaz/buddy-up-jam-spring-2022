@@ -62,9 +62,8 @@ public class ShopBehaviour : MonoBehaviour
 
     void TeleportPlayerOutOfShop ()
     {
-        // TODO rotate player and play fade out
-        playerBehaviour.PlayerMovement.Teleport(ShopExit);
-        fadeOut.SetActive(true);
+        playerBehaviour.Player.Teleport(ShopExit);
+        fadeOut.PlayFadeOut();
     }
 
     void RaiseOnPurchase (ItemSaleBehaviour sale) => OnPurchase?.Invoke(sale);

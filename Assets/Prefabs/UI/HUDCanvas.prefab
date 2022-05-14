@@ -3109,6 +3109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <FadeOut>k__BackingField: {fileID: 9054849080107184951}
+  <Animation>k__BackingField: {fileID: 8819007119694159524}
 --- !u!1 &9054849080107184951
 GameObject:
   m_ObjectHideFlags: 0
