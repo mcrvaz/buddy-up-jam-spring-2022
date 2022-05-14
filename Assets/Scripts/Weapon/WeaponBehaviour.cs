@@ -14,25 +14,36 @@ public abstract class WeaponBehaviour<T> : MonoBehaviour, IWeaponBehaviour where
     protected PlayerBehaviour playerBehaviour;
     protected GameAudioBehaviour audioBehaviour;
 
+    static int i;
+
     void Awake ()
     {
         audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
         playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         Weapon = CreateWeapon();
+        i++;
     }
 
     void Start ()
     {
-        WeaponAnimation = new WeaponAnimation(
-            Weapon,
-            Animation,
-            GetComponentsInChildren<ParticleSystem>(true),
-            WeaponAnimationMapping
-        );
-        WeaponSounds = new WeaponSoundManager(
-            Weapon,
-            CreateWeaponSounds()
-        );
+        if (WeaponAnimation == null)
+        {
+            WeaponAnimation = new WeaponAnimation(
+                Weapon,
+                Animation,
+                GetComponentsInChildren<ParticleSystem>(true),
+                WeaponAnimationMapping
+            );
+            WeaponAnimation.Start();
+        }
+
+        if (WeaponSounds == null)
+        {
+            WeaponSounds = new WeaponSoundManager(
+                Weapon,
+                CreateWeaponSounds()
+            );
+        }
         Weapon.Start();
     }
 

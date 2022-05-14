@@ -22,11 +22,6 @@ public class WeaponAnimation
         this.animation = animation;
         this.particles = particles;
         this.animationMapping = animationMapping;
-        weapon.OnShoot += HandleShoot;
-        weapon.OnReloadStart += HandleReloadStart;
-        weapon.OnSwapInStart += HandleWeaponSwapInStart;
-        weapon.OnSwapOutStart += HandleWeaponSwapOutStart;
-
         reloadAnimationDuration = animation[GetAnimationName(WeaponAnimationId.Reload)].length;
         swapInAnimationDuration = animation[GetAnimationName(WeaponAnimationId.SwapIn)].length;
         swapOutAnimationDuration = animation[GetAnimationName(WeaponAnimationId.SwapOut)].length;
@@ -34,6 +29,10 @@ public class WeaponAnimation
 
     public void Start ()
     {
+        weapon.OnShoot += HandleShoot;
+        weapon.OnReloadStart += HandleReloadStart;
+        weapon.OnSwapInStart += HandleWeaponSwapInStart;
+        weapon.OnSwapOutStart += HandleWeaponSwapOutStart;
         PlayIdle();
     }
 

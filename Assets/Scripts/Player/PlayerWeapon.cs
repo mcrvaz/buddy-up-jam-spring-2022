@@ -27,6 +27,7 @@ public class PlayerWeapon
     public void EarnWeapon (WeaponId weaponId, bool autoSwitch)
     {
         acquiredWeapons.Add(weaponId);
+        SetupWeapon(weaponId);
         if (autoSwitch)
             ChangeWeapon(weaponId);
     }
@@ -66,13 +67,15 @@ public class PlayerWeapon
     {
         var startingWeapon = settings.StartingWeapons[0];
         foreach (WeaponId weaponId in settings.StartingWeapons)
-        {
             EarnWeapon(weaponId, false);
-            var weapon = GetWeapon(weaponId);
-            weapon.OnSwapInEnded += HandleSwapInEnded;
-            weapon.OnSwapOutEnded += HandleSwapOutEnded;
-        }
         SetWeaponActive(startingWeapon, false);
+    }
+
+    void SetupWeapon (WeaponId weaponId)
+    {
+        IWeapon weapon = GetWeapon(weaponId);
+        weapon.OnSwapInEnded += HandleSwapInEnded;
+        weapon.OnSwapOutEnded += HandleSwapOutEnded;
     }
 
     void HandleSwapInEnded (IWeapon weapon)
