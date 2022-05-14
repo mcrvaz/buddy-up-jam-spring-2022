@@ -71,7 +71,7 @@ public class Enemy
 
     public void HandleBodyPartCollisionEnter (BodyPart part, Collider collider)
     {
-        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+        if (collider.TryGetComponent<PlayerBehaviour>(out var _))
             HandlePlayerCollision();
 
         if (collider.TryGetComponent<ProjectileBehaviour>(out var projectile))
@@ -80,13 +80,13 @@ public class Enemy
 
     public void HandleBodyPartCollisionStay (BodyPart part, Collider collider)
     {
-        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+        if (collider.TryGetComponent<PlayerBehaviour>(out var _))
             HandlePlayerCollision();
     }
 
     public void HandleBodyPartCollisionExit (BodyPart part, Collider collider)
     {
-        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+        if (collider.TryGetComponent<PlayerBehaviour>(out var _))
             Movement.Resume();
     }
 
@@ -104,7 +104,6 @@ public class Enemy
 
         var damageMultiplier = settings.HealthSettings.BodyPartDamageSettings.GetMultiplier(part);
         float damage = projectile.Projectile.Damage * damageMultiplier;
-        UnityEngine.Debug.Log($"Enemy hit! BodyPart: {part}, Damage with multiplier: {damage}");
         Health.TakeDamage(damage);
         OnHit?.Invoke(this, part);
     }

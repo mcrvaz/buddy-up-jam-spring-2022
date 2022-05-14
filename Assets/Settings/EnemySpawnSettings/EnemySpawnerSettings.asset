@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da807c72140cf654caa77da976973b94, type: 2}
   - {fileID: 11400000, guid: 01d55a7df1edc314dbfb54beb6a4a7be, type: 2}
   <WaveInterval>k__BackingField: 20
+  <MaxEnemies>k__BackingField: 80
