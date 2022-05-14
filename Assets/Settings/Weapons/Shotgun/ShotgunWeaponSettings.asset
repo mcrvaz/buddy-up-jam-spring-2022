@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ShotgunWeaponSettings
   m_EditorClassIdentifier: 
   <WeaponId>k__BackingField: 0
-  <Damage>k__BackingField: 25
-  <StartingAmmo>k__BackingField: 50
-  <MaxAmmo>k__BackingField: 50
+  <Damage>k__BackingField: 50
+  <StartingAmmo>k__BackingField: 70
+  <MaxAmmo>k__BackingField: 70
   <RoundsPerClip>k__BackingField: 2
   <ProjectileCount>k__BackingField: 2
   <ReloadTime>k__BackingField: 1.3
