@@ -19,6 +19,10 @@ public class ItemSaleBehaviour : MonoBehaviour
     {
         shopBehaviour = FindObjectOfType<ShopBehaviour>();
         currencyManager = FindObjectOfType<CurrencyManager>();
+
+        var shopTrigger = GetComponentInChildren<TriggerCollider>();
+        shopTrigger.OnTriggerEnterEvent += HandleTriggerEnter;
+        shopTrigger.OnTriggerExitEvent += HandleTriggerExit;
     }
 
     void Start ()
@@ -39,7 +43,7 @@ public class ItemSaleBehaviour : MonoBehaviour
         ItemSale.Update();
     }
 
-    void OnTriggerEnter (Collider collider)
+    void HandleTriggerEnter (Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out _))
         {
@@ -48,7 +52,7 @@ public class ItemSaleBehaviour : MonoBehaviour
         }
     }
 
-    void OnTriggerExit (Collider collider)
+    void HandleTriggerExit (Collider collider)
     {
         if (collider.TryGetComponent<PlayerBehaviour>(out _))
         {

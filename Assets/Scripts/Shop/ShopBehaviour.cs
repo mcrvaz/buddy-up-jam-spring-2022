@@ -13,7 +13,6 @@ public class ShopBehaviour : MonoBehaviour
     public ItemPurchaseFulfillment PurchaseFulfillment { get; private set; }
 
     ShopSounds shopSounds;
-    ShopTrigger shopTrigger;
     GameAudioBehaviour audioBehaviour;
     PlayerBehaviour playerBehaviour;
     ItemSaleBehaviour[] itemsOnSale;
@@ -24,7 +23,6 @@ public class ShopBehaviour : MonoBehaviour
 
     void Awake ()
     {
-        shopTrigger = GetComponentInChildren<ShopTrigger>();
         audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
         playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         itemsOnSale = GetComponentsInChildren<ItemSaleBehaviour>();
@@ -32,6 +30,7 @@ public class ShopBehaviour : MonoBehaviour
         fadeOut = FindObjectOfType<FadeOutBehaviour>();
         PurchaseFulfillment = new ItemPurchaseFulfillment(playerBehaviour);
 
+        var shopTrigger = GetComponentInChildren<TriggerCollider>();
         shopTrigger.OnTriggerEnterEvent += HandleTriggerEnter;
         shopTrigger.OnTriggerExitEvent += HandleTriggerExit;
     }

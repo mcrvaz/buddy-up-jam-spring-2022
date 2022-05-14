@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ShopTrigger : MonoBehaviour
+public class TriggerCollider : MonoBehaviour
 {
     public event Action<Collider> OnTriggerEnterEvent;
     public event Action<Collider> OnTriggerExitEvent;
