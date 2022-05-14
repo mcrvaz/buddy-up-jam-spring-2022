@@ -289,6 +289,126 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5526009254120959687}
     m_Modifications:
+    - target: {fileID: 414029295429362085, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 414029295429362085, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 414029295429362085, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396761443511228892, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579101975939587641, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579101975939587641, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579101975939587641, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1751727271415887663, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480788062790183285, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480788062790183285, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480788062790183285, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3819777720558553774, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040551266274144877, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040551266274144877, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040551266274144877, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052703341687083571, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658791954194170095, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787918437682033599, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787918437682033599, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787918437682033599, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641070801389488801, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641070801389488801, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641070801389488801, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849233530258881287, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258075825724494743, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258075825724494743, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258075825724494743, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422899660794252517, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422899660794252517, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422899660794252517, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6902072343533831056, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
       propertyPath: m_Name
       value: Graveyard
@@ -336,6 +456,46 @@ PrefabInstance:
     - target: {fileID: 6902072343533831071, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070509832136934491, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070509832136934491, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070509832136934491, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7109896843704779542, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378403214592160048, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389058290331702968, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776821544186075262, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776821544186075262, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776821544186075262, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178534421717629376, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 031a37900c18ec940ba6a3df154e6872, type: 3}

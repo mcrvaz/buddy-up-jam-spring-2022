@@ -13,6 +13,7 @@ public class ShopBehaviour : MonoBehaviour
     public ItemPurchaseFulfillment PurchaseFulfillment { get; private set; }
 
     ShopSounds shopSounds;
+    ShopTrigger shopTrigger;
     GameAudioBehaviour audioBehaviour;
     PlayerBehaviour playerBehaviour;
     ItemSaleBehaviour[] itemsOnSale;
@@ -23,12 +24,16 @@ public class ShopBehaviour : MonoBehaviour
 
     void Awake ()
     {
+        shopTrigger = GetComponentInChildren<ShopTrigger>();
         audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
         playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         itemsOnSale = GetComponentsInChildren<ItemSaleBehaviour>();
         waveManagerBehaviour = FindObjectOfType<EnemyWaveManagerBehaviour>();
         fadeOut = FindObjectOfType<FadeOutBehaviour>();
         PurchaseFulfillment = new ItemPurchaseFulfillment(playerBehaviour);
+
+        shopTrigger.OnTriggerEnterEvent += HandleTriggerEnter;
+        shopTrigger.OnTriggerExitEvent += HandleTriggerExit;
     }
 
     void Start ()
@@ -75,17 +80,15 @@ public class ShopBehaviour : MonoBehaviour
     void HandleItemSaleActive (ItemSaleBehaviour itemSale, bool active) =>
         OnItemSaleActiveChanged?.Invoke(itemSale, active);
 
-    void OnTriggerEnter (Collider collider)
+    void HandleTriggerEnter (Collider collider)
     {
-        UnityEngine.Debug.Log("trigger");
-        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+        if (collider.TryGetComponent<PlayerBehaviour>(out var _))
             playerInsideShop = true;
     }
 
-    void OnTriggerExit (Collider collider)
+    void HandleTriggerExit (Collider collider)
     {
-        UnityEngine.Debug.Log("trigger");
-        if (collider.TryGetComponent<PlayerBehaviour>(out var player))
+        if (collider.TryGetComponent<PlayerBehaviour>(out var _))
             playerInsideShop = false;
     }
 }
