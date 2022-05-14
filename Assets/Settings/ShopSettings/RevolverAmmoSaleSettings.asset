@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410e3356ae24c7d4893edce54ddd623a, type: 3}
+  m_Name: RevolverAmmoSaleSettings
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: 50 Revolver Ammo
+  <Price>k__BackingField: 50
+  <IsHealthItem>k__BackingField: 0
+  <HealthItem>k__BackingField:
+    <Amount>k__BackingField: 0
+  <IsAmmoItem>k__BackingField: 1
+  <AmmoItem>k__BackingField:
+    <WeaponId>k__BackingField: 1
+    <Amount>k__BackingField: 50
+  <IsWeaponItem>k__BackingField: 0
+  <WeaponItem>k__BackingField:
+    <WeaponId>k__BackingField: 0
