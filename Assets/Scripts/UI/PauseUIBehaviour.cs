@@ -8,6 +8,7 @@ public class PauseUIBehaviour : MonoBehaviour
     [field: SerializeField] public Slider MasterVolumeSlider { get; private set; }
     [field: SerializeField] public Slider MusicVolumeSlider { get; private set; }
     [field: SerializeField] public Slider SFXVolumeSlider { get; private set; }
+    [field: SerializeField] public Button QuitToDesktopButton { get; private set; }
 
     PauseMenu pauseMenu;
 
@@ -19,6 +20,7 @@ public class PauseUIBehaviour : MonoBehaviour
             MasterVolumeSlider,
             MusicVolumeSlider,
             SFXVolumeSlider,
+            QuitToDesktopButton,
             settings
         );
     }

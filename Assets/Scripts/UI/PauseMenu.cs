@@ -20,6 +20,7 @@ public class PauseMenu
     readonly Slider masterVolumeSlider;
     readonly Slider musicVolumeSlider;
     readonly Slider sFXVolumeSlider;
+    readonly Button quitToDesktopButton;
     readonly GameSettings settings;
 
     bool enabled;
@@ -29,6 +30,7 @@ public class PauseMenu
         Slider masterVolumeSlider,
         Slider musicVolumeSlider,
         Slider sFXVolumeSlider,
+        Button quitToDesktopButton,
         GameSettings settings
     )
     {
@@ -36,12 +38,13 @@ public class PauseMenu
         this.masterVolumeSlider = masterVolumeSlider;
         this.musicVolumeSlider = musicVolumeSlider;
         this.sFXVolumeSlider = sFXVolumeSlider;
-
+        this.quitToDesktopButton = quitToDesktopButton;
+        this.settings = settings;
         mouseSensitivitySlider.onValueChanged.AddListener(HandleMouseSensitivityChanged);
         masterVolumeSlider.onValueChanged.AddListener(HandleMasterVolumeChanged);
         musicVolumeSlider.onValueChanged.AddListener(HandleMusicVolumeChanged);
         sFXVolumeSlider.onValueChanged.AddListener(HandleSFXVolumeChanged);
-        this.settings = settings;
+        quitToDesktopButton.onClick.AddListener(HandleQuitToDesktopButtonClicked);
     }
 
     public void Toggle ()
@@ -83,5 +86,10 @@ public class PauseMenu
     {
         settings.MouseSensitivity = sensitivity;
         settings.RaiseOnUpdated();
+    }
+
+    void HandleQuitToDesktopButtonClicked ()
+    {
+        Application.Quit();
     }
 }
