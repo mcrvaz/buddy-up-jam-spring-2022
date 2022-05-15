@@ -24,6 +24,8 @@ public class PlayerWeapon
         SetupWeapons();
     }
 
+    public bool HasWeapon (WeaponId id) => acquiredWeapons.Contains(id);
+
     public void EarnWeapon (WeaponId weaponId, bool autoSwitch)
     {
         acquiredWeapons.Add(weaponId);

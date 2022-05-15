@@ -17,6 +17,35 @@ public class ItemPurchaseFulfillment
             GrantWeapon(settings.WeaponItem);
     }
 
+    public bool CanFulfill (ItemSaleSettings settings)
+    {
+        if (settings.IsAmmoItem)
+            return CanGrantAmmo(settings.AmmoItem);
+        if (settings.IsHealthItem)
+            return CanGrantHealth(settings.HealthItem);
+        if (settings.IsWeaponItem)
+            return CanGrantWeapon(settings.WeaponItem);
+        return false;
+    }
+
+    bool CanGrantAmmo (AmmoItem ammoItem)
+    {
+        var weapon = player.Player.GetWeapon(ammoItem.WeaponId);
+        if (!player.PlayerWeapon.HasWeapon(ammoItem.WeaponId))
+            return false;
+        return weapon.CurrentAmmo < weapon.MaxAmmo;
+    }
+
+    bool CanGrantHealth (HealthItem healthItem)
+    {
+        return player.Health.Current < player.Health.MaxHealth;
+    }
+
+    bool CanGrantWeapon (WeaponItem weaponItem)
+    {
+        return player.PlayerWeapon.HasWeapon(weaponItem.WeaponId);
+    }
+
     void GrantHealth (HealthItem healthItem)
     {
         player.Player.Health.RestoreHealth(healthItem.Amount);

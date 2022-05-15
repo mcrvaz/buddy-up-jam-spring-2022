@@ -35,6 +35,8 @@ public class ItemSale
 
     void PurchaseActiveItem ()
     {
+        if (!fulfillment.CanFulfill(settings))
+            return;
         if (!currency.Spend(settings.Price))
             return;
         fulfillment.GrantReward(settings);
