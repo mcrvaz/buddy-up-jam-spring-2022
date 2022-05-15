@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d68b3010520646acfc9325f63e9f6, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  <EnemyCount>k__BackingField: 1
+  <EnemyCount>k__BackingField: 100
   <SpawnRate>k__BackingField:
     serializedVersion: 2
     m_Curve:
