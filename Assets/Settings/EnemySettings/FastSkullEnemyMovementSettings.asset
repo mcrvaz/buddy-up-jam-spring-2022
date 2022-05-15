@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FastSkullEnemyMovementSettings
   m_EditorClassIdentifier: 
   <FlyingSpeedModifier>k__BackingField: 0
-  <ForwardSpeed>k__BackingField: 14
+  <ForwardSpeed>k__BackingField: 18
   <BackwardSpeed>k__BackingField: 1
   <MaxJumpCount>k__BackingField: 1
   <GravityModifier>k__BackingField: 2
-  <Acceleration>k__BackingField: 8
+  <Acceleration>k__BackingField: 10
   <JumpForce>k__BackingField: 0

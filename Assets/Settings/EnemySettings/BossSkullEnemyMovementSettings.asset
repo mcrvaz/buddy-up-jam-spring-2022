@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossSkullEnemyMovementSettings
   m_EditorClassIdentifier: 
   <FlyingSpeedModifier>k__BackingField: 0
-  <ForwardSpeed>k__BackingField: 12
+  <ForwardSpeed>k__BackingField: 15
   <BackwardSpeed>k__BackingField: 1
   <MaxJumpCount>k__BackingField: 1
   <GravityModifier>k__BackingField: 2

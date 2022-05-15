@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e5de24c753d0546b3af5cb03afbf83, type: 3}
   m_Name: BigSkullEnemySettings
   m_EditorClassIdentifier: 
-  <MovementSettings>k__BackingField: {fileID: 11400000, guid: 446668c9b6e949443834c3196214807d, type: 2}
-  <HealthSettings>k__BackingField: {fileID: 11400000, guid: 433b236f66583a149b3fff0a63b84392, type: 2}
+  <MovementSettings>k__BackingField: {fileID: 11400000, guid: 6cb11ed88f1b0ed41bc51821171d62e2, type: 2}
+  <HealthSettings>k__BackingField: {fileID: 11400000, guid: eeeec8066e8eb994eaaf041c690962ef, type: 2}
   <AttackInterval>k__BackingField: 1
   <PauseTimeAfterHit>k__BackingField: 1
   <PushForceOnHit>k__BackingField: 0
