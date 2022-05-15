@@ -7,7 +7,7 @@ public class AmmoCounterBehaviour : MonoBehaviour
 
     public AmmoCounter AmmoCounter { get; private set; }
 
-    private PlayerBehaviour playerBehaviour;
+    PlayerBehaviour playerBehaviour;
 
     void Awake ()
     {
