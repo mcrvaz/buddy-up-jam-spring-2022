@@ -4016,9 +4016,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5526009254120959687}
     m_Modifications:
+    - target: {fileID: 2993815442801043686, guid: 5d4fa8060b869a9419ce9f4a60992868, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4665847508815284600, guid: 5d4fa8060b869a9419ce9f4a60992868, type: 3}
       propertyPath: m_Name
       value: Cactus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665847508815284600, guid: 5d4fa8060b869a9419ce9f4a60992868, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7207253679008801427, guid: 5d4fa8060b869a9419ce9f4a60992868, type: 3}
       propertyPath: m_RootOrder
@@ -4148,9 +4156,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5526009254120959687}
     m_Modifications:
+    - target: {fileID: 858700254454188896, guid: 3fadace6453593e4ab8ace1f1e70148f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6244697421215709324, guid: 3fadace6453593e4ab8ace1f1e70148f, type: 3}
       propertyPath: m_Name
       value: Cactus_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244697421215709324, guid: 3fadace6453593e4ab8ace1f1e70148f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6402449422934073280, guid: 3fadace6453593e4ab8ace1f1e70148f, type: 3}
       propertyPath: m_RootOrder
