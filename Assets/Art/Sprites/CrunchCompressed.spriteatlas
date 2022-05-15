@@ -51,18 +51,12 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 84f667a0eed51a340b7b37327afb72ea, type: 3}
-  - {fileID: 21300000, guid: 9b901b0342008d345a7c96c77616dfe5, type: 3}
   - {fileID: 21300000, guid: fa0c219867d3b7b48bdefe7bc0498b20, type: 3}
   - {fileID: 21300000, guid: 0da3e359a2a60ee4097fa81e0a0b1fb3, type: 3}
-  - {fileID: 21300000, guid: 68cef85cfa552464f88ba9a35be5f791, type: 3}
-  - {fileID: 21300000, guid: 897c940d4f80914439b9311919052a69, type: 3}
   m_PackedSpriteNamesToIndex:
   - Inventory_Bullet
-  - Modifiers_Accuracy
   - Elements_Life
   - Square_Basic
-  - Square_Rounded
-  - Crosshair
   m_RenderDataMap: {}
   m_Tag: CrunchCompressed
   m_IsVariant: 0

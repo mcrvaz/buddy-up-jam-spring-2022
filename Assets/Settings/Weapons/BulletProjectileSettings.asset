@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d4d749a4dcd534f8430284c33b7502, type: 3}
   m_Name: BulletProjectileSettings
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 95
+  <Speed>k__BackingField: 125
   <TimeToLive>k__BackingField: 5
   <PenetrationCount>k__BackingField: 0
