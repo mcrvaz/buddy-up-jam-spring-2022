@@ -61,7 +61,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 42762294454978231}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2
+  m_Radius: 2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -70,7 +70,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 3.5
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8238108510370396188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0.008}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -247,8 +247,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.77
-  m_Center: {x: -0.04, y: 0.1, z: -0.18}
+  m_Radius: 2.12
+  m_Center: {x: 0, y: 0.21, z: -0.47}
 --- !u!114 &2544380768593882465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,15 +279,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3563702557892477902, guid: eca645bde13814a43a56be57e1f6b252, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3563702557892477902, guid: eca645bde13814a43a56be57e1f6b252, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3563702557892477902, guid: eca645bde13814a43a56be57e1f6b252, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3563702557892477902, guid: eca645bde13814a43a56be57e1f6b252, type: 3}
       propertyPath: m_LocalPosition.x
@@ -329,6 +329,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8894885289018591621, guid: eca645bde13814a43a56be57e1f6b252, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 512fc92679446d34497bff4a999ef2e5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eca645bde13814a43a56be57e1f6b252, type: 3}
 --- !u!4 &1347258031253374131 stripped

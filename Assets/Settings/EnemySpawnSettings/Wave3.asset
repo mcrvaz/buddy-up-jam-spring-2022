@@ -40,6 +40,8 @@ MonoBehaviour:
   <Duration>k__BackingField: 300
   <EnemyChances>k__BackingField:
   - <EnemyPrefab>k__BackingField: {fileID: 4477151904738796363, guid: 0bf29ec033c8f0d4da8cfbcb7fba5bcf, type: 3}
-    <Chance>k__BackingField: 0.8
+    <Chance>k__BackingField: 0.3333
   - <EnemyPrefab>k__BackingField: {fileID: 42762294454978224, guid: ead078a54be02fd4ebdbaf167d730ebd, type: 3}
-    <Chance>k__BackingField: 0.4
+    <Chance>k__BackingField: 0.3333
+  - <EnemyPrefab>k__BackingField: {fileID: 3094219500949401021, guid: c024c06fcaae1e14eb9c3aeaa06777bd, type: 3}
+    <Chance>k__BackingField: 0.3333

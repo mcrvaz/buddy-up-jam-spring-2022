@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e5de24c753d0546b3af5cb03afbf83, type: 3}
+  m_Name: FastSkullEnemySettings
+  m_EditorClassIdentifier: 
+  <MovementSettings>k__BackingField: {fileID: 11400000, guid: 89401344f112aac4bae00539de0e2cf9, type: 2}
+  <HealthSettings>k__BackingField: {fileID: 11400000, guid: ae7a5c92aed300e468ad3ea0d465a145, type: 2}
+  <AttackInterval>k__BackingField: 1
+  <PauseTimeAfterHit>k__BackingField: 1
+  <PushForceOnHit>k__BackingField: 0
+  <CurrencyReward>k__BackingField: 10
+  <Damage>k__BackingField: 23

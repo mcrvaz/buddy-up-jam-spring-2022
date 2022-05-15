@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11d2dc95e3f80fe43acd8c6c17146ba2, type: 3}
-  m_Name: BasicEnemyHealthSettings
+  m_Name: BossSkullEnemyHealthSettings
   m_EditorClassIdentifier: 
-  <InitialHealth>k__BackingField: 1
-  <MaxHealth>k__BackingField: 1
+  <InitialHealth>k__BackingField: 500
+  <MaxHealth>k__BackingField: 500
   <InvulnerabilityTime>k__BackingField: 0
+  <BodyPartDamageSettings>k__BackingField:
+    <Entries>k__BackingField: []

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e5de24c753d0546b3af5cb03afbf83, type: 3}
+  m_Name: BossSkullEnemySettings
+  m_EditorClassIdentifier: 
+  <MovementSettings>k__BackingField: {fileID: 11400000, guid: fe2b034fad5707e4698e7d3326cc753e, type: 2}
+  <HealthSettings>k__BackingField: {fileID: 11400000, guid: 8ce1a98ba3c509e4b8029d54482fcac6, type: 2}
+  <AttackInterval>k__BackingField: 1
+  <PauseTimeAfterHit>k__BackingField: 1
+  <PushForceOnHit>k__BackingField: 0
+  <CurrencyReward>k__BackingField: 10
+  <Damage>k__BackingField: 30
