@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyAnimation
 {
     const float DEATH_ANIMATION_TIME = 1.5f;
+    const float SPAWN_ANIMATION_TIME = 1.5f;
 
     const string IDLE = "Armature|Skull_Hunting";
     const string STRIKE = "Armature|Skull_Strike";
@@ -29,6 +30,7 @@ public class EnemyAnimation
     public void Start ()
     {
         animation.PlayRandomStart(IDLE);
+        coroutineRunner.StartCoroutine(SpawnRoutine());
     }
 
     void HandleCloseToPlayer (Enemy enemy)
@@ -62,6 +64,19 @@ public class EnemyAnimation
             t += Time.deltaTime;
             ratio = t / DEATH_ANIMATION_TIME;
             renderer.material.SetFloat("_Dissolve", ratio);
+            yield return null;
+        }
+    }
+
+    IEnumerator SpawnRoutine ()
+    {
+        float t = 0;
+        float ratio;
+        while (t < SPAWN_ANIMATION_TIME)
+        {
+            t += Time.deltaTime;
+            ratio = t / SPAWN_ANIMATION_TIME;
+            renderer.material.SetFloat("_Dissolve", 1 - ratio);
             yield return null;
         }
     }
