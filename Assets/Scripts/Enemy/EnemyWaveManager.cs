@@ -64,7 +64,7 @@ public class EnemyWaveManager
 
     void HandleLiveEnemyCountChanged ()
     {
-        if (spawner.LiveEnemiesCount == 0)
+        if (!spawner.IsSpawning && spawner.LiveEnemiesCount == 0)
             HandleWaveEnded();
     }
 
