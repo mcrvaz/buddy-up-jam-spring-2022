@@ -27,6 +27,6 @@ public class KillCounter
 
     void UpdateKillCounter ()
     {
-        ammoText.text = counter.ToString();
+        ammoText.text = $"{counter}/1000";
     }
 }
