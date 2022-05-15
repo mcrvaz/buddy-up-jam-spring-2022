@@ -5,7 +5,7 @@ public class WaveIntervalUI
 {
     const float WAVE_ENDED_TEXT_DURATION = 2f;
     const string TIME_LEFT_TEXT = "Next wave starts in {0}";
-    const string WAVE_COMPLETED_TEXT = "Wave completed!";
+    const string WAVE_COMPLETED_TEXT = "Wave completed! Buy items in shop!";
     const string VICTORY_TEXT = "Victory!";
 
     readonly GameObject waveIntervalPanel;

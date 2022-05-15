@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d68b3010520646acfc9325f63e9f6, type: 3}
   m_Name: Wave3
   m_EditorClassIdentifier: 
-  <EnemyCount>k__BackingField: 1000
+  <EnemyCount>k__BackingField: 600
   <SpawnRate>k__BackingField:
     serializedVersion: 2
     m_Curve:
@@ -45,3 +45,5 @@ MonoBehaviour:
     <Chance>k__BackingField: 0.3333
   - <EnemyPrefab>k__BackingField: {fileID: 3094219500949401021, guid: c024c06fcaae1e14eb9c3aeaa06777bd, type: 3}
     <Chance>k__BackingField: 0.3333
+  - <EnemyPrefab>k__BackingField: {fileID: 7743871445093610699, guid: ddadd23bbcff3a94ca8f6ca01cb198b9, type: 3}
+    <Chance>k__BackingField: 0.1

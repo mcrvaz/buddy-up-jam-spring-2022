@@ -56,7 +56,7 @@ public class ShopBehaviour : MonoBehaviour
     void HandleWaveStarted ()
     {
         enabled = false;
-        // ShopDoor.SetActive(true);
+        ShopDoor.SetActive(true);
         TeleportPlayerOutOfShop();
     }
 

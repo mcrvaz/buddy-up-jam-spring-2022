@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d2dc95e3f80fe43acd8c6c17146ba2, type: 3}
   m_Name: BigSkullEnemyHealthSettings
   m_EditorClassIdentifier: 
-  <InitialHealth>k__BackingField: 70
-  <MaxHealth>k__BackingField: 70
+  <InitialHealth>k__BackingField: 80
+  <MaxHealth>k__BackingField: 80
   <InvulnerabilityTime>k__BackingField: 0
   <BodyPartDamageSettings>k__BackingField:
     <Entries>k__BackingField: []

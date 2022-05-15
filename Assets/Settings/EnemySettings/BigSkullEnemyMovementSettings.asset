@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BigSkullEnemyMovementSettings
   m_EditorClassIdentifier: 
   <FlyingSpeedModifier>k__BackingField: 0
-  <ForwardSpeed>k__BackingField: 5
+  <ForwardSpeed>k__BackingField: 6
   <BackwardSpeed>k__BackingField: 1
   <MaxJumpCount>k__BackingField: 1
   <GravityModifier>k__BackingField: 2
-  <Acceleration>k__BackingField: 5
+  <Acceleration>k__BackingField: 6
   <JumpForce>k__BackingField: 0
