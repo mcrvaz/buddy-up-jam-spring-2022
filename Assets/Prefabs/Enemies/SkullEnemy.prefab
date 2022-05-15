@@ -345,6 +345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skull
       objectReference: {fileID: 0}
+    - target: {fileID: 2223639932434330405, guid: 72d0fa5f16b927845927e44d5cbbb21d, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: -8974508581490693175, guid: 72d0fa5f16b927845927e44d5cbbb21d, type: 3}
     - target: {fileID: 8879528566716807029, guid: 72d0fa5f16b927845927e44d5cbbb21d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
