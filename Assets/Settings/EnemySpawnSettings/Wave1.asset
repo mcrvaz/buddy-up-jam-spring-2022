@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d68b3010520646acfc9325f63e9f6, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  <EnemyCount>k__BackingField: 100
+  <EnemyCount>k__BackingField: 75
   <SpawnRate>k__BackingField:
     serializedVersion: 2
     m_Curve:
@@ -37,7 +37,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  <Duration>k__BackingField: 300
+  <Duration>k__BackingField: 120
   <EnemyChances>k__BackingField:
   - <EnemyPrefab>k__BackingField: {fileID: 4477151904738796363, guid: 0bf29ec033c8f0d4da8cfbcb7fba5bcf, type: 3}
     <Chance>k__BackingField: 0.8
