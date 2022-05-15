@@ -17,5 +17,5 @@ MonoBehaviour:
   <AttackInterval>k__BackingField: 1
   <PauseTimeAfterHit>k__BackingField: 1
   <PushForceOnHit>k__BackingField: 0
-  <CurrencyReward>k__BackingField: 100
+  <CurrencyReward>k__BackingField: 120
   <Damage>k__BackingField: 40

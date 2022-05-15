@@ -149,7 +149,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &5856998010094067363
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -160,10 +160,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 4
+  m_Radius: 1.2
+  m_Height: 8
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -1.5}
 --- !u!96 &5686529886471535419
 TrailRenderer:
   serializedVersion: 2

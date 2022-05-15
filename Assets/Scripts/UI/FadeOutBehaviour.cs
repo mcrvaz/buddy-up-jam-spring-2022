@@ -19,11 +19,13 @@ public class FadeOutBehaviour : MonoBehaviour
     {
         if (fadeRoutine != null)
             StopCoroutine(fadeRoutine);
-        StartCoroutine(PlayAndDisable());
+        FadeOut.SetActive(true);
+        fadeRoutine = StartCoroutine(PlayAndDisable());
     }
 
     IEnumerator PlayAndDisable ()
     {
         yield return Animation.PlayAndWait(FADE_OUT);
+        FadeOut.SetActive(false);
     }
 }

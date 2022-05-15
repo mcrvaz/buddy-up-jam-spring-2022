@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4477151904738796363, guid: 0bf29ec033c8f0d4da8cfbcb7fba5bcf, type: 3}
+      propertyPath: <Settings>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fcd5337f6f67d44e8c298e7546f6dbf, type: 2}
     - target: {fileID: 4477151904738796364, guid: 0bf29ec033c8f0d4da8cfbcb7fba5bcf, type: 3}
       propertyPath: m_Name
       value: BossSkullEnemy

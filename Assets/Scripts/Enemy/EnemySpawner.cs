@@ -9,6 +9,7 @@ public class EnemySpawner
     public event Action OnEnemyCountChanged;
 
     public int LiveEnemiesCount => liveEnemies.Count;
+    public bool IsSpawning => !waveSpawnEnded;
 
     float TimeSinceWaveStart => Time.time - currentWaveStartTime;
 

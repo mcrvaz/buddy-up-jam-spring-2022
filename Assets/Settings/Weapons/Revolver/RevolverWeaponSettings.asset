@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <WeaponId>k__BackingField: 1
   <Damage>k__BackingField: 20
-  <StartingAmmo>k__BackingField: 120
+  <StartingAmmo>k__BackingField: 240
   <MaxAmmo>k__BackingField: 800
   <RoundsPerClip>k__BackingField: 8
   <ProjectileCount>k__BackingField: 1
   <ReloadTime>k__BackingField: 1
-  <IntervalBetweenShots>k__BackingField: 0.3
+  <IntervalBetweenShots>k__BackingField: 0.25
   <ProjectilePrefab>k__BackingField: {fileID: 4984771367537914353, guid: 132d7257991ed5f4d8565c2348a5397e, type: 3}
   <SwapInTime>k__BackingField: 0.25
   <SwapOutTime>k__BackingField: 0.25

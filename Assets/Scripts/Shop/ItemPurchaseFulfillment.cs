@@ -43,7 +43,7 @@ public class ItemPurchaseFulfillment
 
     bool CanGrantWeapon (WeaponItem weaponItem)
     {
-        return player.PlayerWeapon.HasWeapon(weaponItem.WeaponId);
+        return !player.PlayerWeapon.HasWeapon(weaponItem.WeaponId);
     }
 
     void GrantHealth (HealthItem healthItem)
