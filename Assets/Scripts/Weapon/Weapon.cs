@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Weapon : IWeapon
 {
-    public event Action OnAmmoUpdated;
+    public event Action OnAmmoUpdated
+    {
+        add => weaponAmmo.OnAmmoUpdated += value;
+        remove => weaponAmmo.OnAmmoUpdated -= value;
+    }
     public event Action<float> OnReloadStart;
     public event Action OnReloadEnd;
     public event Action OnShoot;
@@ -17,10 +21,11 @@ public class Weapon : IWeapon
     public event Action<IWeapon> OnSwapInEnded;
 
     public WeaponId WeaponId => settings.WeaponId;
-    public int CurrentAmmo { get; private set; }
-    public int MaxAmmo => settings.MaxAmmo;
-    public int RoundsInClip { get; private set; }
-    public int RoundsPerClip => settings.RoundsPerClip;
+    public int CurrentAmmo => weaponAmmo.CurrentAmmo;
+    public int MaxAmmo => weaponAmmo.MaxAmmo;
+    public int RoundsInClip => weaponAmmo.RoundsInClip;
+    public int RoundsPerClip => weaponAmmo.RoundsPerClip;
+
     public int Damage => settings.Damage;
     public float SwapInTime => settings.SwapInTime;
     public float SwapOutTime => settings.SwapOutTime;
@@ -51,6 +56,8 @@ public class Weapon : IWeapon
     protected readonly Camera camera;
     protected readonly CameraShake cameraShake;
 
+    readonly WeaponAmmo weaponAmmo;
+
     float nextShotTime = float.MinValue;
     float swapInEndTime = float.MinValue;
     float swapOutEndTime = float.MinValue;
@@ -77,7 +84,9 @@ public class Weapon : IWeapon
         this.coroutineRunner = coroutineRunner;
         this.camera = camera;
         this.cameraShake = cameraShake;
-        SetupInitialAmmo();
+
+        weaponAmmo = new WeaponAmmo(settings);
+        weaponAmmo.SetupInitialAmmo();
     }
 
     public void Start ()
@@ -109,7 +118,7 @@ public class Weapon : IWeapon
 
         for (int i = 0; i < settings.ProjectileCount; i++)
         {
-            if (!ConsumeAmmo())
+            if (!weaponAmmo.ConsumeAmmo())
             {
                 OnEmptyAmmoFire?.Invoke();
                 return;
@@ -126,9 +135,7 @@ public class Weapon : IWeapon
 
     public void RestoreAmmo (int amount)
     {
-        CurrentAmmo = Mathf.Min(CurrentAmmo + amount, MaxAmmo);
-        OnAmmoUpdated?.Invoke();
-
+        weaponAmmo.RestoreAmmo(amount);
         if (RoundsInClip <= 0)
             Reload();
     }
@@ -138,6 +145,8 @@ public class Weapon : IWeapon
         if (isReloading)
             return;
         if (RoundsInClip == RoundsPerClip)
+            return;
+        if (CurrentAmmo == 0)
             return;
         StartReloadRoutine();
     }
@@ -199,30 +208,10 @@ public class Weapon : IWeapon
             coroutineRunner.StopCoroutine(reloadRoutine);
     }
 
-    bool ConsumeAmmo ()
-    {
-        if (RoundsInClip <= 0)
-            return false;
-
-        RoundsInClip--;
-        OnAmmoUpdated?.Invoke();
-        return true;
-    }
-
     void ReloadClip ()
     {
-        int diff = RoundsPerClip - RoundsInClip;
-        RoundsInClip = Mathf.Min(CurrentAmmo, RoundsPerClip);
-        CurrentAmmo = Mathf.Max(0, CurrentAmmo - diff);
-        OnAmmoUpdated?.Invoke();
+        weaponAmmo.ReloadClip();
         OnReloadEnd?.Invoke();
-    }
-
-    void SetupInitialAmmo ()
-    {
-        CurrentAmmo = settings.StartingAmmo;
-        ReloadClip();
-        OnAmmoUpdated?.Invoke();
     }
 
     IEnumerator SwapOutRoutine ()
