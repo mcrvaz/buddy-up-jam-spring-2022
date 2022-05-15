@@ -1,12 +1,10 @@
 {
-    "name": "Runtime",
+    "name": "Editor",
     "rootNamespace": "",
-    "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:f41419f8e811fab40886edab77e95a3a",
-        "GUID:df380645f10b7bc4b97d4f5eb6303d95"
+    "references": [],
+    "includePlatforms": [
+        "Editor"
     ],
-    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
