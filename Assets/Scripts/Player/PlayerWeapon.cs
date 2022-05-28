@@ -1,26 +1,33 @@
 using System;
 using System.Collections.Generic;
+using VContainer.Unity;
 
-public class PlayerWeapon
+public class PlayerWeapon : IStartable
 {
     public event Action OnWeaponChanged;
 
     public IWeapon ActiveWeapon { get; private set; }
     public int HandleSwapOutEnd { get; private set; }
 
+    IReadOnlyList<IWeaponBehaviour> WeaponBehaviours => weaponCollection.Weapons;
+
+    readonly WeaponCollection weaponCollection;
     readonly List<WeaponId> acquiredWeapons = new List<WeaponId>();
-    readonly IReadOnlyList<IWeaponBehaviour> weaponBehaviours;
     readonly PlayerSettings settings;
 
     IWeapon newWeapon;
 
     public PlayerWeapon (
-        IReadOnlyList<IWeaponBehaviour> weaponBehaviours,
+        WeaponCollection weaponCollection,
         PlayerSettings settings
     )
     {
-        this.weaponBehaviours = weaponBehaviours;
+        this.weaponCollection = weaponCollection;
         this.settings = settings;
+    }
+
+    public void Start ()
+    {
         SetupWeapons();
     }
 
@@ -57,7 +64,7 @@ public class PlayerWeapon
 
     public IWeapon GetWeapon (WeaponId weaponId)
     {
-        foreach (var item in weaponBehaviours)
+        foreach (var item in WeaponBehaviours)
         {
             if (item.Weapon.WeaponId == weaponId)
                 return item.Weapon;
@@ -82,7 +89,7 @@ public class PlayerWeapon
 
     void HandleSwapInEnded (IWeapon weapon)
     {
-        foreach (var item in weaponBehaviours)
+        foreach (var item in WeaponBehaviours)
         {
             if (item.Weapon.WeaponId == weapon.WeaponId)
                 item.SetActive(true);
@@ -92,7 +99,7 @@ public class PlayerWeapon
 
     void HandleSwapOutEnded (IWeapon weapon)
     {
-        foreach (var item in weaponBehaviours)
+        foreach (var item in WeaponBehaviours)
         {
             if (item.Weapon.WeaponId == weapon.WeaponId)
             {
@@ -107,7 +114,7 @@ public class PlayerWeapon
     {
         if (!acquiredWeapons.Contains(weaponId))
             return;
-        foreach (var item in weaponBehaviours)
+        foreach (var item in WeaponBehaviours)
             item.SetActive(item.Weapon.WeaponId == weaponId);
         ActiveWeapon = GetWeapon(weaponId);
         if (swapIn)

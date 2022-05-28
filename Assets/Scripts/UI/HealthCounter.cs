@@ -1,20 +1,31 @@
-using TMPro;
+using System;
+using VContainer.Unity;
 
-public class HealthCounter
+public class HealthCounter : IInitializable, IDisposable
 {
-    readonly Health playerHealth;
-    readonly TextMeshProUGUI healthText;
+    public event Action<string> OnValueChanged;
 
-    public HealthCounter (Health playerHealth, TextMeshProUGUI healthText)
+    public string Value => $"{playerHealth.Current}";
+
+    readonly Health playerHealth;
+
+    public HealthCounter (Health playerHealth)
     {
         this.playerHealth = playerHealth;
-        this.healthText = healthText;
+    }
+
+    public void Initialize ()
+    {
         playerHealth.OnHealthChanged += HandleHealthChanged;
-        HandleHealthChanged(0, playerHealth.Current);
     }
 
     void HandleHealthChanged (float previous, float current)
     {
-        healthText.text = $"{current}";
+        OnValueChanged?.Invoke(Value);
+    }
+
+    public void Dispose ()
+    {
+        playerHealth.OnHealthChanged -= HandleHealthChanged;
     }
 }

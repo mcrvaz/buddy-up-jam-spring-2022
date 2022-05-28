@@ -6,13 +6,14 @@ public class HealthCounterBehaviour : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI healthText;
 
-    public HealthCounter HealthCounter { get; private set; }
-
     [Inject]
-    PlayerBehaviour playerBehaviour;
+    readonly HealthCounter healthCounter;
 
     void Start ()
     {
-        HealthCounter = new HealthCounter(playerBehaviour.Health, healthText);
+        healthCounter.OnValueChanged += UpdateText;
+        UpdateText(healthCounter.Value);
     }
+
+    void UpdateText (string text) => healthText.text = text;
 }

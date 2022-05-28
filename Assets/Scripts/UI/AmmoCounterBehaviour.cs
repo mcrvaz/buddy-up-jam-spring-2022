@@ -6,14 +6,14 @@ public class AmmoCounterBehaviour : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI ammoText;
 
-    public AmmoCounter AmmoCounter { get; private set; }
-
     [Inject]
-    readonly PlayerBehaviour playerBehaviour;
+    readonly AmmoCounter ammoCounter;
 
     void Start ()
     {
-        AmmoCounter = new AmmoCounter(playerBehaviour.PlayerWeapon, ammoText);
-        AmmoCounter.Start();
+        ammoCounter.OnValueChanged += UpdateText;
+        UpdateText(ammoCounter.Value);
     }
+
+    void UpdateText (string text) => ammoText.text = text;
 }

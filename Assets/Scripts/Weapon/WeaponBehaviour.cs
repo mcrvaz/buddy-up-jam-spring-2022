@@ -1,5 +1,4 @@
 using UnityEngine;
-using VContainer;
 
 public abstract class WeaponBehaviour<T> : MonoBehaviour, IWeaponBehaviour where T : Weapon
 {
@@ -12,8 +11,8 @@ public abstract class WeaponBehaviour<T> : MonoBehaviour, IWeaponBehaviour where
     public WeaponAnimation WeaponAnimation { get; private set; }
     public WeaponSoundManager WeaponSounds { get; private set; }
 
-    [Inject] protected PlayerBehaviour playerBehaviour;
-    [Inject] protected GameAudioBehaviour audioBehaviour;
+    protected PlayerBehaviour playerBehaviour;
+    protected GameAudioBehaviour audioBehaviour;
 
     void Awake ()
     {

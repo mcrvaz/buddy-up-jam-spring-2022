@@ -24,11 +24,6 @@ public class KillCounter : IInitializable, IDisposable
     void HandleEnemyDeath (Enemy enemy)
     {
         counter++;
-        UpdateKillCounter();
-    }
-
-    void UpdateKillCounter ()
-    {
         OnValueChanged?.Invoke(Value);
     }
 

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
@@ -14,12 +13,17 @@ public class PlayerBehaviour : MonoBehaviour
     [field: SerializeField] public AudioSource PlayerAudioSource { get; private set; }
     [field: SerializeField] public AudioSource PlayerFootstepsAudioSource { get; private set; }
 
+    [Inject]
+    public Health Health { get; private set; }
+    [Inject]
+    public WeaponCollection WeaponCollection { get; private set; }
+    [Inject]
+    public PlayerAction PlayerAction { get; private set; }
+    [Inject]
+    public PlayerWeapon PlayerWeapon { get; private set; }
+
     public PlayerMovement PlayerMovement { get; private set; }
     public PlayerRotation PlayerRotation { get; private set; }
-    public PlayerWeapon PlayerWeapon { get; private set; }
-    public PlayerAction PlayerAction { get; private set; }
-    public Health Health { get; private set; }
-    public IReadOnlyList<IWeaponBehaviour> WeaponBehaviours { get; private set; }
     public PlayerWeapon Weapon { get; private set; }
     public Player Player { get; private set; }
     public CurrencyManager Currency { get; private set; }
@@ -30,8 +34,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Awake ()
     {
-        WeaponBehaviours = GetComponentsInChildren<IWeaponBehaviour>();
-        Health = new Health(Settings.HealthSettings);
         PlayerMovement = new PlayerMovement(
             transform,
             Settings.MovementSettings,
@@ -39,8 +41,6 @@ public class PlayerBehaviour : MonoBehaviour
             Rigidbody
         );
         PlayerRotation = new PlayerRotation(Rigidbody, GameSettings, InputManager.Instance);
-        PlayerWeapon = new PlayerWeapon(WeaponBehaviours, Settings);
-        PlayerAction = new PlayerAction(InputManager.Instance, PlayerWeapon);
         Player = new Player(
             PlayerMovement,
             PlayerRotation,

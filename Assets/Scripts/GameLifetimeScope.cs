@@ -6,18 +6,23 @@ public class GameLifetimeScope : LifetimeScope
 {
     [SerializeField] EnemySpawnerSettings enemySpawnerSettings;
     [SerializeField] CurrencySettings currencySettings;
+    [SerializeField] PlayerSettings playerSettings;
 
     protected override void Configure (IContainerBuilder builder)
     {
+        builder.RegisterEntryPoint<RoundContext>(Lifetime.Scoped);
+
+        builder.RegisterInstance<PlayerSettings>(playerSettings);
+        builder.RegisterInstance<HealthSettings>(playerSettings.HealthSettings);
         builder.RegisterInstance<CurrencySettings>(currencySettings);
         builder.RegisterInstance<EnemySpawnerSettings>(enemySpawnerSettings);
 
+        builder.RegisterComponentInHierarchy<CoroutineRunner>().AsSelf().As<ICoroutineRunner>();
+
         builder.RegisterComponentInHierarchy<GameConfigurationManager>();
         builder.RegisterComponentInHierarchy<GameAudioBehaviour>();
-        builder.RegisterComponentInHierarchy<CoroutineRunner>().AsSelf().As<ICoroutineRunner>();
         builder.RegisterComponentInHierarchy<PlayerBehaviour>();
         builder.RegisterComponentInHierarchy<GameOverBehaviour>();
-        builder.RegisterComponentInHierarchy<HealthCounterBehaviour>();
         builder.RegisterComponentInHierarchy<AmmoCounterBehaviour>();
         builder.RegisterComponentInHierarchy<WaveIntervalUIBehaviour>();
         builder.RegisterComponentInHierarchy<BuyItemTextBehaviour>();
@@ -26,7 +31,13 @@ public class GameLifetimeScope : LifetimeScope
         builder.RegisterComponentInHierarchy<ShopBehaviour>();
         builder.RegisterComponentInHierarchy<RevolverWeaponBehaviour>();
         builder.RegisterComponentInHierarchy<ShotgunWeaponBehaviour>();
+
+        builder.RegisterComponentInHierarchy<WeaponCollection>();
         builder.RegisterComponentInHierarchy<SpawnPointCollection>();
+
+        builder.Register<InputManager>(Lifetime.Scoped);
+        builder.Register<PlayerAction>(Lifetime.Scoped);
+        builder.Register<PlayerWeapon>(Lifetime.Scoped);
 
         builder.Register<CurrencyManager>(Lifetime.Scoped);
         builder.Register<CurrencyCounter>(Lifetime.Scoped);
@@ -38,6 +49,11 @@ public class GameLifetimeScope : LifetimeScope
         builder.Register<KillCounter>(Lifetime.Scoped);
         builder.RegisterComponentInHierarchy<KillCounterBehaviour>();
 
-        builder.RegisterEntryPoint<RoundContext>(Lifetime.Scoped);
+        builder.Register<HealthCounter>(Lifetime.Scoped);
+        builder.Register<Health>(Lifetime.Scoped);
+        builder.RegisterComponentInHierarchy<HealthCounterBehaviour>();
+
+        builder.Register<AmmoCounter>(Lifetime.Scoped);
+        builder.RegisterComponentInHierarchy<AmmoCounterBehaviour>();
     }
 }

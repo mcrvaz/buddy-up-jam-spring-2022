@@ -554,6 +554,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   enemySpawnerSettings: {fileID: 11400000, guid: ff02d35a0b3e9874cbbc0774725925bf, type: 2}
   currencySettings: {fileID: 11400000, guid: 393a3435b2eb0f744b7e010497aac9c8, type: 2}
+  playerSettings: {fileID: 11400000, guid: a3dc7e3fa4564ce4594b106c475531e2, type: 2}
 --- !u!4 &639878556
 Transform:
   m_ObjectHideFlags: 0

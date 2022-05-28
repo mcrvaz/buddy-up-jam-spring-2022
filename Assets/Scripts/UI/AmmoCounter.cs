@@ -1,22 +1,24 @@
-using TMPro;
+using System;
+using VContainer.Unity;
 
-public class AmmoCounter
+public class AmmoCounter : IInitializable, IDisposable
 {
+    public event Action<string> OnValueChanged;
+
+    public string Value => $"{activeWeapon.RoundsInClip}/{activeWeapon.CurrentAmmo}";
+
     readonly PlayerWeapon playerWeapon;
-    readonly TextMeshProUGUI ammoText;
 
     IWeapon activeWeapon;
 
-    public AmmoCounter (PlayerWeapon playerWeapon, TextMeshProUGUI ammoText)
+    public AmmoCounter (PlayerWeapon playerWeapon)
     {
         this.playerWeapon = playerWeapon;
-        this.ammoText = ammoText;
-        playerWeapon.OnWeaponChanged += HandleWeaponChanged;
     }
 
-    public void Start ()
+    public void Initialize ()
     {
-        HandleWeaponChanged();
+        playerWeapon.OnWeaponChanged += HandleWeaponChanged;
     }
 
     void HandleWeaponChanged ()
@@ -31,6 +33,13 @@ public class AmmoCounter
 
     void UpdateAmmoCounter ()
     {
-        ammoText.text = $"{activeWeapon.RoundsInClip}/{activeWeapon.CurrentAmmo}";
+        OnValueChanged?.Invoke(Value);
+    }
+
+    public void Dispose ()
+    {
+        playerWeapon.OnWeaponChanged -= HandleWeaponChanged;
+        if (activeWeapon != null)
+            activeWeapon.OnAmmoUpdated -= UpdateAmmoCounter;
     }
 }
