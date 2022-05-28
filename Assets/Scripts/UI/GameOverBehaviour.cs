@@ -1,20 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VContainer;
 
 public class GameOverBehaviour : MonoBehaviour
 {
     [field: SerializeField] public GameObject GameOverPanel;
     [field: SerializeField] public Button RetryButton;
 
+    [Inject]
     PlayerBehaviour playerBehaviour;
 
     void Awake ()
     {
         RetryButton.onClick.AddListener(HandleRetryClick);
-
-        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
-
         GameOverPanel.SetActive(false);
     }
 

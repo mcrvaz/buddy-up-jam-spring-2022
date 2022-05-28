@@ -1,22 +1,19 @@
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 public class KillCounterBehaviour : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI killCounterText;
 
-    public KillCounter KillCounter { get; private set; }
-
-    EnemyWaveManagerBehaviour playerBehaviour;
-
-    void Awake ()
-    {
-        playerBehaviour = FindObjectOfType<EnemyWaveManagerBehaviour>();
-    }
+    [Inject]
+    readonly KillCounter killCounter;
 
     void Start ()
     {
-        KillCounter = new KillCounter(playerBehaviour.WaveManager, killCounterText);
-        KillCounter.Start();
+        killCounter.OnValueChanged += UpdateText;
+        UpdateText(killCounter.Value);
     }
+
+    void UpdateText (string text) => killCounterText.text = text;
 }

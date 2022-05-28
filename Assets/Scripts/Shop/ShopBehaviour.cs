@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using VContainer;
 
 public class ShopBehaviour : MonoBehaviour
 {
@@ -12,22 +13,23 @@ public class ShopBehaviour : MonoBehaviour
     public ItemSale ItemSale { get; private set; }
     public ItemPurchaseFulfillment PurchaseFulfillment { get; private set; }
 
-    ShopSounds shopSounds;
+    [Inject]
     GameAudioBehaviour audioBehaviour;
+    [Inject]
     PlayerBehaviour playerBehaviour;
-    ItemSaleBehaviour[] itemsOnSale;
-    EnemyWaveManagerBehaviour waveManagerBehaviour;
+    [Inject]
+    EnemyWaveManager waveManager;
+    [Inject]
     FadeOutBehaviour fadeOut;
+
+    ShopSounds shopSounds;
+    ItemSaleBehaviour[] itemsOnSale;
 
     bool playerInsideShop;
 
     void Awake ()
     {
-        audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
-        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
         itemsOnSale = GetComponentsInChildren<ItemSaleBehaviour>();
-        waveManagerBehaviour = FindObjectOfType<EnemyWaveManagerBehaviour>();
-        fadeOut = FindObjectOfType<FadeOutBehaviour>();
         PurchaseFulfillment = new ItemPurchaseFulfillment(playerBehaviour);
 
         var shopTrigger = GetComponentInChildren<TriggerCollider>();
@@ -44,9 +46,9 @@ public class ShopBehaviour : MonoBehaviour
         }
         shopSounds = new ShopSounds(this, audioBehaviour.AudioManager);
 
-        waveManagerBehaviour.WaveManager.OnWaveEnded += HandleWaveEnded;
-        waveManagerBehaviour.WaveManager.OnWaveStarted += HandleWaveStarted;
-        bool waveInProgress = waveManagerBehaviour.WaveManager.IsWaveInProgress;
+        waveManager.OnWaveEnded += HandleWaveEnded;
+        waveManager.OnWaveStarted += HandleWaveStarted;
+        bool waveInProgress = waveManager.IsWaveInProgress;
         if (waveInProgress)
             HandleWaveStarted();
         else

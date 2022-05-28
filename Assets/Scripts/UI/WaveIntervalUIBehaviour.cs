@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 public class WaveIntervalUIBehaviour : MonoBehaviour
 {
@@ -9,11 +10,11 @@ public class WaveIntervalUIBehaviour : MonoBehaviour
 
     public WaveIntervalUI WaveIntervalUI { get; private set; }
 
-    EnemyWaveManagerBehaviour waveManagerBehaviour;
+    [Inject]
+    EnemyWaveManager waveManager;
 
     void Awake ()
     {
-        waveManagerBehaviour = FindObjectOfType<EnemyWaveManagerBehaviour>();
         WaveIntervalPanel.SetActive(false);
     }
 
@@ -23,7 +24,7 @@ public class WaveIntervalUIBehaviour : MonoBehaviour
             WaveIntervalPanel,
             WaveCompletedText,
             TimeLeftText,
-            waveManagerBehaviour.WaveManager
+            waveManager
         );
         WaveIntervalUI.Start();
     }

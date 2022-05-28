@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using VContainer.Unity;
 
-public class EnemyWaveManager
+public class EnemyWaveManager : IStartable, IDisposable
 {
     public event Action OnWaveStarted;
     public event Action OnWaveEnded;
@@ -20,22 +21,25 @@ public class EnemyWaveManager
 
     readonly EnemySpawnerSettings spawnerSettings;
     readonly EnemySpawner spawner;
-    readonly MonoBehaviour coroutineRunner;
+    readonly ICoroutineRunner coroutineRunner;
 
     float nextWaveStartTime;
     int waveIndex;
 
-    public EnemyWaveManager (EnemySpawnerSettings spawnerSettings, EnemySpawner spawner, MonoBehaviour coroutineRunner)
+    public EnemyWaveManager (
+        EnemySpawnerSettings spawnerSettings,
+        EnemySpawner spawner,
+        ICoroutineRunner coroutineRunner
+    )
     {
         this.spawnerSettings = spawnerSettings;
         this.spawner = spawner;
-
-        spawner.OnEnemyCountChanged += HandleLiveEnemyCountChanged;
         this.coroutineRunner = coroutineRunner;
     }
 
     public void Start ()
     {
+        spawner.OnEnemyCountChanged += HandleLiveEnemyCountChanged;
         StartNextWave();
     }
 
@@ -76,5 +80,10 @@ public class EnemyWaveManager
             yield return null;
         }
         StartNextWave();
+    }
+
+    public void Dispose ()
+    {
+        spawner.OnEnemyCountChanged -= HandleLiveEnemyCountChanged;
     }
 }

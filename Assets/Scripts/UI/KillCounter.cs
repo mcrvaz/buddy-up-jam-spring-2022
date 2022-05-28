@@ -1,22 +1,24 @@
-using TMPro;
+using System;
+using VContainer.Unity;
 
-public class KillCounter
+public class KillCounter : IInitializable, IDisposable
 {
+    public event Action<string> OnValueChanged;
+
+    public string Value => $"{counter}/1000";
+
     readonly EnemyWaveManager waveManager;
-    readonly TextMeshProUGUI ammoText;
 
     int counter;
 
-    public KillCounter (EnemyWaveManager waveManager, TextMeshProUGUI ammoText)
+    public KillCounter (EnemyWaveManager waveManager)
     {
         this.waveManager = waveManager;
-        this.ammoText = ammoText;
-        waveManager.OnEnemyDeath += HandleEnemyDeath;
     }
 
-    public void Start ()
+    public void Initialize ()
     {
-        UpdateKillCounter();
+        waveManager.OnEnemyDeath += HandleEnemyDeath;
     }
 
     void HandleEnemyDeath (Enemy enemy)
@@ -27,6 +29,11 @@ public class KillCounter
 
     void UpdateKillCounter ()
     {
-        ammoText.text = $"{counter}/1000";
+        OnValueChanged?.Invoke(Value);
+    }
+
+    public void Dispose ()
+    {
+        waveManager.OnEnemyDeath -= HandleEnemyDeath;
     }
 }

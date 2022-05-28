@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -21,14 +22,14 @@ public class PlayerBehaviour : MonoBehaviour
     public IReadOnlyList<IWeaponBehaviour> WeaponBehaviours { get; private set; }
     public PlayerWeapon Weapon { get; private set; }
     public Player Player { get; private set; }
-    public Currency Currency { get; private set; }
+    public CurrencyManager Currency { get; private set; }
     public PlayerSounds PlayerSounds { get; private set; }
 
+    [Inject]
     GameAudioBehaviour audioBehaviour;
 
     void Awake ()
     {
-        audioBehaviour = FindObjectOfType<GameAudioBehaviour>();
         WeaponBehaviours = GetComponentsInChildren<IWeaponBehaviour>();
         Health = new Health(Settings.HealthSettings);
         PlayerMovement = new PlayerMovement(

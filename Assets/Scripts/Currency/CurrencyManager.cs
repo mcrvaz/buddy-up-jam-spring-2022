@@ -1,27 +1,58 @@
-using UnityEngine;
+using System;
+using VContainer.Unity;
 
-public class CurrencyManager : MonoBehaviour
+public delegate void CurrencyChangedHandler (int previous, int current);
+
+public class CurrencyManager : IStartable, IDisposable
 {
-    [field: SerializeField] public CurrencySettings CurrencySettings { get; private set; }
+    public event CurrencyChangedHandler OnCurrencyChanged;
 
-    public Currency Currency { get; private set; }
+    public int Current { get; private set; }
 
-    EnemyWaveManagerBehaviour enemyWaveManager;
+    readonly CurrencySettings settings;
+    readonly EnemyWaveManager enemyWaveManager;
 
-    void Awake ()
+    public CurrencyManager (
+        CurrencySettings settings,
+        EnemyWaveManager enemyWaveManager
+    )
     {
-        enemyWaveManager = FindObjectOfType<EnemyWaveManagerBehaviour>();
-        Currency = new Currency(CurrencySettings);
+        this.settings = settings;
+        this.enemyWaveManager = enemyWaveManager;
     }
 
-    void Start ()
+    public void Start ()
     {
-        enemyWaveManager.WaveManager.OnEnemyDeath += HandleEnemyDeath;
-        Currency.Start();
+        Current = settings.InitialCurrency;
+        OnCurrencyChanged?.Invoke(0, Current);
+
+        enemyWaveManager.OnEnemyDeath += HandleEnemyDeath;
+    }
+
+    public bool Spend (int value)
+    {
+        if (Current < value)
+            return false;
+        var previous = Current;
+        Current -= value;
+        OnCurrencyChanged?.Invoke(previous, Current);
+        return true;
+    }
+
+    public void Earn (int value)
+    {
+        var previous = Current;
+        Current += value;
+        OnCurrencyChanged?.Invoke(previous, Current);
     }
 
     void HandleEnemyDeath (Enemy enemy)
     {
-        Currency.Earn(enemy.CurrencyReward);
+        Earn(enemy.CurrencyReward);
+    }
+
+    public void Dispose ()
+    {
+        enemyWaveManager.OnEnemyDeath -= HandleEnemyDeath;
     }
 }

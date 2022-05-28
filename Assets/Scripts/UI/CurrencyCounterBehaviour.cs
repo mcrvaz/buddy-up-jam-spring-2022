@@ -1,21 +1,19 @@
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 public class CurrencyCounterBehaviour : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI currencyText;
+    [SerializeField] TextMeshProUGUI currencyCounterText;
 
-    public CurrencyCounter CurrencyCounter { get; private set; }
-
-    CurrencyManager currencyBehaviour;
-
-    void Awake ()
-    {
-        currencyBehaviour = FindObjectOfType<CurrencyManager>();
-    }
+    [Inject]
+    readonly CurrencyCounter currencyCounter;
 
     void Start ()
     {
-        CurrencyCounter = new CurrencyCounter(currencyBehaviour.Currency, currencyText);
+        currencyCounter.OnValueChanged += UpdateText;
+        UpdateText(currencyCounter.Value);
     }
+
+    void UpdateText (string text) => currencyCounterText.text = text;
 }

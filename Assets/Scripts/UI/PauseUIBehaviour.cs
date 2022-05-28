@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 public class PauseUIBehaviour : MonoBehaviour
 {
@@ -10,18 +11,20 @@ public class PauseUIBehaviour : MonoBehaviour
     [field: SerializeField] public Slider SFXVolumeSlider { get; private set; }
     [field: SerializeField] public Button QuitToDesktopButton { get; private set; }
 
+    [Inject]
+    GameConfigurationManager configurationManager;
+
     PauseMenu pauseMenu;
 
     void Awake ()
     {
-        var settings = FindObjectOfType<GameConfigurationManager>().Settings;
         pauseMenu = new PauseMenu(
             MouseSensitivitySlider,
             MasterVolumeSlider,
             MusicVolumeSlider,
             SFXVolumeSlider,
             QuitToDesktopButton,
-            settings
+            configurationManager.Settings
         );
     }
 

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 public class HealthCounterBehaviour : MonoBehaviour
 {
@@ -7,12 +8,8 @@ public class HealthCounterBehaviour : MonoBehaviour
 
     public HealthCounter HealthCounter { get; private set; }
 
-    private PlayerBehaviour playerBehaviour;
-
-    void Awake ()
-    {
-        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
-    }
+    [Inject]
+    PlayerBehaviour playerBehaviour;
 
     void Start ()
     {

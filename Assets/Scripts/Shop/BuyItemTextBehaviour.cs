@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 public class BuyItemTextBehaviour : MonoBehaviour
 {
@@ -13,14 +14,11 @@ public class BuyItemTextBehaviour : MonoBehaviour
     [field: SerializeField] public GameObject BuyItemTextContainer { get; private set; }
     [field: SerializeField] public TextMeshProUGUI BuyItemText { get; private set; }
 
+    [Inject]
     ShopBehaviour shopBehaviour;
+
     Coroutine textHideRoutine;
     int triggerCount;
-
-    void Awake ()
-    {
-        shopBehaviour = FindObjectOfType<ShopBehaviour>();
-    }
 
     void Start ()
     {

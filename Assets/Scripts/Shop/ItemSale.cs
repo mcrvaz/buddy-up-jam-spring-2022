@@ -7,7 +7,7 @@ public class ItemSale
     public bool Enabled { get; set; }
 
     readonly ItemSaleSettings settings;
-    readonly Currency currency;
+    readonly CurrencyManager currency;
     readonly InputManager inputManager;
     readonly ItemPurchaseFulfillment fulfillment;
 
@@ -15,7 +15,7 @@ public class ItemSale
         InputManager inputManager,
         ItemPurchaseFulfillment fulfillment,
         ItemSaleSettings settings,
-        Currency currency
+        CurrencyManager currency
     )
     {
         this.inputManager = inputManager;

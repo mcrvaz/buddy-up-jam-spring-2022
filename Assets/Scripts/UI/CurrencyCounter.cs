@@ -1,20 +1,31 @@
-using TMPro;
+using System;
+using VContainer.Unity;
 
-public class CurrencyCounter
+public class CurrencyCounter : IInitializable, IDisposable
 {
-    readonly Currency currency;
-    readonly TextMeshProUGUI healthText;
+    public event Action<string> OnValueChanged;
 
-    public CurrencyCounter (Currency currency, TextMeshProUGUI healthText)
+    public string Value => $"${currencyManager.Current}";
+
+    readonly CurrencyManager currencyManager;
+
+    public CurrencyCounter (CurrencyManager currencyManager)
     {
-        this.currency = currency;
-        this.healthText = healthText;
-        currency.OnCurrencyChanged += HandleCurrencyChanged;
-        HandleCurrencyChanged(0, currency.Current);
+        this.currencyManager = currencyManager;
+    }
+
+    public void Initialize ()
+    {
+        currencyManager.OnCurrencyChanged += HandleCurrencyChanged;
     }
 
     void HandleCurrencyChanged (int previous, int current)
     {
-        healthText.text = $"${current}";
+        OnValueChanged?.Invoke(Value);
+    }
+
+    public void Dispose ()
+    {
+        currencyManager.OnCurrencyChanged -= HandleCurrencyChanged;
     }
 }

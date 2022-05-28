@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 public class AmmoCounterBehaviour : MonoBehaviour
 {
@@ -7,12 +8,8 @@ public class AmmoCounterBehaviour : MonoBehaviour
 
     public AmmoCounter AmmoCounter { get; private set; }
 
-    PlayerBehaviour playerBehaviour;
-
-    void Awake ()
-    {
-        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
-    }
+    [Inject]
+    readonly PlayerBehaviour playerBehaviour;
 
     void Start ()
     {

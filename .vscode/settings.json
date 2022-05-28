@@ -55,7 +55,10 @@
     "cSpell.words": [
         "Behaviour",
         "Behaviours",
+        "Initializable",
         "invul",
-        "Mathf"
+        "Mathf",
+        "Startable",
+        "Tickable"
     ]
 }

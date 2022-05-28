@@ -1,3 +1,3 @@
 using UnityEngine;
 
-public class CoroutineRunner : MonoBehaviour { }
+public class CoroutineRunner : MonoBehaviour, ICoroutineRunner { }

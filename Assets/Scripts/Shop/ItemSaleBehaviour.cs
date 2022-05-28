@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 public class ItemSaleBehaviour : MonoBehaviour
 {
@@ -13,35 +14,37 @@ public class ItemSaleBehaviour : MonoBehaviour
     public ItemSale ItemSale { get; private set; }
 
     ShopBehaviour shopBehaviour;
+
+    [Inject]
     CurrencyManager currencyManager;
 
-    void Awake ()
-    {
-        shopBehaviour = FindObjectOfType<ShopBehaviour>();
-        currencyManager = FindObjectOfType<CurrencyManager>();
+    // void Awake ()
+    // {
+    //     shopBehaviour = FindObjectOfType<ShopBehaviour>();
+    //     currencyManager = FindObjectOfType<CurrencyManagerBehaviour>();
 
-        var shopTrigger = GetComponentInChildren<TriggerCollider>();
-        shopTrigger.OnTriggerEnterEvent += HandleTriggerEnter;
-        shopTrigger.OnTriggerExitEvent += HandleTriggerExit;
-    }
+    //     var shopTrigger = GetComponentInChildren<TriggerCollider>();
+    //     shopTrigger.OnTriggerEnterEvent += HandleTriggerEnter;
+    //     shopTrigger.OnTriggerExitEvent += HandleTriggerExit;
+    // }
 
-    void Start ()
-    {
-        ItemSale = new ItemSale(
-            InputManager.Instance,
-            shopBehaviour.PurchaseFulfillment,
-            Settings,
-            currencyManager.Currency
-        );
-        ItemSale.OnPurchase += RaiseOnPurchase;
-        PriceText.text = $"${Settings.Price}";
-        enabled = false;
-    }
+    // void Start ()
+    // {
+    //     ItemSale = new ItemSale(
+    //         InputManager.Instance,
+    //         shopBehaviour.PurchaseFulfillment,
+    //         Settings,
+    //         currencyManager
+    //     );
+    //     ItemSale.OnPurchase += RaiseOnPurchase;
+    //     PriceText.text = $"${Settings.Price}";
+    //     enabled = false;
+    // }
 
-    void Update ()
-    {
-        ItemSale.Update();
-    }
+    // void Update ()
+    // {
+    //     ItemSale.Update();
+    // }
 
     void HandleTriggerEnter (Collider collider)
     {

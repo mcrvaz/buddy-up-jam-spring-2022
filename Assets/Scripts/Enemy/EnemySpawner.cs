@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer.Unity;
 
-public class EnemySpawner
+public class EnemySpawner : ITickable
 {
     public event Action<Enemy> OnEnemyDeath;
     public event Action<Enemy, BodyPart> OnEnemyHit;
@@ -12,8 +13,9 @@ public class EnemySpawner
     public bool IsSpawning => !waveSpawnEnded;
 
     float TimeSinceWaveStart => Time.time - currentWaveStartTime;
+    IReadOnlyList<SpawnPoint> SpawnPoints => spawnPointCollection.SpawnPoints;
 
-    readonly IReadOnlyList<SpawnPoint> spawnPoints;
+    readonly SpawnPointCollection spawnPointCollection;
     readonly EnemySpawnerSettings settings;
     readonly Queue<float> spawnTimes = new Queue<float>();
     readonly HashSet<EnemyBehaviour> liveEnemies = new HashSet<EnemyBehaviour>();
@@ -23,9 +25,12 @@ public class EnemySpawner
     int spawnedEnemies;
     bool waveSpawnEnded;
 
-    public EnemySpawner (IReadOnlyList<SpawnPoint> spawnPoints, EnemySpawnerSettings settings)
+    public EnemySpawner (
+        SpawnPointCollection spawnPointCollection,
+        EnemySpawnerSettings settings
+    )
     {
-        this.spawnPoints = spawnPoints;
+        this.spawnPointCollection = spawnPointCollection;
         this.settings = settings;
     }
 
@@ -40,7 +45,7 @@ public class EnemySpawner
         EvaluateSpawnTimes();
     }
 
-    public void Update ()
+    public void Tick ()
     {
         if (waveSpawnEnded)
             return;
@@ -108,5 +113,5 @@ public class EnemySpawner
     EnemyBehaviour GetNextEnemyPrefab () =>
         RandomUtils.WeightedRandom(currentWaveSettings.EnemyChances, x => x.Chance).EnemyPrefab;
 
-    SpawnPoint GetRandomSpawnPoint () => spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)];
+    SpawnPoint GetRandomSpawnPoint () => SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Count)];
 }
